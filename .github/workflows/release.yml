@@ -3,8 +3,8 @@ name: Release and Publish
 on:
   push:
     tags:
-      - 'v*'  # Trigger on version tags
-  workflow_dispatch:  # Allow manual triggering
+      - 'v*'
+  workflow_dispatch:
     inputs:
       version:
         description: 'Version to release (e.g. v1.0.0)'
@@ -47,7 +47,7 @@ jobs:
 
       - name: Check if release exists
         id: check_release
-        uses: bruceadams/get-release@v3.3
+        uses: bruceadams/get-release@v1.3.2
         env:
           GITHUB_TOKEN: ${{ github.token }}
         with:
