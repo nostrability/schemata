@@ -1,4 +1,4 @@
-[This repo has been moved to @nostrability/schemata](https://github.com/nostrability/schemata)
+> [This repo has been moved to @nostrability/schemata](https://github.com/nostrability/schemata)
 
 # @nostrwatch/schemata
 
