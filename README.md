@@ -1,6 +1,4 @@
-> [This repo has been moved to @nostrability/schemata](https://github.com/nostrability/schemata)
-
-# @nostrwatch/schemata
+# @nostrability/schemata
 
 A template for simplifying the validation of nostr events, their attributes and their respective tags using JSON-Schema standards. 
 
