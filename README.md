@@ -1,6 +1,4 @@
-```
-Note: This package will be migrated to nostrability/schemata once all events that @nostrwatch tests have a schema specified.
-```
+[This repo has been moved to @nostrability/schemata](https://github.com/nostrability/schemata)
 
 # @nostrwatch/schemata
 
