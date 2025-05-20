@@ -49,7 +49,7 @@ jobs:
         id: check_release
         uses: f2calv/gha-check-release-exists@v2
         with:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            GITHUB_TOKEN: ${{ secrets.SCHEMATA_PAT }}
             ReleaseName: ${{ steps.get_version.outputs.VERSION }}
 
       - name: Create Release
