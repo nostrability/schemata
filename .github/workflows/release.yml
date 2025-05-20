@@ -3,7 +3,7 @@ name: Release and Publish
 on:
   push:
     tags:
-      - 'v*'
+      - "v*.*.*"
   workflow_dispatch:
     inputs:
       version:
@@ -50,13 +50,13 @@ jobs:
         uses: f2calv/gha-check-release-exists@v2
         with:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            ReleaseName: 1.2.3
+            ReleaseName: ${{ steps.get_version.outputs.VERSION }}
 
       - name: Create Release
         if: steps.check_release.outputs.ReleaseExists == 'false'
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
-          name: Release ${{ steps.get_version.outputs.VERSION }}
+          name: ${{ steps.get_version.outputs.VERSION }}
           tag_name: ${{ steps.get_version.outputs.VERSION }}
           files: |
             dist/**/*
