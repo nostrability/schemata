@@ -15,8 +15,18 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
+      - name: Get version
+        id: get_version
+        run: |
+          if [[ ${{ github.event_name }} == 'workflow_dispatch' ]]; then
+            echo "VERSION=${{ github.event.inputs.version }}" >> $GITHUB_OUTPUT
+          else
+            echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+          fi
+
       - uses: actions/checkout@v4
         with:
+          ref: ${{ steps.get_version.outputs.VERSION }}
           fetch-depth: 0
 
       - name: Setup Node.js
@@ -36,20 +46,10 @@ jobs:
       - name: Build
         run: pnpm build
 
-      - name: Get version
-        id: get_version
-        run: |
-          if [[ ${{ github.event_name }} == 'workflow_dispatch' ]]; then
-            echo "VERSION=${{ github.event.inputs.version }}" >> $GITHUB_OUTPUT
-          else
-            echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
-          fi
-
       - name: Check if release exists
         id: check_release
         uses: f2calv/gha-check-release-exists@v2
         with:
-            GITHUB_TOKEN: ${{ secrets.SCHEMATA_PAT }}
             ReleaseName: ${{ steps.get_version.outputs.VERSION }}
 
       - name: Create Release
