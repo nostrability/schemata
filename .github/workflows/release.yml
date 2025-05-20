@@ -47,14 +47,13 @@ jobs:
 
       - name: Check if release exists
         id: check_release
-        uses: bruceadams/get-release@v1.3.2
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
+        uses: f2calv/gha-check-release-exists@v2
         with:
-          tag_name: ${{ steps.get_version.outputs.VERSION }}
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            ReleaseName: 1.2.3
 
       - name: Create Release
-        if: steps.check_release.outputs.release_id == ''
+        if: steps.check_release.outputs.ReleaseExists == 'false'
         uses: softprops/action-gh-release@v1
         with:
           name: Release ${{ steps.get_version.outputs.VERSION }}
