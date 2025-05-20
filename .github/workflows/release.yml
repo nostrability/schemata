@@ -46,6 +46,11 @@ jobs:
       - name: Build
         run: pnpm build
 
+      - name: Create release zip
+        run: |
+          cd dist
+          zip -r ../schemata-${{ steps.get_version.outputs.VERSION }}.zip .
+
       - name: Check if release exists
         id: check_release
         uses: f2calv/gha-check-release-exists@v2
@@ -60,8 +65,7 @@ jobs:
           token: ${{ secrets.SCHEMATA_PAT }}
           name: ${{ steps.get_version.outputs.VERSION }}
           tag_name: ${{ steps.get_version.outputs.VERSION }}
-          files: |
-            dist/**/*
+          files: schemata-${{ steps.get_version.outputs.VERSION }}.zip
 
       - name: Check if package exists
         id: check_package
