@@ -2,8 +2,15 @@
 
 A template for simplifying the validation of nostr events, their attributes and their respective tags using JSON-Schema standards. 
 
-## Related
+## Validators
+Validators are tools that wrap the schemata to provide validation capabilities. They can be written in nay language. They utilize the json-schema artifacts produced by this repository.
 - [`@nostrwatch/schemata-js-ajv`](https://github.com/sandwichfarm/nostr-watch/tree/next/libraries/schemata-js-ajv) - Typescript library for validating nostr events, depends on this package.
+
+## Adding new Schemas
+`@nostrability/schemata` assumes a kind is associated to a NIP. For development purposes you can bypass this by creating the directory "nipless".
+
+### Conventions
+Schemas are conventioned. They are included in directories for support purposes (complex multi-stage validation cases) with the following directory structure.
 
 ## Usage 
 1. Download ZIP file (all languages) or include package (js only for now)
