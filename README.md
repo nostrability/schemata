@@ -16,11 +16,10 @@ Schemas are conventioned. They are included in directories for support purposes 
 ## Usage 
 1. Download ZIP file (all languages) or include package (js only for now)
 2. Validate `.json` schemas against nostr events. 
-=======
+
 ## Quick Start
 
 ### For Users (Validate Nostr Events)
->>>>>>> Stashed changes
 
 ```bash
 # Install the package (JavaScript/TypeScript)
