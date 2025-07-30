@@ -2,7 +2,6 @@
 
 JSON Schema definitions for Nostr protocol events, messages, and tags. Validate Nostr data structures in any programming language.
 
-<<<<<<< Updated upstream
 ## Validators
 Validators are tools that wrap the schemata to provide validation capabilities. They can be written in nay language. They utilize the json-schema artifacts produced by this repository.
 - [`@nostrwatch/schemata-js-ajv`](https://github.com/sandwichfarm/nostr-watch/tree/next/libraries/schemata-js-ajv) - Typescript library for validating nostr events, depends on this package.
@@ -62,7 +61,6 @@ echo '$id: "https://schemata.nostr.watch/note/kind/YYYY"' > nips/nip-XX/kind-YYY
 - **Event Schemas**: Validate structure of all standard Nostr event kinds
 - **Message Schemas**: Validate WebSocket messages (REQ, EVENT, OK, etc.)
 - **Tag Schemas**: Validate event tags (e, p, a, d, t, etc.)
-- **Multi-language Support**: Generated validation code for Python, Rust, Go, Java, Swift, Kotlin
 
 ## Documentation
 
