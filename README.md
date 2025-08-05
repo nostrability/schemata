@@ -1,5 +1,7 @@
 # @nostrability/schemata
 
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/nostrability/schemata)
+
 A template for simplifying the validation of nostr events, their attributes and their respective tags using JSON-Schema standards. 
 
 ## Related
