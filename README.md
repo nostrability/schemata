@@ -9,9 +9,6 @@ JSON Schema definitions for Nostr protocol events, messages, and tags. Validate 
 ## Why JSON-Schema?
 JSON-Schema has the most active, widely supported specification standard, with the largest community and ecosystem. **Most importantly, it is one of the few schema specification standards that support deep specification of strings (via formats or regex), making the nostresque typing of strings and the tuples that contain them possible.** There are schema validators and generators for Server Stubs and Client-SDKs available in every single language. The wide availability of JSON-Schema tooling lends itself to creating a system that caters specifically to the requirements of nostr as well as creating an **extensible** and **maintainable** system; which is why this exists.
 
-## Alternatives?
-`@fiatjaf` produced a bespoke schema specification solution available [here](https://github.com/nostr-protocol/registry-of-kinds). The benefit of this is that it includes only what it needs to and so its specification drafted for nostr and so the performance is notably better. The performance improvements make it sufficient for use as a runtime validator in performance sensitive applications. The downside is that validators need to be written and maintained for all languages, tooling is non-existent so workflows that benefit maintenance and extensibility are non-existent, all kinds are specified from a single file and any generator pattern would need to be completely rewritten from scratch. A nostr-specific schema validator may prove to be the best long-term solution, with the caveat that it will take extensive development for it to reach maturity.
-
 ## What is `@nostrability/schemata` good for?
 - Integration Testing of both Clients and Relays
 - Discovering broken events through fuzz testing
@@ -21,8 +18,15 @@ JSON-Schema has the most active, widely supported specification standard, with t
 ## What is it not good for?
 - Runtime validation of events where performance is critical (JSON-Schema is notoriously slow due to the breadth of the specification)
 
+- ## Alternatives?
+`@fiatjaf` produced a bespoke schema specification solution available [here](https://github.com/nostr-protocol/registry-of-kinds). The benefit of this is that it includes only what it needs to and so its specification drafted for nostr and so the performance is notably better. The performance improvements make it sufficient for use as a runtime validator in performance sensitive applications. The downside is that validators need to be written and maintained for all languages, tooling is non-existent so workflows that benefit maintenance and extensibility are non-existent, all kinds are specified from a single file and any generator pattern would need to be completely rewritten from scratch. A nostr-specific schema validator may prove to be the best long-term solution, with the caveat that it will take extensive development for it to reach maturity.
+
+## Why not any of the other *`n`* specification formats that are more performant and modern?
+Read this closely and please understand: **Tuples of Strongly Typed Strings.** Yes, Strongly Typed Strings. This is unique to nostr. This concept is considered absurd in conventional system design. Thus, support for "Strongly Typed Strings" does not exist basically anywhere by default, except JSON-Schemas where it kind of exists by accident ... Could we change this? Yes! Are you volunteering? 
+
 ## How is it intended to be used?
 `@nostability/schemata` aims to produce JSON-Schema that can be consumed by validators (for example, `ajv`). Ideally, each language would have one or more validator wrappers. The validator wrappers provide nostr specific methods to make utilization more straightforward for implementers. The original author of this repo has provided an example of this approach below
+
 
 ## Validators
 Validators are tools that wrap the schemata to provide validation capabilities and expose a generic interface so that they can be implemented without any domain knowledge in json-schemas or json-schema validators. They can be written in any language, and there are JSON-Schema validators available in practically every language. Validators utilize the compiled json-schema artifacts produced by this repository either by importing them with NPM (in the TS/JS case), downloading the release artifacts or referencing the schemas remotely (all the schemas have remotely addressable IDs that are generated during releases)
