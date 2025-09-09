@@ -4,11 +4,20 @@
 
 JSON Schema definitions for Nostr protocol events, messages, and tags. Validate Nostr data structures in any programming language.
 
+## Why JSOn-Schema?
+JSON-Schema has the most active, widely supported specification standard, with the largest community and ecosystem. Most importantly, it is one of the few schema specification standards that supports deep specification of strings (via formats or regex), making the nostresque typing of strings possible. There are schema validators and generators for Server Stubs and Client-SDKs available in every single language. Due to nostr's specific design requirements, there are few existing standards that allow complete specification of nostr. The availability of tooling lends itself to creating a system that caters specifically to the requirements of nostr as well as creating an **extensible** and **maintainable** system; which is why this exists.
+
+## Alternatives?
+`@fiatjaf` produced a bespoke schema specification solution available [here](https://github.com/nostr-protocol/registry-of-kinds). The benefit of this is that it includes only what it needs to and so its specification specifically drafted for nostr and so the performance is notably better. The performance improvements make it sufficient for use as a runtime generator in performance sensitive applications. The downside is that validators need to be written and maintained for all languages, tooling is non-existent so workflows that benefit maintenance and extensibility are non-existent, all kinds are specified from a single file and any generator pattern would need to be completely rewritten from scratch. This is likely the best long-term solution.
+
 ## What is this good for?
 - Integration Testing of both Clients and Relays
 - Discovering broken events through fuzz testing
 - As a fixture to generate dummy events that are valid 
 - As an input to a stub and client-sdk generation effort (presently, tuples of strings have extremely limited support in JSON-Schema ecosystem, we could change this)
+
+## What is it not good for?
+- Runtime validation of events where performance is critical (JSON-Schema is notoriously slow due to the breadth of the specification)
 
 ## How is it intended to be used
 `@nostability/schemata` aims to produce JSON-Schema that can be consumed by validators (for example, `ajv`). Ideally, each language would have one or more validator wrappers. The validator wrappers provide nostr specific methods to make utilization more strait forward for implementers. The original author of this repo has provided an example of this approach below
@@ -42,6 +51,9 @@ Schemas are conventioned. They are included in directories for support purposes 
 ```
 
 Note: For payloads like `NIP-11` where it breaks the general "event" or "message" pattern, just place a `schema.yaml` in the NIP's directory. 
+
+## Generating Stubs/Client-SDKs
+Unfortunately, as of writing, none of the Stub or Client-SDK generators produce useful logic for tuples, and more importantly, strings of tuples. The reason for this is that tuples are not utilized in conventional programming as extensively as in nostr, so the maintainers of these generators are doing themselves a favor by not fully support tuples. However, that does not mean it is not possible. Generators could be written by the nostr community by forking existing generators (available in basically every language, even esoteric languages!) and writing nostr specific implementations. The result would negate any requirement for runtime validation via JSON-Schema since the validation would be handled programmatically by the generated Stub and/or Client-SDKs identically. 
 
 ## Usage 
 1. Download ZIP file (all languages) or include package (js only for now)
