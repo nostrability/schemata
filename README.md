@@ -10,7 +10,7 @@ JSON Schema definitions for Nostr protocol events, messages, and tags. Validate 
 JSON-Schema has the most active, widely supported specification standard, with the largest community and ecosystem. Most importantly, it is one of the few schema specification standards that supports deep specification of strings (via formats or regex), making the nostresque typing of strings possible. There are schema validators and generators for Server Stubs and Client-SDKs available in every single language. Due to nostr's specific design requirements, there are few existing standards that allow complete specification of nostr. The availability of tooling lends itself to creating a system that caters specifically to the requirements of nostr as well as creating an **extensible** and **maintainable** system; which is why this exists.
 
 ## Alternatives?
-`@fiatjaf` produced a bespoke schema specification solution available [here](https://github.com/nostr-protocol/registry-of-kinds). The benefit of this is that it includes only what it needs to and so its specification specifically drafted for nostr and so the performance is notably better. The performance improvements make it sufficient for use as a runtime generator in performance sensitive applications. The downside is that validators need to be written and maintained for all languages, tooling is non-existent so workflows that benefit maintenance and extensibility are non-existent, all kinds are specified from a single file and any generator pattern would need to be completely rewritten from scratch. This is likely the best long-term solution.
+`@fiatjaf` produced a bespoke schema specification solution available [here](https://github.com/nostr-protocol/registry-of-kinds). The benefit of this is that it includes only what it needs to and so its specification specifically drafted for nostr and so the performance is notably better. The performance improvements make it sufficient for use as a runtime generator in performance sensitive applications. The downside is that validators need to be written and maintained for all languages, tooling is non-existent so workflows that benefit maintenance and extensibility are non-existent, all kinds are specified from a single file and any generator pattern would need to be completely rewritten from scratch. This is likely the best long-term solution but will take extensive development for it to reach maturity.
 
 ## What is this good for?
 - Integration Testing of both Clients and Relays
@@ -116,32 +116,55 @@ echo '$id: "https://schemata.nostr.watch/note/kind/YYYY"' > nips/nip-XX/kind-YYY
 ## Available Schemas
 
 <details>
-<summary>Core Schemas</summary>
+<summary>Event Kinds</summary>
 
-- `@/note` - Base event structure (id, pubkey, created_at, kind, tags, content, sig)
-- `@/secp256k1` - Validate secp256k1 keys and signatures
-- `@/tag` - Base tag array structure
-- `@/message/filter` - REQ message filters
+- `kind-0` - Profile metadata (NIP-01)
+- `kind-1` - Text note (NIP-01)  
+- `kind-3` - Contact list (NIP-02)
+- `kind-1111` - Comment (NIP-22)
+- `kind-10002` - Relay list metadata (NIP-65)
 
 </details>
 
 <details>
-<summary>Event Kinds (NIPs)</summary>
+<summary>Protocol Messages</summary>
 
-- **NIP-01**: `kind-0` (metadata), `kind-1` (text note), `kind-3` (contacts)
-- **NIP-40**: `kind-40` (channel creation), `kind-41` (channel metadata), `kind-42` (channel message)
-- More NIPs being added regularly
+**Client to Relay:**
+- `client-req` - Request events (REQ)
+- `client-event` - Publish event (EVENT)
+- `client-close` - Close subscription (CLOSE)
+- `client-auth` - Authentication (AUTH)
+
+**Relay to Client:**
+- `relay-event` - Event delivery (EVENT)
+- `relay-ok` - Command result (OK)
+- `relay-eose` - End of stored events (EOSE)
+- `relay-closed` - Subscription closed (CLOSED)
+- `relay-notice` - Human-readable message (NOTICE)
+- `relay-auth` - Authentication challenge (AUTH)
+
+**Other:**
+- `filter` - REQ message filter object
 
 </details>
 
 <details>
 <summary>Tags</summary>
 
-- `a` - Replaceable event reference
-- `d` - Identifier for replaceable events  
+**Standard Tags:**
 - `e` - Event reference
 - `p` - Public key reference
+- `a` - Replaceable event reference
+- `d` - Identifier for replaceable events
 - `t` - Hashtag
+- `k` - Kind number reference
+- `r` - Reference/relay URL
+
+**NIP-22 Comment Tags (uppercase):**
+- `_E` - Uppercase event reference
+- `_P` - Uppercase public key reference
+- `_A` - Uppercase replaceable event reference
+- `_K` - Uppercase kind reference
 
 </details>
 
