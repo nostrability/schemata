@@ -4,7 +4,7 @@
 
 JSON Schema definitions for Nostr protocol events, messages, and tags. Validate Nostr data structures in any programming language.
 
-## Why JSN-Schema?
+## Why JSON-Schema?
 JSON-Schema has the most active, widely supported specification standard, with the largest community and ecosystem. Most importantly, it is one of the few schema specification standards that supports deep specification of strings (via formats or regex), making the nostresque typing of strings possible. There are schema validators and generators for Server Stubs and Client-SDKs available in every single language. Due to nostr's specific design requirements, there are few existing standards that allow complete specification of nostr. The availability of tooling lends itself to creating a system that caters specifically to the requirements of nostr as well as creating an **extensible** and **maintainable** system; which is why this exists.
 
 ## Existing Alternatives?
