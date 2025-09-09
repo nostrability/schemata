@@ -180,26 +180,26 @@ jobs:
               
               <div class="schema-type">
                   <h2>Note Schemas</h2>
-                  <p>Access via: <code>/note/kind/{kind}.json</code></p>
-                  <p>Example: <a href="/note/kind/0.json">/note/kind/0.json</a> for profile metadata</p>
-                  <p>Example: <a href="/note/kind/1.json">/note/kind/1.json</a> for text note</p>
+                  <p>Access via: <code>./note/kind/{kind}.json</code></p>
+                  <p>Example: <a href="./note/kind/0.json">./note/kind/0.json</a> for profile metadata</p>
+                  <p>Example: <a href="./note/kind/1.json">./note/kind/1.json</a> for text note</p>
               </div>
               
               <div class="schema-type">
                   <h2>Tag Schemas</h2>
-                  <p>Access via: <code>/tag/{tag_name}.json</code></p>
-                  <p>Example: <a href="/tag/e.json">/tag/e.json</a> for event reference tags</p>
-                  <p>Example: <a href="/tag/p.json">/tag/p.json</a> for pubkey tags</p>
-                  <p>Example: <a href="/tag/a.json">/tag/a.json</a> for replaceable event tags</p>
-                  <p>Example: <a href="/tag/t.json">/tag/t.json</a> for hashtag tags</p>
+                  <p>Access via: <code>./tag/{tag_name}.json</code></p>
+                  <p>Example: <a href="./tag/e.json">./tag/e.json</a> for event reference tags</p>
+                  <p>Example: <a href="./tag/p.json">./tag/p.json</a> for pubkey tags</p>
+                  <p>Example: <a href="./tag/a.json">./tag/a.json</a> for replaceable event tags</p>
+                  <p>Example: <a href="./tag/t.json">./tag/t.json</a> for hashtag tags</p>
               </div>
               
               <div class="schema-type">
                   <h2>Protocol Message Schemas</h2>
-                  <p>Access via: <code>/message/{message_type}.json</code></p>
-                  <p>Example: <a href="/message/REQ.json">/message/REQ.json</a> for request messages</p>
-                  <p>Example: <a href="/message/EVENT.json">/message/EVENT.json</a> for event messages</p>
-                  <p>Example: <a href="/message/OK.json">/message/OK.json</a> for acknowledgment messages</p>
+                  <p>Access via: <code>./message/{message_type}.json</code></p>
+                  <p>Example: <a href="./message/REQ.json">./message/REQ.json</a> for request messages</p>
+                  <p>Example: <a href="./message/EVENT.json">./message/EVENT.json</a> for event messages</p>
+                  <p>Example: <a href="./message/OK.json">./message/OK.json</a> for acknowledgment messages</p>
               </div>
               
               <div class="schema-type">
