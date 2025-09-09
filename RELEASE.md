@@ -28,6 +28,8 @@ vim package.json
 
 ### 2. Commit Version Update
 
+**IMPORTANT**: You must commit and push the version change BEFORE creating the tag!
+
 ```bash
 git add package.json
 git commit -m "bump version to X.Y.Z"
@@ -36,7 +38,7 @@ git push origin master
 
 ### 3. Create and Push Git Tag
 
-Create a tag with the version number prefixed with 'v':
+After the version commit is pushed, create a tag with the version number prefixed with 'v':
 
 ```bash
 # Replace X.Y.Z with your version number (must match package.json)
@@ -44,7 +46,9 @@ git tag vX.Y.Z
 git push origin vX.Y.Z
 ```
 
-**Important**: The tag version must match the version in package.json (e.g., if package.json has "version": "0.1.4", use tag `v0.1.4`)
+**Critical**: 
+- The tag version must match the version in package.json (e.g., if package.json has "version": "0.1.4", use tag `v0.1.4`)
+- Always push the version commit to master BEFORE creating and pushing the tag
 
 ### 4. Automated Release Process
 

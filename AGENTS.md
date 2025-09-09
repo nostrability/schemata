@@ -51,9 +51,11 @@ pnpm build:test     # Build + run tests
 ```
 
 **Build Process**:
-1. `make` - Converts YAML to JSON, resolves references
-2. `add-schema-ids.js` - Adds `$id` properties with GitHub Pages URLs (build-time only)
-3. `build.js` - Creates JavaScript bundle with exports
+1. `make convert_json` - Converts YAML to JSON
+2. `make rewrite_refs` - Rewrites references to absolute paths
+3. `add-schema-ids.js` - Adds `$id` properties with GitHub Pages URLs (before dereferencing)
+4. `make dereference_json` - Dereferences schemas (embeds references inline, preserving `$id`)
+5. `build.js` - Creates JavaScript bundle with exports
 
 ### 3. Creating a Release
 
