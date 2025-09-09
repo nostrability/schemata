@@ -39,10 +39,12 @@ git push origin master
 Create a tag with the version number prefixed with 'v':
 
 ```bash
-# Replace X.Y.Z with your version number
-git tag v.X.Y.Z
-git push origin v.X.Y.Z
+# Replace X.Y.Z with your version number (must match package.json)
+git tag vX.Y.Z
+git push origin vX.Y.Z
 ```
+
+**Important**: The tag version must match the version in package.json (e.g., if package.json has "version": "0.1.4", use tag `v0.1.4`)
 
 ### 4. Automated Release Process
 
