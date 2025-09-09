@@ -87,7 +87,8 @@ The `.github/workflows/deploy-pages.yml` workflow will automatically:
      - `/tag/{tag_name}.json` - Tag schemas
      - `/message/{MESSAGE_TYPE}.json` - Protocol messages
 
-3. **Add $id Properties**
+3. **Add $id Properties** 
+   - The `scripts/add-schema-ids.js` script adds an `$id` to each schema
    - Each schema gets an `$id` pointing to its GitHub Pages URL
    - Example: `https://nostrability.github.io/schemata/note/kind/1.json`
 

@@ -30,7 +30,7 @@
   },
   "scripts": {
     "clean": "rm -rf dist && mkdir -p dist",
-    "build": "pnpm clean && make convert_json && make rewrite_refs && node ./add-schema-ids.js && make dereference_json && node ./build.js",
+    "build": "pnpm clean && make convert_json && make rewrite_refs && node ./scripts/add-schema-ids.js && make dereference_json && node ./build.js",
     "build:all": "pnpm build && pnpm packages",
     "build:test": "pnpm build && pnpm test",
     "convert": "pnpm convert:note && pnpm convert:content",

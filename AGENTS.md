@@ -53,7 +53,7 @@ pnpm build:test     # Build + run tests
 **Build Process**:
 1. `make convert_json` - Converts YAML to JSON
 2. `make rewrite_refs` - Rewrites references to absolute paths
-3. `add-schema-ids.js` - Adds `$id` properties with GitHub Pages URLs (before dereferencing)
+3. `scripts/add-schema-ids.js` - Adds `$id` properties with GitHub Pages URLs (before dereferencing)
 4. `make dereference_json` - Dereferences schemas (embeds references inline, preserving `$id`)
 5. `build.js` - Creates JavaScript bundle with exports
 
@@ -278,6 +278,235 @@ items:
 minItems: 2
 maxItems: 2  # If fixed length
 ```
+
+## Development Approach
+
+### Feature Development
+
+When implementing new features in this repository:
+
+1. **Understand the Request**
+   - Identify if it's a new schema, build process change, or tooling improvement
+   - Check existing patterns in similar implementations
+   - Review NIPs documentation if adding protocol-specific schemas
+
+2. **Plan the Implementation**
+   - For complex features, use TodoWrite to track steps
+   - Identify files that need modification
+   - Consider impact on build process and existing schemas
+
+3. **Follow Conventions**
+   ```yaml
+   # New event kind schema structure
+   nips/nip-XX/kind-YYY/schema.yaml
+   
+   # New message schema structure
+   nips/nip-XX/messages/message-type/schema.yaml
+   
+   # New tag schema structure
+   nips/nip-XX/tag/tagname/schema.yaml
+   ```
+
+4. **Test the Changes**
+   - Run `pnpm build` to ensure compilation works
+   - Check that `$id` properties are correctly generated
+   - Verify dereferencing preserves structure
+   - Run `pnpm test` if tests exist
+
+5. **Update Documentation**
+   - Update README.md "Available Schemas" section if adding schemas
+   - Update AGENTS.md if changing build process
+   - Document any new conventions or patterns
+
+### Bugfixing Approach
+
+1. **Diagnose the Issue**
+   - Check error messages and logs
+   - Identify which stage of build process fails
+   - Use `grep` and `find` to locate problematic files
+   - Review recent changes that might have caused the issue
+
+2. **Common Issues and Solutions**
+   
+   **Schema Issues:**
+   - Missing references: Check `@/` aliases exist
+   - Invalid YAML: Validate syntax and indentation
+   - Circular references: Review `$ref` chains
+   
+   **Build Issues:**
+   - `$id` already exists: Remove from source YAML files
+   - Reference not found: Check relative paths and aliases
+   - Dereferencing fails: Validate all referenced schemas exist
+   
+   **Workflow Issues:**
+   - Version mismatch: Ensure package.json version matches tag
+   - Permission errors: Check GitHub secrets and permissions
+   - Deploy fails: Verify GitHub Pages settings
+
+3. **Fix Implementation**
+   - Make minimal changes to fix the issue
+   - Preserve existing functionality
+   - Test the fix locally with `pnpm build`
+   - Verify no unintended side effects
+
+4. **Prevent Regression**
+   - Add validation if appropriate
+   - Document the issue and solution
+   - Consider adding automated checks
+
+### CI/CD Development
+
+1. **GitHub Actions Workflows**
+   
+   **Location:** `.github/workflows/`
+   
+   **Key Workflows:**
+   - `release.yml` - Handles releases and NPM publishing
+   - `deploy-pages.yml` - Deploys to GitHub Pages
+
+2. **Modifying Workflows**
+   
+   **Before changing:**
+   - Understand current workflow triggers
+   - Review job dependencies
+   - Check required secrets and permissions
+   
+   **Common modifications:**
+   ```yaml
+   # Adding new trigger
+   on:
+     push:
+       branches: [master]
+     workflow_dispatch:
+   
+   # Adding new job step
+   - name: New Step
+     run: |
+       echo "Running new step"
+   
+   # Using outputs between steps
+   - id: step1
+     run: echo "VALUE=test" >> $GITHUB_OUTPUT
+   - run: echo "${{ steps.step1.outputs.VALUE }}"
+   ```
+
+3. **Testing Workflow Changes**
+   - Use `workflow_dispatch` for manual testing
+   - Check Actions tab for execution logs
+   - Verify artifacts and deployments
+   - Test both success and failure paths
+
+4. **Workflow Best Practices**
+   - Use semantic version tags for actions
+   - Store sensitive data in secrets
+   - Add condition checks for optional steps
+   - Include error handling and retries
+   - Document workflow purpose and triggers
+
+### Development Workflow
+
+1. **Starting Development**
+   ```bash
+   # Clone and setup
+   git clone <repo>
+   cd schemata
+   pnpm install
+   
+   # Create feature branch (if needed)
+   git checkout -b feature/description
+   
+   # Test current build
+   pnpm build
+   ```
+
+2. **During Development**
+   ```bash
+   # Regular build to test changes
+   pnpm build
+   
+   # Check for schema issues
+   grep -r '^\$id:' nips/ @/  # Should be empty
+   
+   # Validate specific schema
+   ajv validate -s dist/nips/nip-01/kind-1/schema.json -d event.json
+   ```
+
+3. **Before Committing**
+   - Run full build: `pnpm build`
+   - Check no `$id` in source files
+   - Verify all schemas have correct structure
+   - Update documentation if needed
+   - Test GitHub Pages output locally if changed
+
+4. **Debugging Tips**
+   ```bash
+   # Check build stages individually
+   make convert_json      # YAML to JSON
+   make rewrite_refs      # Fix references
+   node scripts/add-schema-ids.js  # Add $id
+   make dereference_json  # Expand references
+   
+   # Inspect intermediate output
+   cat dist/nips/nip-01/kind-1/schema.json | jq '.'
+   
+   # Find schema files
+   find nips -name "*.yaml" -type f
+   find dist -name "*.json" -type f
+   ```
+
+### Schema Development Guidelines
+
+1. **Creating New Schemas**
+   - Start with existing schema as template
+   - Use `allOf` to extend base schemas
+   - Add descriptive `title` and `description`
+   - Include `errorMessage` for validations
+   - Test with valid and invalid examples
+
+2. **Schema Patterns**
+   ```yaml
+   # Extending events
+   allOf:
+     - $ref: "@/note.yaml"
+     - type: object
+       properties:
+         kind:
+           const: 123
+   
+   # Defining tags
+   allOf:
+     - $ref: "@/tag.yaml"
+     - type: array
+       items:
+         - const: "tagname"
+         - type: string
+   
+   # Protocol messages
+   type: array
+   items:
+     - const: "MSG_TYPE"
+     - type: object
+   minItems: 2
+   maxItems: 2
+   ```
+
+3. **Validation Patterns**
+   ```yaml
+   # Hex string validation
+   pattern: "^[a-f0-9]{64}$"
+   
+   # URL validation
+   pattern: "^wss?://"
+   
+   # Array constraints
+   minItems: 1
+   maxItems: 100
+   uniqueItems: true
+   
+   # String constraints
+   minLength: 1
+   maxLength: 1000
+   ```
 
 ## Contact
 
