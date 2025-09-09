@@ -4,11 +4,14 @@
 
 JSON Schema definitions for Nostr protocol events, messages, and tags. Validate Nostr data structures in any programming language.
 
+## Related
+**Quick Links:** [Installation](#installation) • [Quick Start](#quick-start) • [Available Schemas](#available-schemas) • [Contributing](#contributing) • [Build From Source](#build-from-source)
+
 ## Why JSON-Schema?
 JSON-Schema has the most active, widely supported specification standard, with the largest community and ecosystem. Most importantly, it is one of the few schema specification standards that supports deep specification of strings (via formats or regex), making the nostresque typing of strings possible. There are schema validators and generators for Server Stubs and Client-SDKs available in every single language. Due to nostr's specific design requirements, there are few existing standards that allow complete specification of nostr. The availability of tooling lends itself to creating a system that caters specifically to the requirements of nostr as well as creating an **extensible** and **maintainable** system; which is why this exists.
 
-## Existing Alternatives?
-`@fiatjaf` produced a bespoke schema specification solution available [here](https://github.com/nostr-protocol/registry-of-kinds). The benefit of this is that it includes only what it needs to and it was drafted specifically for nostr. The limited scope means the performance is notably better and mark it as sufficient for use as a runtime validator in performance sensitive applications (unlike JSON-Schema). The downside is that validators need to be written and maintained for all languages, tooling is non-existent and so workflows that benefit maintenance and extensibility are non-existent, all kinds are specified from a single file and any generator pattern would need to be completely rewritten from scratch. This is likely the best long-term solution but would require extensive development to reach maturity.
+## Alternatives?
+`@fiatjaf` produced a bespoke schema specification solution available [here](https://github.com/nostr-protocol/registry-of-kinds). The benefit of this is that it includes only what it needs to and so its specification specifically drafted for nostr and so the performance is notably better. The performance improvements make it sufficient for use as a runtime generator in performance sensitive applications. The downside is that validators need to be written and maintained for all languages, tooling is non-existent so workflows that benefit maintenance and extensibility are non-existent, all kinds are specified from a single file and any generator pattern would need to be completely rewritten from scratch. This is likely the best long-term solution.
 
 ## What is this good for?
 - Integration Testing of both Clients and Relays
@@ -19,13 +22,14 @@ JSON-Schema has the most active, widely supported specification standard, with t
 ## What is it not good for?
 - Runtime validation of events where performance is critical (JSON-Schema is notoriously slow due to the breadth of the specification)
 
-## How is it intended to be used
-`@nostability/schemata` aims to produce JSON-Schema that can be consumed by validators (for example, `ajv`). Ideally, each language would have one or more validator wrappers. The validator wrappers provide nostr specific methods to make utilization more strait forward for implementers. The original author of this repo has provided an example of this approach below
+## How is it intended to be used?
+`@nostability/schemata` aims to produce JSON-Schema that can be consumed by validators (for example, `ajv`). Ideally, each language would have one or more validator wrappers. The validator wrappers provide nostr specific methods to make utilization more straightforward for implementers. The original author of this repo has provided an example of this approach below
 
 ## Validators
-Validators are tools that wrap the schemata to provide validation capabilities. They can be written in nay language. They utilize the json-schema artifacts produced by this repository.
-- [`@nostrwatch/schemata-js-ajv`](https://github.com/sandwichfarm/nostr-watch/tree/next/libraries/schemata-js-ajv) - Typescript library for validating nostr events, depends on this package.
-- 
+Validators are tools that wrap the schemata to provide validation capabilities. They can be written in any language. They utilize the json-schema artifacts produced by this repository.
+
+- [`@nostrwatch/schemata-js-ajv`](https://github.com/sandwichfarm/nostr-watch/tree/next/libraries/schemata-js-ajv) - A validator written in Typescript that wraps `ajv` and leverages `@nostrability/schemata`
+
 ## Adding new Schemas
 `@nostrability/schemata` assumes a kind is associated to a NIP and so the schemas are organized by NIP. The system has `aliases` that are generated via the build-script. The aliases make it easier to reference commonly reused schemas (such as tags, and base schemata like `note`). 
 
@@ -106,7 +110,6 @@ echo '$id: "https://schemata.nostr.watch/note/kind/YYYY"' > nips/nip-XX/kind-YYY
 - **Tag Schemas**: Validate event tags (e, p, a, d, t, etc.)
 
 ## Documentation
-
 - 📖 **[Using Schemas](docs/usage.md)** - How to integrate schemas in your project
 - 🛠️ **[Contributing](docs/contributing.md)** - How to add new schemas
 - 🏗️ **[Architecture](docs/architecture.md)** - Technical design and build process
@@ -215,6 +218,10 @@ Quick tips:
 - Follow existing patterns for consistency
 - Include error messages and descriptions
 - Test with valid/invalid examples
+
+## Releasing
+
+For maintainers: See [RELEASE.md](RELEASE.md) for the step-by-step release process.
 
 ## License
 
