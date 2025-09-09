@@ -6,6 +6,12 @@ on:
     types:
       - completed
   workflow_dispatch:
+    inputs:
+      deploy_reason:
+        description: 'Reason for manual deployment'
+        required: false
+        type: string
+        default: 'Manual deployment'
 
 permissions:
   contents: read
