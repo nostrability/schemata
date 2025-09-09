@@ -4,15 +4,44 @@
 
 JSON Schema definitions for Nostr protocol events, messages, and tags. Validate Nostr data structures in any programming language.
 
+## What is this good for?
+- Integration Testing of both Clients and Relays
+- Discovering broken events through fuzz testing
+- As a fixture to generate dummy events that are valid 
+- As an input to a stub and client-sdk generation effort (presently, tuples of strings have extremely limited support in JSON-Schema ecosystem, we could change this)
+
+## How is it intended to be used
+`@nostability/schemata` aims to produce JSON-Schema that can be consumed by validators (for example, `ajv`). Ideally, each language would have one or more validator wrappers. The validator wrappers provide nostr specific methods to make utilization more strait forward for implementers. The original author of this repo has provided an example of this approach below
+
 ## Validators
 Validators are tools that wrap the schemata to provide validation capabilities. They can be written in nay language. They utilize the json-schema artifacts produced by this repository.
 - [`@nostrwatch/schemata-js-ajv`](https://github.com/sandwichfarm/nostr-watch/tree/next/libraries/schemata-js-ajv) - Typescript library for validating nostr events, depends on this package.
 
 ## Adding new Schemas
-`@nostrability/schemata` assumes a kind is associated to a NIP. For development purposes you can bypass this by creating the directory "nipless".
+`@nostrability/schemata` assumes a kind is associated to a NIP and so the schemas are organized by NIP. The system has `aliases` that are generated via the build-script. The aliases make it easier to reference commonly reused schemas (such as tags, and base schemata like `note`). 
 
 ### Conventions
-Schemas are conventioned. They are included in directories for support purposes (complex multi-stage validation cases) with the following directory structure.
+Schemas are conventioned. They are included in directories for support purposes (complex multi-stage validation cases) with the following directory structure (using the NIP-01 directory as an example)
+
+```
+. 
+├── kind-0
+├── kind-1
+├── messages
+│   ├── client-close
+│   ├── ...
+├── note
+├── note-unsigned
+├── secp256k1
+└── tag
+    ├── a
+    ├── d
+    ├── e
+    ├── p
+    └── t
+```
+
+Note: For payloads like `NIP-11` where it breaks the general "event" or "message" pattern, just place a `schema.yaml` in the NIP's directory. 
 
 ## Usage 
 1. Download ZIP file (all languages) or include package (js only for now)
