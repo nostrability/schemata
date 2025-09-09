@@ -11,9 +11,6 @@ importers:
       '@apidevtools/json-schema-ref-parser':
         specifier: ^11.7.2
         version: 11.7.3
-      '@nostrwatch/schemata':
-        specifier: workspace:^
-        version: 'link:'
       ajv:
         specifier: 8.17.1
         version: 8.17.1
