@@ -25,7 +25,7 @@ JSON-Schema has the most active, widely supported specification standard, with t
 ## Validators
 Validators are tools that wrap the schemata to provide validation capabilities. They can be written in nay language. They utilize the json-schema artifacts produced by this repository.
 - [`@nostrwatch/schemata-js-ajv`](https://github.com/sandwichfarm/nostr-watch/tree/next/libraries/schemata-js-ajv) - Typescript library for validating nostr events, depends on this package.
-
+- 
 ## Adding new Schemas
 `@nostrability/schemata` assumes a kind is associated to a NIP and so the schemas are organized by NIP. The system has `aliases` that are generated via the build-script. The aliases make it easier to reference commonly reused schemas (such as tags, and base schemata like `note`). 
 

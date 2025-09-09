@@ -1,0 +1,233 @@
+name: Deploy to GitHub Pages
+
+on:
+  workflow_run:
+    workflows: ["Release and Publish"]
+    types:
+      - completed
+  workflow_dispatch:
+    inputs:
+      deploy_reason:
+        description: 'Reason for manual deployment'
+        required: false
+        type: string
+        default: 'Manual deployment'
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: ${{ (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success') || github.event_name == 'workflow_dispatch' }}
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Get latest release
+        id: get_release
+        run: |
+          LATEST_RELEASE=$(curl -s https://api.github.com/repos/${{ github.repository }}/releases/latest | jq -r '.tag_name')
+          echo "VERSION=$LATEST_RELEASE" >> $GITHUB_OUTPUT
+          echo "Latest release: $LATEST_RELEASE"
+
+      - name: Download release artifact
+        run: |
+          ASSET_URL=$(curl -s https://api.github.com/repos/${{ github.repository }}/releases/latest | jq -r '.assets[] | select(.name | contains(".zip")) | .browser_download_url')
+          echo "Downloading from: $ASSET_URL"
+          curl -L -o schemata.zip "$ASSET_URL"
+          
+      - name: Extract and flatten structure
+        run: |
+          # Extract the release artifact
+          unzip schemata.zip -d temp_dist
+          
+          # Create the flattened structure for GitHub Pages
+          mkdir -p pages_dist/note/kind
+          mkdir -p pages_dist/message
+          mkdir -p pages_dist/tag
+          
+          # Process all NIPs to extract kinds and messages
+          if [ -d "temp_dist/nips" ]; then
+            for nip_dir in temp_dist/nips/*; do
+              if [ -d "$nip_dir" ]; then
+                nip_name=$(basename "$nip_dir")
+                
+                # Extract kind schemas (events)
+                for kind_dir in "$nip_dir"/kind-*; do
+                  if [ -d "$kind_dir" ]; then
+                    kind_num=$(basename "$kind_dir" | sed 's/kind-//')
+                    if [ -f "$kind_dir/schema.json" ]; then
+                      # Copy as {kind}.json to note/kind/
+                      cp "$kind_dir/schema.json" "pages_dist/note/kind/${kind_num}.json"
+                      echo "Copied kind $kind_num from $nip_name"
+                    fi
+                  fi
+                done
+                
+                # Extract tag schemas
+                if [ -d "$nip_dir/tag" ]; then
+                  for tag_dir in "$nip_dir/tag"/*; do
+                    if [ -d "$tag_dir" ]; then
+                      tag_name=$(basename "$tag_dir")
+                      if [ -f "$tag_dir/schema.json" ]; then
+                        # If tag already exists from another NIP, use nip prefix
+                        if [ -f "pages_dist/tag/${tag_name}.json" ]; then
+                          tag_filename="${nip_name}_${tag_name}"
+                        else
+                          tag_filename="${tag_name}"
+                        fi
+                        
+                        cp "$tag_dir/schema.json" "pages_dist/tag/${tag_filename}.json"
+                        echo "Copied tag $tag_name from $nip_name"
+                      fi
+                    fi
+                  done
+                fi
+                
+                # Extract message schemas (protocol messages)
+                if [ -d "$nip_dir/messages" ]; then
+                  for msg_dir in "$nip_dir/messages"/*; do
+                    if [ -d "$msg_dir" ]; then
+                      msg_type=$(basename "$msg_dir")
+                      if [ -f "$msg_dir/schema.json" ]; then
+                        # Convert message type to uppercase for consistency
+                        # e.g., client-req -> REQ, relay-event -> EVENT, etc.
+                        case "$msg_type" in
+                          client-req) msg_name="REQ" ;;
+                          client-event) msg_name="EVENT" ;;
+                          client-close) msg_name="CLOSE" ;;
+                          client-auth) msg_name="AUTH" ;;
+                          relay-event) msg_name="EVENT" ;;
+                          relay-ok) msg_name="OK" ;;
+                          relay-eose) msg_name="EOSE" ;;
+                          relay-closed) msg_name="CLOSED" ;;
+                          relay-notice) msg_name="NOTICE" ;;
+                          relay-auth) msg_name="AUTH" ;;
+                          *) msg_name=$(echo "$msg_type" | tr '[:lower:]' '[:upper:]' | tr '-' '_') ;;
+                        esac
+                        
+                        # If message already exists, use nip prefix
+                        if [ -f "pages_dist/message/${msg_name}.json" ]; then
+                          msg_name="${nip_name}_${msg_name}"
+                        fi
+                        
+                        cp "$msg_dir/schema.json" "pages_dist/message/${msg_name}.json"
+                        echo "Copied message $msg_name from $nip_name"
+                      fi
+                    fi
+                  done
+                fi
+              fi
+            done
+          fi
+          
+          # Create an index.html for basic navigation
+          cat > pages_dist/index.html << 'EOF'
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <title>Nostr Schemata</title>
+              <style>
+                  body {
+                      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+                      max-width: 800px;
+                      margin: 0 auto;
+                      padding: 2rem;
+                      line-height: 1.6;
+                  }
+                  h1 { color: #333; }
+                  h2 { color: #666; margin-top: 2rem; }
+                  ul { list-style-type: none; padding: 0; }
+                  li { margin: 0.5rem 0; }
+                  a {
+                      color: #0366d6;
+                      text-decoration: none;
+                      padding: 0.25rem 0.5rem;
+                      display: inline-block;
+                  }
+                  a:hover {
+                      text-decoration: underline;
+                  }
+                  .schema-type {
+                      background: #f6f8fa;
+                      border-radius: 4px;
+                      padding: 1rem;
+                      margin: 1rem 0;
+                  }
+                  code {
+                      background: #f3f4f6;
+                      padding: 0.2rem 0.4rem;
+                      border-radius: 3px;
+                      font-size: 0.9em;
+                  }
+              </style>
+          </head>
+          <body>
+              <h1>Nostr Schemata</h1>
+              <p>JSON Schema definitions for Nostr events. Access schemas directly by kind:</p>
+              
+              <div class="schema-type">
+                  <h2>Note Schemas</h2>
+                  <p>Access via: <code>./note/kind/{kind}.json</code></p>
+                  <p>Example: <a href="./note/kind/0.json">./note/kind/0.json</a> for profile metadata</p>
+                  <p>Example: <a href="./note/kind/1.json">./note/kind/1.json</a> for text note</p>
+              </div>
+              
+              <div class="schema-type">
+                  <h2>Tag Schemas</h2>
+                  <p>Access via: <code>./tag/{tag_name}.json</code></p>
+                  <p>Example: <a href="./tag/e.json">./tag/e.json</a> for event reference tags</p>
+                  <p>Example: <a href="./tag/p.json">./tag/p.json</a> for pubkey tags</p>
+                  <p>Example: <a href="./tag/a.json">./tag/a.json</a> for replaceable event tags</p>
+                  <p>Example: <a href="./tag/t.json">./tag/t.json</a> for hashtag tags</p>
+              </div>
+              
+              <div class="schema-type">
+                  <h2>Protocol Message Schemas</h2>
+                  <p>Access via: <code>./message/{message_type}.json</code></p>
+                  <p>Example: <a href="./message/REQ.json">./message/REQ.json</a> for request messages</p>
+                  <p>Example: <a href="./message/EVENT.json">./message/EVENT.json</a> for event messages</p>
+                  <p>Example: <a href="./message/OK.json">./message/OK.json</a> for acknowledgment messages</p>
+              </div>
+              
+              <div class="schema-type">
+                  <h2>Repository</h2>
+                  <p>View source and contribute at <a href="https://github.com/${{ github.repository }}">GitHub</a></p>
+              </div>
+          </body>
+          </html>
+          EOF
+          
+          # List what we've created for verification
+          echo "Created structure:"
+          ls -la pages_dist/
+          echo "Note schemas (by kind):"
+          ls -la pages_dist/note/kind/ | head -20
+          echo "Tag schemas:"
+          ls -la pages_dist/tag/ | head -20
+          echo "Protocol message schemas:"
+          ls -la pages_dist/message/ | head -20
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: 'pages_dist'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,4 +1,3 @@
-$id: 'https://schemata.nostr.watch/message/relay/auth'
 type: "array"
 items: 
 - const: "AUTH"
