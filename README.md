@@ -4,11 +4,11 @@
 
 JSON Schema definitions for Nostr protocol events, messages, and tags. Validate Nostr data structures in any programming language.
 
-## Why JSOn-Schema?
+## Why JSN-Schema?
 JSON-Schema has the most active, widely supported specification standard, with the largest community and ecosystem. Most importantly, it is one of the few schema specification standards that supports deep specification of strings (via formats or regex), making the nostresque typing of strings possible. There are schema validators and generators for Server Stubs and Client-SDKs available in every single language. Due to nostr's specific design requirements, there are few existing standards that allow complete specification of nostr. The availability of tooling lends itself to creating a system that caters specifically to the requirements of nostr as well as creating an **extensible** and **maintainable** system; which is why this exists.
 
-## Alternatives?
-`@fiatjaf` produced a bespoke schema specification solution available [here](https://github.com/nostr-protocol/registry-of-kinds). The benefit of this is that it includes only what it needs to and so its specification specifically drafted for nostr and so the performance is notably better. The performance improvements make it sufficient for use as a runtime generator in performance sensitive applications. The downside is that validators need to be written and maintained for all languages, tooling is non-existent so workflows that benefit maintenance and extensibility are non-existent, all kinds are specified from a single file and any generator pattern would need to be completely rewritten from scratch. This is likely the best long-term solution.
+## Existing Alternatives?
+`@fiatjaf` produced a bespoke schema specification solution available [here](https://github.com/nostr-protocol/registry-of-kinds). The benefit of this is that it includes only what it needs to and it was drafted specifically for nostr. The limited scope means the performance is notably better and mark it as sufficient for use as a runtime validator in performance sensitive applications (unlike JSON-Schema). The downside is that validators need to be written and maintained for all languages, tooling is non-existent and so workflows that benefit maintenance and extensibility are non-existent, all kinds are specified from a single file and any generator pattern would need to be completely rewritten from scratch. This is likely the best long-term solution but would require extensive development to reach maturity.
 
 ## What is this good for?
 - Integration Testing of both Clients and Relays
