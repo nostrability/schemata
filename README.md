@@ -18,7 +18,7 @@ JSON-Schema has the most active, widely supported specification standard, with t
 ## What is it not good for?
 - Runtime validation of events where performance is critical (JSON-Schema is notoriously slow due to the breadth of the specification)
 
-- ## Alternatives?
+## Alternatives?
 `@fiatjaf` produced a bespoke schema specification solution available [here](https://github.com/nostr-protocol/registry-of-kinds). The benefit of this is that it includes only what it needs to and so its specification drafted for nostr and so the performance is notably better. The performance improvements make it sufficient for use as a runtime validator in performance sensitive applications. The downside is that validators need to be written and maintained for all languages, tooling is non-existent so workflows that benefit maintenance and extensibility are non-existent, all kinds are specified from a single file and any generator pattern would need to be completely rewritten from scratch. A nostr-specific schema validator may prove to be the best long-term solution, with the caveat that it will take extensive development for it to reach maturity.
 
 ## Why not any of the other *`n`* specification formats that are more performant and modern?
