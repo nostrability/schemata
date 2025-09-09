@@ -1,4 +1,3 @@
-$id: 'https://schemata.nostr.watch/message/client/event'
 type: "array"
 title: "Client Event Message"
 description: "A message for publishing a NIP-01 note to a relay"
