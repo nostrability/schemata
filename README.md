@@ -25,7 +25,7 @@ JSON-Schema has the most active, widely supported specification standard, with t
 `@nostability/schemata` aims to produce JSON-Schema that can be consumed by validators (for example, `ajv`). Ideally, each language would have one or more validator wrappers. The validator wrappers provide nostr specific methods to make utilization more straightforward for implementers. The original author of this repo has provided an example of this approach below
 
 ## Validators
-Validators are tools that wrap the schemata to provide validation capabilities. They can be written in any language. They utilize the json-schema artifacts produced by this repository.
+Validators are tools that wrap the schemata to provide validation capabilities and expose a generic interface so that they can be implemented without any domain knowledge in json-schemas or json-schema validators. They can be written in any language, and there are JSON-Schema validators available in practically every language. Validators utilize the compiled json-schema artifacts produced by this repository either by importing them with NPM (in the TS/JS case), downloading the release artifacts or referencing the schemas remotely (all the schemas have remotely addressable IDs that are generated during releases)
 
 - [`@nostrwatch/schemata-js-ajv`](https://github.com/sandwichfarm/nostr-watch/tree/next/libraries/schemata-js-ajv) - A validator written in Typescript that wraps `ajv` and leverages `@nostrability/schemata`
 
