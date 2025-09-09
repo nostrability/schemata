@@ -4,7 +4,6 @@
 
 JSON Schema definitions for Nostr protocol events, messages, and tags. Validate Nostr data structures in any programming language.
 
-## Related
 **Quick Links:** [Installation](#installation) • [Quick Start](#quick-start) • [Available Schemas](#available-schemas) • [Contributing](#contributing) • [Build From Source](#build-from-source)
 
 ## Why JSON-Schema?
