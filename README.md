@@ -257,4 +257,4 @@ MIT
 
 - 🐛 [Report Issues](https://github.com/nostrability/schemata/issues)
 - 💬 [Discussions](https://github.com/nostrability/schemata/discussions)
-- 📧 Contact: [your-email]
+- 📧 Contact: [iris.to/npub1zafcms4xya5ap9zr7xxr0jlrtrattwlesytn2s42030lzu0dwlzqpd26k5]
