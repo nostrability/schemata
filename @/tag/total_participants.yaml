@@ -1,0 +1,3 @@
+allOf: 
+  - $ref: "nips/nip-53/tag/total_participants/schema.yaml"
+

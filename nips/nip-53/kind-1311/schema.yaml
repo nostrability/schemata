@@ -1,0 +1,22 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind1311
+description: Live Chat Message for Live Activities (NIP-53)
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 1311
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        minItems: 1
+        contains:
+          $ref: "@/tag/a-live.yaml"
+        errorMessage:
+          contains: "tags must include an a tag referencing the live activity (30311)"
+    required:
+      - kind
+      - tags
+

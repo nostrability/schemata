@@ -1,0 +1,31 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind30312
+description: Meeting Space Event (Space Host, NIP-53)
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 30312
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        minItems: 1
+        allOf:
+          - contains:
+              $ref: "@/tag/d.yaml"
+          - contains:
+              $ref: "@/tag/room.yaml"
+          - contains:
+              $ref: "@/tag/status-room.yaml"
+          - contains:
+              $ref: "@/tag/service.yaml"
+          - contains:
+              $ref: "@/tag/p.yaml"
+        errorMessage:
+          contains: "tags must include required tags: d, room, status, service, and at least one p tag"
+    required:
+      - kind
+      - tags
+
