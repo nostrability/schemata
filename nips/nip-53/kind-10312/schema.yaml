@@ -1,0 +1,22 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind10312
+description: Room Presence Event (replaceable, NIP-53)
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 10312
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        minItems: 1
+        contains:
+          $ref: "@/tag/a-room.yaml"
+        errorMessage:
+          contains: "tags must include an a tag referencing the room (30312)"
+    required:
+      - kind
+      - tags
+

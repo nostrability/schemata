@@ -19,6 +19,7 @@
     "yaml-convert": "1.0.1"
   },
   "devDependencies": {
+    "ajv-cli": "^5.0.0",
     "esbuild": "^0.24.2",
     "rimraf": "^6.0.1",
     "ts-loader": "^9.2.6",
@@ -38,8 +39,10 @@
     "convert:content": "mkdir -p dist && yaml-convert -i src/schema.content.yaml -o dist/schema.content.json",
     "packages": "pnpm qt && pnpm qt2",
     "test": "node test.js",
-    "docs": "typedoc"
+    "docs": "typedoc",
+    "validate": "bash scripts/validate-kind.sh"
   },
   "peerDependencies": {
     "typescript": "^4.5.2"
-  }}
+  }
+}

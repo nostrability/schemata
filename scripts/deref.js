@@ -18,6 +18,28 @@ try {
   const deref = await $RefParser.dereference(schema, {
   });
 
+  // Deduplicate $id values within the dereferenced tree to avoid
+  // multiple occurrences of the same absolute $id in a single output.
+  // Keep the first occurrence; remove subsequent duplicates.
+  const seen = new Set();
+  function dedupeIds(node) {
+    if (Array.isArray(node)) {
+      for (const item of node) dedupeIds(item);
+      return;
+    }
+    if (node && typeof node === "object") {
+      if (typeof node.$id === "string") {
+        if (seen.has(node.$id)) {
+          delete node.$id;
+        } else {
+          seen.add(node.$id);
+        }
+      }
+      for (const val of Object.values(node)) dedupeIds(val);
+    }
+  }
+  dedupeIds(deref);
+
   await fs.writeFile(path.resolve(outputFile), JSON.stringify(deref, null, 2), "utf-8");
   console.log(`Schema written to ${outputFile}`);
 } catch (err) {
