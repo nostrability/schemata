@@ -38,7 +38,9 @@
     "convert:note": "mkdir -p dist && yaml-convert -i src/schema.yaml -o dist/schema.json",
     "convert:content": "mkdir -p dist && yaml-convert -i src/schema.content.yaml -o dist/schema.content.json",
     "packages": "pnpm qt && pnpm qt2",
-    "test": "node tests/nip05.test.js",
+    "pretest": "pnpm build",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "docs": "typedoc",
     "validate": "bash scripts/validate-kind.sh"
   },
