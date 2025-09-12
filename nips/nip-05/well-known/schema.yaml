@@ -1,0 +1,27 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: nostrWellKnown
+description: Schema for `/.well-known/nostr.json` per NIP-05
+type: object
+properties:
+  names:
+    type: object
+    description: Mapping from identifier local-part to hex public keys
+    propertyNames:
+      pattern: ^[a-z0-9._-]+$
+    additionalProperties:
+      allOf:
+        - $ref: "@/secp256k1.yaml"
+  relays:
+    type: object
+    description: Optional mapping from hex public keys to arrays of relay URLs
+    propertyNames:
+      pattern: ^[a-f0-9]{64}$
+    additionalProperties:
+      type: array
+      items:
+        type: string
+        pattern: ^wss?://
+required:
+  - names
+additionalProperties: false
+
