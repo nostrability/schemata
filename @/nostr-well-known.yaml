@@ -1,0 +1,3 @@
+allOf:
+  - $ref: "nips/nip-05/well-known/schema.yaml"
+
