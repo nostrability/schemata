@@ -20,6 +20,7 @@ properties:
       type: array
       items:
         type: string
+        format: uri
         pattern: ^wss?://
 required:
   - names
