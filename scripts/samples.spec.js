@@ -55,7 +55,7 @@ for (const schemaDir of walkForSchemas('nips/nip-09')) {
         } else {
           if (ok) summary.failures.push({ schema: rel, sample: name, errors: [{ message: 'expected invalid but validated' }] });
           expect(ok).toBe(false);
-          summary.passed += ok ? 0 : 1; summary.failed += ok ? 1 : 0;
+          if (!ok) summary.passed++; else summary.failed++;
         }
       });
     }
