@@ -1,0 +1,18 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    description: |
+      Quote tag for quote-reposts (NIP-18). Mirrors NIP-10 e-tag tuple without the mark argument.
+      Structure: ["q", <event-id>, <relay-url>?, <pubkey>?]
+    minItems: 2
+    maxItems: 4
+    items:
+      - const: "q"
+      - type: string
+        pattern: '^[a-f0-9]{64}$'
+      - type: string
+        pattern: '^(ws://|wss://).+$'
+      - $ref: "@/secp256k1.yaml"
+    additionalItems: false
+

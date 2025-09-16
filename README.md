@@ -125,6 +125,8 @@ echo '$id: "https://schemata.nostr.watch/note/kind/YYYY"' > nips/nip-XX/kind-YYY
 - `kind-0` - Profile metadata (NIP-01)
 - `kind-1` - Text note (NIP-01)  
 - `kind-3` - Contact list (NIP-02)
+- `kind-6` - Repost (NIP-18)
+- `kind-16` - Generic repost (NIP-18)
 - `kind-1111` - Comment (NIP-22)
 - `kind-10002` - Relay list metadata (NIP-65)
 

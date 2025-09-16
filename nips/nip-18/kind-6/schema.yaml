@@ -1,0 +1,35 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind6
+description: Repost of a kind-1 note (NIP-18)
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 6
+      content:
+        type: string
+        description: |
+          Stringified JSON of the reposted note. MAY be empty (not recommended).
+          For NIP-70-protected events, content SHOULD be empty.
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        minItems: 1
+        allOf:
+          - contains:
+              type: array
+              minItems: 3
+              items:
+                - const: "e"
+                - type: string
+                  pattern: '^[a-f0-9]{64}$'
+                - type: string
+                  pattern: '^(ws://|wss://).+$'
+        errorMessage:
+          contains: "tags must include an e tag with id and a relay URL"
+    required:
+      - kind
+      - tags
+

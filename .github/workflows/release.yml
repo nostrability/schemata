@@ -43,6 +43,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Test
+        run: pnpm test
+
       - name: Build
         run: pnpm build
 
@@ -70,7 +73,7 @@ jobs:
       - name: Check if package exists
         id: check_package
         run: |
-          PACKAGE_NAME="@nostrwatch/schemata"
+          PACKAGE_NAME="@nostrability/schemata"
           VERSION=${{ steps.get_version.outputs.VERSION }}
           VERSION=${VERSION#v}  # Remove 'v' prefix
           if npm view $PACKAGE_NAME@$VERSION version > /dev/null 2>&1; then
