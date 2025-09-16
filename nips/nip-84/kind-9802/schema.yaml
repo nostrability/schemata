@@ -1,0 +1,14 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+title: kind9802
+description: "NIP-84 Highlight event"
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        type: integer
+        const: 9802
+      content:
+        type: string
+        description: "The highlighted text; MAY be empty for non-text media"
+
