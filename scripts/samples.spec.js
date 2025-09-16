@@ -51,12 +51,12 @@ for (const schemaDir of walkForSchemas('nips')) {
         if (expectValid) {
           if (!ok) summary.failures.push({ schema: rel, sample: name, errors: validate.errors });
           expect(ok).toBe(true);
-          summary.passed += ok ? 1 : 0; summary.failed += ok ? 0 : 1;
         } else {
           if (ok) summary.failures.push({ schema: rel, sample: name, errors: [{ message: 'expected invalid but validated' }] });
           expect(ok).toBe(false);
-          if (!ok) summary.passed++; else summary.failed++;
         }
+        summary.passed += ok ? 1 : 0;
+        summary.failed += ok ? 0 : 1;
       });
     }
   });
