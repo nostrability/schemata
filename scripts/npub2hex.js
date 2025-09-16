@@ -93,8 +93,7 @@ if (npub) {
     console.error('error:', e.message);
     process.exit(2);
   }
-} else {
-  // silent when imported
 }
+// silent when imported
 
 export { npubToHex };
