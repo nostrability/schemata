@@ -3,7 +3,7 @@
 // Scans nips/**/schema.yaml directories that contain a samples/ folder.
 
 import { readdirSync, statSync, readFileSync, existsSync } from 'fs';
-import { join, resolve, sep } from 'path';
+import { join, resolve, sep, relative as relpath } from 'path';
 import Ajv from 'ajv';
 
 function* walkForSchemas(root) {
@@ -74,7 +74,8 @@ for (const schemaDir of schemaDirs) {
   const samplesDir = join(schemaDir, 'samples');
   if (!existsSync(samplesDir)) continue;
   foundAny = true;
-  const rel = schemaDir.split(sep).join('/');
+  const relLocal = relpath(process.cwd(), schemaDir);
+  const rel = relLocal.split(sep).join('/');
   const distSchema = `dist/${rel}/schema.json`;
   summary.totalSuites += 1;
 
@@ -85,6 +86,19 @@ for (const schemaDir of schemaDirs) {
 
   const schema = loadJSON(distSchema);
   const validate = ajv.compile(schema);
+
+  // Detect stringified fields and prepare per-field validators (e.g., content)
+  const stringified = Array.isArray(schema['x-stringified']) ? schema['x-stringified'] : [];
+  const distContentSchema = `dist/${rel}/schema.content.json`;
+  let validateContent = null;
+  if (stringified.includes('content') && existsSync(distContentSchema)) {
+    try {
+      const contentSchema = loadJSON(distContentSchema);
+      validateContent = ajv.compile(contentSchema);
+    } catch (e) {
+      console.warn(`WARN: Unable to compile content schema for ${rel}: ${e.message || e}`);
+    }
+  }
   const files = readdirSync(samplesDir)
     .filter((f) => f.endsWith('.json'))
     .map((f) => join(samplesDir, f));
@@ -98,9 +112,38 @@ for (const schemaDir of schemaDirs) {
 
     try {
       const data = loadJSON(file);
-      const ok = validate(data);
+      const okEvent = validate(data);
+
+      let okContent = true;
+      const contentErrors = [];
+      if (validateContent) {
+        try {
+          if (typeof data.content !== 'string') {
+            okContent = false;
+            contentErrors.push({ instancePath: '/content', message: 'expected string with stringified JSON' });
+          } else {
+            const parsed = JSON.parse(data.content);
+            okContent = validateContent(parsed);
+            if (!okContent) {
+              for (const e of validateContent.errors || []) {
+                contentErrors.push({ instancePath: `/content${e.instancePath || ''}` , message: e.message });
+              }
+            }
+          }
+        } catch (e) {
+          okContent = false;
+          contentErrors.push({ instancePath: '/content', message: `JSON parse error: ${e.message || e}` });
+        }
+      }
+
+      const ok = okEvent && okContent;
       if (expectValid) {
-        if (!ok) summary.failures.push({ schema: rel, sample: name, errors: validate.errors });
+        if (!ok) {
+          const errs = [];
+          if (!okEvent) errs.push(...(validate.errors || []));
+          if (!okContent) errs.push(...contentErrors);
+          summary.failures.push({ schema: rel, sample: name, errors: errs });
+        }
         summary.passed += ok ? 1 : 0;
         summary.failed += ok ? 0 : 1;
       } else {
