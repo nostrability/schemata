@@ -128,6 +128,7 @@ echo '$id: "https://schemata.nostr.watch/note/kind/YYYY"' > nips/nip-XX/kind-YYY
 - `kind-6` - Repost (NIP-18)
 - `kind-16` - Generic repost (NIP-18)
 - `kind-1111` - Comment (NIP-22)
+- `kind-9802` - Highlight (NIP-84)
 - `kind-10002` - Relay list metadata (NIP-65)
 
 </details>
@@ -165,6 +166,10 @@ echo '$id: "https://schemata.nostr.watch/note/kind/YYYY"' > nips/nip-XX/kind-YYY
 - `t` - Hashtag
 - `k` - Kind number reference
 - `r` - Reference/relay URL
+
+**NIP-84 Tags:**
+- `context` - Context string for highlights
+- `comment` - Quote highlight comment
 
 **NIP-22 Comment Tags (uppercase):**
 - `_E` - Uppercase event reference
