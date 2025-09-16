@@ -1,0 +1,12 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    minItems: 2
+    items:
+      - const: "published_at"
+      - type: string
+        pattern: "^\\d+$"
+        description: "Unix timestamp in seconds (string) of first publication"
+    additionalItems: true
+

@@ -1,0 +1,12 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind30023
+description: Long-form Content (Article), NIP-23
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 30023
+    required:
+      - kind
+
