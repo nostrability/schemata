@@ -146,7 +146,7 @@ schemata/
 - Use semantic versioning for releases
 - Utilize vitest framework
 - Make sure schemas test the data structure contained in payloads
-- Ensure that schemas provided programmatic results, such that the result can be used in the release workflow to block releases when a test is failing, or block a PR merge when a test is failing.
+- Ensure that schemas provide programmatic results, such that the result can be used in the release workflow to block releases when a test is failing, or block a PR merge when a test is failing.
 
 ## Schema Validation Properties
 
