@@ -93,8 +93,7 @@ if (npub) {
     console.error('error:', e.message);
     process.exit(2);
   }
-} else {
-  // When imported as a module (not run as a script), do not produce output, perform error handling, or have side effects; only export npubToHex.
 }
+// silent when imported
 
 export { npubToHex };
