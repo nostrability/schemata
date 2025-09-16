@@ -1,0 +1,3 @@
+allOf: 
+  - $ref: "nips/nip-57/tag/preimage/schema.yaml"
+

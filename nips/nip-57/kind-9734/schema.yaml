@@ -1,0 +1,26 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind9734
+description: NIP-57 Zap Request event
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 9734
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        allOf:
+          - contains:
+              $ref: "@/tag/relays.yaml"
+            errorMessage:
+              contains: "tags must include a relays tag with one or more relay URLs"
+          - contains:
+              $ref: "@/tag/p.yaml"
+            errorMessage:
+              contains: "tags must include exactly one p tag for the recipient (cannot enforce count in draft-07)"
+    required:
+      - kind
+      - tags
+

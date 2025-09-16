@@ -1,0 +1,19 @@
+{
+  "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "content": "",
+  "sig": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+  "kind": 9734,
+  "created_at": 1700000000,
+  "tags": [
+    [
+      "p",
+      "50d94fc2d8580c682b071a542f8b1e31a200b0508bab95a33bef0855df281d63"
+    ],
+    [
+      "amount",
+      "1000"
+    ]
+  ]
+}
+
