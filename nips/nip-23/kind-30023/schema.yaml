@@ -1,6 +1,6 @@
 $schema: http://json-schema.org/draft-07/schema#
 title: kind30023
-description: NIP-23 Long-form Content (published)
+description: Long-form Content (Article), NIP-23
 allOf:
   - $ref: "@/note.yaml"
   - type: object
@@ -15,9 +15,10 @@ allOf:
         allOf:
           - contains:
               $ref: "@/tag/d.yaml"
+          - contains:
+              $ref: "@/tag/title.yaml"
         errorMessage:
-          contains: "tags must include required tag: d"
+          contains: "tags must include required tags: d, title"
     required:
       - kind
       - tags
-
