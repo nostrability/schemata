@@ -136,7 +136,6 @@ schemata/
 - Use absolute paths in `$ref` (use `@/` aliases or relative paths)
 - Create documentation without being asked
 - Commit changes without explicit user request
-- Create standalone test.js files
 
 ### DO:
 - Follow existing schema patterns and conventions
@@ -144,9 +143,6 @@ schemata/
 - Test schemas with valid/invalid examples
 - Keep `master` as the main branch
 - Use semantic versioning for releases
-- Utilize vitest framework
-- Make sure schemas test the data structure contained in payloads
-- Ensure that schemas provide programmatic results, such that the result can be used in the release workflow to block releases when a test is failing, or block a PR merge when a test is failing.
 
 ## Schema Validation Properties
 
