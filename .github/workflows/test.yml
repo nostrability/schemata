@@ -25,6 +25,15 @@ jobs:
       - name: Install
         run: pnpm install --frozen-lockfile
 
+      - name: Ensure no stray test.js files
+        run: |
+          # Find files literally named test.js tracked in repo (exclude node_modules)
+          offenders=$(git ls-files | grep -E '(^|/)test\.js$' || true)
+          if [ -n "$offenders" ]; then
+            echo "Forbidden files detected (test.js):"
+            echo "$offenders"
+            exit 1
+          fi
+
       - name: Test
         run: pnpm test
-

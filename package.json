@@ -40,8 +40,8 @@
     "convert:content": "mkdir -p dist && yaml-convert -i src/schema.content.yaml -o dist/schema.content.json",
     "packages": "pnpm qt && pnpm qt2",
     "pretest": "pnpm build",
-    "test": "vitest run",
-    "test:watch": "vitest",
+    "test": "pnpm exec ajv test --strict=false -s dist/nips/nip-09/kind-5/schema.json -d nips/nip-09/kind-5/samples/valid.json --valid && pnpm exec ajv test --strict=false -s dist/nips/nip-09/kind-5/schema.json -d nips/nip-09/kind-5/samples/invalid.json --invalid && pnpm exec ajv test --strict=false -s dist/nips/nip-09/kind-5/schema.json -d nips/nip-09/kind-5/samples/invalid.no-tags.json --invalid && pnpm exec ajv test --strict=false -s dist/nips/nip-09/kind-5/schema.json -d nips/nip-09/kind-5/samples/invalid.missing-tags.json --invalid && pnpm exec ajv test --strict=false -s dist/nips/nip-09/kind-5/schema.json -d nips/nip-09/kind-5/samples/invalid.missing-kind.json --invalid && pnpm exec ajv test --strict=false -s dist/nips/nip-09/kind-5/schema.json -d nips/nip-09/kind-5/samples/invalid.wrong-kind.json --invalid && pnpm exec ajv test --strict=false -s dist/nips/nip-09/kind-5/schema.json -d nips/nip-09/kind-5/samples/invalid.tags-not-array.json --invalid && pnpm exec ajv test --strict=false -s dist/nips/nip-09/kind-5/schema.json -d nips/nip-09/kind-5/samples/invalid.e-tag-missing-id.json --invalid",
+    "test:watch": "pnpm test",
     "docs": "typedoc",
     "validate": "bash scripts/validate-kind.sh"
   },

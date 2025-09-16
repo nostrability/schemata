@@ -1,0 +1,29 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind5
+description: Event Deletion Request (NIP-09)
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 5
+      content:
+        type: string
+        description: Optional human-readable reason for deletion
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        minItems: 1
+        allOf:
+          - contains:
+              type: array
+              minItems: 2
+              items:
+                - enum: ["e", "a"]
+        errorMessage:
+          contains: "tags must include at least one e or a tag"
+    required:
+      - kind
+      - tags
+
