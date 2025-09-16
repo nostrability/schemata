@@ -7,6 +7,16 @@ allOf:
     properties:
       kind:
         const: 30024
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        minItems: 1
+        allOf:
+          - contains:
+              $ref: "@/tag/d.yaml"
+        errorMessage:
+          contains: "tags must include required tag: d"
     required:
       - kind
-
+      - tags
