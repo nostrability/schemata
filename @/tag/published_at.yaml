@@ -1,0 +1,3 @@
+allOf: 
+  - $ref: "nips/nip-23/tag/published_at/schema.yaml"
+
