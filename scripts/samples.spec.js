@@ -23,8 +23,8 @@ function loadJSON(path) {
 const summary = { totalSuites: 0, totalCases: 0, passed: 0, failed: 0, failures: [] };
 const ajv = new Ajv({ allErrors: true, strict: false });
 
-// Limit initial scope to NIP-09 only to get PR green
-for (const schemaDir of walkForSchemas('nips/nip-09')) {
+// Scan all NIP schemas for samples
+for (const schemaDir of walkForSchemas('nips')) {
   const samplesDir = join(schemaDir, 'samples');
   if (!existsSync(samplesDir)) continue;
   const rel = schemaDir.split(sep).join('/');
