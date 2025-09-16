@@ -6,6 +6,6 @@ allOf:
     items:
       - const: "published_at"
       - type: string
-        pattern: "^[0-9]+$"
+        pattern: "^[1-9][0-9]{9}$"
     additionalItems: true
 
