@@ -33,8 +33,44 @@ try {
   console.warn('WARN: ajv-formats not available; URL/email formats may not be enforced.');
 }
 
+// CLI: allow selecting a single schema directory via --only <path> (directory or schema.yaml)
+function parseArgs(argv) {
+  const out = { only: null };
+  for (let i = 0; i < argv.length; i++) {
+    const a = argv[i];
+    if (a === '--only' && i + 1 < argv.length) {
+      out.only = argv[++i];
+    } else if (a.startsWith('--only=')) {
+      out.only = a.slice('--only='.length);
+    }
+  }
+  return out;
+}
+
+function resolveOnlyPath(p) {
+  if (!p) return null;
+  const abs = resolve(p);
+  let dir = abs;
+  try {
+    const st = statSync(abs);
+    if (st.isFile()) {
+      if (abs.endsWith('schema.yaml')) dir = abs.slice(0, -'schema.yaml'.length - 1);
+      else return null;
+    }
+  } catch (_) {
+    return null;
+  }
+  const schemaYaml = join(dir, 'schema.yaml');
+  if (!existsSync(schemaYaml)) return null;
+  return dir;
+}
+
+const args = parseArgs(process.argv.slice(2));
+const onlyDir = resolveOnlyPath(args.only);
+
 let foundAny = false;
-for (const schemaDir of walkForSchemas('nips')) {
+const schemaDirs = onlyDir ? [onlyDir] : Array.from(walkForSchemas('nips'));
+for (const schemaDir of schemaDirs) {
   const samplesDir = join(schemaDir, 'samples');
   if (!existsSync(samplesDir)) continue;
   foundAny = true;
@@ -80,6 +116,10 @@ for (const schemaDir of walkForSchemas('nips')) {
 }
 
 if (!foundAny) {
+  if (onlyDir) {
+    console.error(`No samples found for schema: ${onlyDir}`);
+    process.exit(2);
+  }
   console.log('No sample suites found under nips/**/samples. Nothing to validate.');
   process.exit(0);
 }
