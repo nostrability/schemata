@@ -40,7 +40,6 @@
     "convert:content": "mkdir -p dist && yaml-convert -i src/schema.content.yaml -o dist/schema.content.json",
     "packages": "pnpm qt && pnpm qt2",
     "pretest": "pnpm build",
-    "validate:samples": "pnpm build && node scripts/validate-samples.js",
     "test": "vitest run",
     "test:watch": "vitest",
     "docs": "typedoc",
