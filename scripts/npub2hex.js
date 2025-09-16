@@ -94,7 +94,7 @@ if (npub) {
     process.exit(2);
   }
 } else {
-  // silent when imported
+  // When imported as a module (not run as a script), do not produce output, perform error handling, or have side effects; only export npubToHex.
 }
 
 export { npubToHex };
