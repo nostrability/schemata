@@ -1,0 +1,13 @@
+{
+  "content": "Talks and workshops.",
+  "created_at": 1760000001,
+  "id": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+  "kind": 31923,
+  "pubkey": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+  "sig": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+  "tags": [
+    ["d", "event-31923-1"],
+    ["title", "Workshops"]
+  ]
+}
+
