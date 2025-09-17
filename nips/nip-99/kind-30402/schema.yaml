@@ -92,7 +92,7 @@ allOf:
                   - type: string
                     pattern: "^[A-Za-z]{3,6}$"
                   - type: string
-                    pattern: "^[A-Za-z]+$"
+                    pattern: "^[A-Za-z]{3,}$"
             # geohash tag ["g", "<geohash>"]
             - if:
                 type: array
