@@ -1,0 +1,21 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind24133
+description: |
+  NIP-46 Remote Signing request/response event.
+  Content is a NIP-44 encrypted JSON-RPC-like payload and tags MUST include a
+  "p" tag designating the counterparty (remote-signer or client).
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 24133
+        description: Kind number for NIP-46 Remote Signing events
+      content:
+        type: string
+        description: NIP-44 encrypted JSON-RPC-like payload (string ciphertext)
+      tags:
+        type: array
+        description: Must include a "p" tag referencing the counterparty pubkey
+        contains:
+          $ref: "@/tag/p.yaml"
