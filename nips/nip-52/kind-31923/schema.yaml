@@ -1,0 +1,178 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind31923
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 31923
+      tags:
+        type: array
+        allOf:
+          # required: d
+          - contains:
+              $ref: "@/tag/d.yaml"
+          # required: title
+          - contains:
+              $ref: "@/tag/title.yaml"
+          # required: start (unix timestamp in seconds as string)
+          - contains:
+              allOf:
+                - $ref: "@/tag.yaml"
+                - type: array
+                  minItems: 2
+                  items:
+                    - const: "start"
+                    - type: string
+                      pattern: '^[0-9]+$'
+                  additionalItems: true
+    # Optional tags: if present, enforce shape
+    allOf:
+      # summary
+      - if:
+          properties:
+            tags:
+              contains:
+                type: array
+                minItems: 1
+                items:
+                  - const: "summary"
+        then:
+          properties:
+            tags:
+              contains:
+                $ref: "@/tag/summary.yaml"
+      # image
+      - if:
+          properties:
+            tags:
+              contains:
+                type: array
+                minItems: 1
+                items:
+                  - const: "image"
+        then:
+          properties:
+            tags:
+              contains:
+                $ref: "@/tag/image.yaml"
+      # location
+      - if:
+          properties:
+            tags:
+              contains:
+                type: array
+                minItems: 1
+                items:
+                  - const: "location"
+        then:
+          properties:
+            tags:
+              contains:
+                $ref: "@/tag/location.yaml"
+      # geohash g
+      - if:
+          properties:
+            tags:
+              contains:
+                type: array
+                minItems: 1
+                items:
+                  - const: "g"
+        then:
+          properties:
+            tags:
+              contains:
+                $ref: "@/tag/g.yaml"
+      # participants p
+      - if:
+          properties:
+            tags:
+              contains:
+                type: array
+                minItems: 1
+                items:
+                  - const: "p"
+        then:
+          properties:
+            tags:
+              contains:
+                $ref: "@/tag/p.yaml"
+      # hashtags t
+      - if:
+          properties:
+            tags:
+              contains:
+                type: array
+                minItems: 1
+                items:
+                  - const: "t"
+        then:
+          properties:
+            tags:
+              contains:
+                $ref: "@/tag/t.yaml"
+      # references r
+      - if:
+          properties:
+            tags:
+              contains:
+                type: array
+                minItems: 1
+                items:
+                  - const: "r"
+        then:
+          properties:
+            tags:
+              contains:
+                $ref: "@/tag/r.yaml"
+      # optional end (unix timestamp seconds in digits)
+      - if:
+          properties:
+            tags:
+              contains:
+                type: array
+                minItems: 1
+                items:
+                  - const: "end"
+        then:
+          properties:
+            tags:
+              contains:
+                allOf:
+                  - $ref: "@/tag.yaml"
+                  - type: array
+                    minItems: 2
+                    items:
+                      - const: "end"
+                      - type: string
+                        pattern: '^[0-9]+$'
+                    additionalItems: true
+      # optional tzids
+      - if:
+          properties:
+            tags:
+              contains:
+                type: array
+                minItems: 1
+                items:
+                  - const: "start_tzid"
+        then:
+          properties:
+            tags:
+              contains:
+                $ref: "@/tag/start_tzid.yaml"
+      - if:
+          properties:
+            tags:
+              contains:
+                type: array
+                minItems: 1
+                items:
+                  - const: "end_tzid"
+        then:
+          properties:
+            tags:
+              contains:
+                $ref: "@/tag/end_tzid.yaml"
+    additionalProperties: true

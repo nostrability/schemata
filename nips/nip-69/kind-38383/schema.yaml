@@ -1,0 +1,215 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind38383
+description: NIP-69 P2P Order event
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        type: integer
+        const: 38383
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        allOf:
+          # d: order id (string)
+          - contains:
+              type: array
+              minItems: 2
+              items:
+                - const: "d"
+                - type: string
+                  minLength: 1
+
+          # k: order type (sell|buy)
+          - contains:
+              type: array
+              minItems: 2
+              items:
+                - const: "k"
+                - type: string
+                  enum: ["sell", "buy"]
+
+          # f: fiat currency (ISO 4217)
+          - contains:
+              type: array
+              minItems: 2
+              items:
+                - const: "f"
+                - type: string
+                  pattern: "^[A-Z]{3}$"
+
+          # s: status
+          - contains:
+              type: array
+              minItems: 2
+              items:
+                - const: "s"
+                - type: string
+                  enum: ["pending", "canceled", "in-progress", "success"]
+
+          # amt: amount in sats (allow integer/decimal strings; "0" is allowed)
+          - contains:
+              type: array
+              minItems: 2
+              items:
+                - const: "amt"
+                - type: string
+                  pattern: "^[0-9]+(\\.[0-9]+)?$"
+
+          # fa: fiat amount (code + one or more numeric strings; range uses two values)
+          - contains:
+              type: array
+              minItems: 2
+              items:
+                - const: "fa"
+                - type: string
+                  pattern: "^[0-9]+(\\.[0-9]+)?$"
+              additionalItems:
+                type: string
+                pattern: "^[0-9]+(\\.[0-9]+)?$"
+
+          # pm: payment methods (code + one or more strings)
+          - contains:
+              type: array
+              minItems: 2
+              items:
+                - const: "pm"
+                - type: string
+              additionalItems:
+                type: string
+
+          # premium: percentage (numeric string)
+          - contains:
+              type: array
+              minItems: 2
+              items:
+                - const: "premium"
+                - type: string
+                  pattern: "^[0-9]+(\\.[0-9]+)?$"
+
+          # network: mainnet/testnet/signet/etc (non-empty string)
+          - contains:
+              type: array
+              minItems: 2
+              items:
+                - const: "network"
+                - type: string
+                  minLength: 1
+
+          # layer: onchain/lightning/liquid (restrict to common values but allow extension via updates)
+          - contains:
+              type: array
+              minItems: 2
+              items:
+                - const: "layer"
+                - type: string
+                  enum: ["onchain", "lightning", "liquid"]
+
+          # y: platform (string)
+          - contains:
+              type: array
+              minItems: 2
+              items:
+                - const: "y"
+                - type: string
+                  minLength: 1
+
+          # z: document marker (must be "order")
+          - contains:
+              type: array
+              minItems: 2
+              items:
+                - const: "z"
+                - const: "order"
+
+          # expiration: unix timestamp (seconds) as digits string
+          - contains:
+              type: array
+              minItems: 2
+              items:
+                - const: "expiration"
+                - type: string
+                  pattern: "^[0-9]{10}$"
+
+          # Optional tags: validate if present
+          # source: must be a URL if present
+          - if:
+              contains:
+                type: array
+                minItems: 1
+                items:
+                  - const: "source"
+            then:
+              contains:
+                type: array
+                minItems: 2
+                items:
+                  - const: "source"
+                  - type: string
+                    format: uri
+
+          # rating: any non-empty string (often JSON-encoded)
+          - if:
+              contains:
+                type: array
+                minItems: 1
+                items:
+                  - const: "rating"
+            then:
+              contains:
+                type: array
+                minItems: 2
+                items:
+                  - const: "rating"
+                  - type: string
+                    minLength: 1
+
+          # name: non-empty string
+          - if:
+              contains:
+                type: array
+                minItems: 1
+                items:
+                  - const: "name"
+            then:
+              contains:
+                type: array
+                minItems: 2
+                items:
+                  - const: "name"
+                  - type: string
+                    minLength: 1
+
+          # g (geohash): base32 geohash charset, 1-12 chars
+          - if:
+              contains:
+                type: array
+                minItems: 1
+                items:
+                  - const: "g"
+            then:
+              contains:
+                type: array
+                minItems: 2
+                items:
+                  - const: "g"
+                  - type: string
+                    pattern: "^[0-9bcdefghjkmnpqrstuvwxyz]{1,12}$"
+
+          # bond: numeric string
+          - if:
+              contains:
+                type: array
+                minItems: 1
+                items:
+                  - const: "bond"
+            then:
+              contains:
+                type: array
+                minItems: 2
+                items:
+                  - const: "bond"
+                  - type: string
+                    pattern: "^[0-9]+(\\.[0-9]+)?$"

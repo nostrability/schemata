@@ -1,0 +1,17 @@
+{
+  "content": "All-day conference opening.",
+  "created_at": 1760000000,
+  "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "kind": 31922,
+  "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "sig": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+  "tags": [
+    ["d", "event-31922-1"],
+    ["title", "Conference Day"],
+    ["start", "2025-12-03"],
+    ["end", "2025-12-04"],
+    ["location", "Main Hall"],
+    ["t", "conference"]
+  ]
+}
+

@@ -1,0 +1,11 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    minItems: 2
+    items:
+      - const: "location"
+      - type: string
+        description: "Location description, address, coordinates, or URL"
+    additionalItems: true
+
