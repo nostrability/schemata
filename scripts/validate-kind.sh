@@ -28,5 +28,4 @@ fi
 TMP_SCHEMA="tmp/schema-kind-${KIND}-noid.json"
 mkdir -p tmp
 jq 'del(..|."$id"?)' "$SCHEMA" > "$TMP_SCHEMA"
-# Enable standard format validation (e.g., format: uri) via ajv-formats
-pnpm exec ajv -c ajv-formats --strict=false -s "$TMP_SCHEMA" -d "$EVENT_FILE"
+pnpm exec ajv --strict=false -s "$TMP_SCHEMA" -d "$EVENT_FILE"
