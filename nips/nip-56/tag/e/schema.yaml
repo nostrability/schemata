@@ -1,0 +1,12 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    minItems: 3
+    items:
+      - const: "e"
+      - $ref: "@/secp256k1.yaml"
+      - type: string
+        enum: [nudity, malware, profanity, illegal, spam, impersonation, other]
+    additionalItems: true
+

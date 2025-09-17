@@ -1,0 +1,20 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind1984
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 1984
+      tags:
+        type: array
+        allOf:
+          # MUST include a p tag referencing the reported user's pubkey
+          - contains:
+              $ref: "@/tag/p.yaml"
+          # MUST include at least one report tag (p/e/x) with a report type as the 3rd item
+          - contains:
+              anyOf:
+                - $ref: "nips/nip-56/tag/p/schema.yaml"
+                - $ref: "nips/nip-56/tag/e/schema.yaml"
+                - $ref: "nips/nip-56/tag/x/schema.yaml"
