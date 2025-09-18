@@ -1,0 +1,13 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    description: "Label namespace tag (NIP-32). Second element is namespace or '#<target-tag>' marker."
+    minItems: 2
+    items:
+      - const: "L"
+      - type: string
+        title: "namespace"
+        description: "A namespace identifier; may start with '#' to indicate label applies to the value of the target tag."
+    additionalItems: true
+

@@ -1,0 +1,22 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+title: kind1985
+description: "Labeling event as defined by NIP-32"
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 1985
+      tags:
+        type: array
+        description: "Must include at least one label ('l') and one target tag (e, p, a, r, or t)."
+        allOf:
+          - contains:
+              $ref: "@/tag/l.yaml"
+          - contains:
+              anyOf:
+                - $ref: "@/tag/e.yaml"
+                - $ref: "@/tag/p.yaml"
+                - $ref: "@/tag/a.yaml"
+                - $ref: "@/tag/r.yaml"
+                - $ref: "@/tag/t.yaml"

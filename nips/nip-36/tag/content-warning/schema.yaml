@@ -1,0 +1,13 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    description: "Content warning tag (NIP-36). Optional reason as second element."
+    minItems: 1
+    items:
+      - const: "content-warning"
+      - type: string
+        title: "reason"
+        description: "Optional human-readable reason for the content warning"
+    additionalItems: false
+
