@@ -1,11 +1,32 @@
 $schema: "http://json-schema.org/draft-07/schema#"
 allOf:
   - $ref: "@/tag.yaml"
+oneOf:
+  # Marked e-tag (preferred in NIP-10): ["e", <event-id>, <relay-url-or-empty>, <marker>, <pubkey>?]
+  - type: array
+    minItems: 4
+    maxItems: 5
+    items:
+      - const: "e"
+      - type: string
+        pattern: '^[a-f0-9]{64}$'
+      - anyOf:
+          - type: string
+            pattern: '^(ws://|wss://).+$'
+          - type: string
+            const: ""
+      - type: string
+        enum: ["reply", "root"]
+      - $ref: "@/secp256k1.yaml"
+    additionalItems: false
+  # Deprecated positional e-tag: ["e", <event-id>, <relay-url>?]
   - type: array
     minItems: 2
+    maxItems: 3
     items:
-      - const: "p"
-      - $ref: "@/secp256k1.yaml"
+      - const: "e"
+      - type: string
+        pattern: '^[a-f0-9]{64}$'
       - type: string
         pattern: '^(ws://|wss://).+$'
-    additionalItems: true
+    additionalItems: false
