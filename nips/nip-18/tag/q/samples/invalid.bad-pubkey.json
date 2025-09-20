@@ -1,0 +1,6 @@
+[
+  "q",
+  "1:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa:foo",
+  "wss://relay.example.com",
+  "not-a-hex"
+]

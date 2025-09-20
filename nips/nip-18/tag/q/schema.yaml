@@ -9,10 +9,17 @@ allOf:
     maxItems: 4
     items:
       - const: "q"
-      - type: string
-        pattern: '^[a-f0-9]{64}$'
-      - type: string
-        pattern: '^(ws://|wss://).+$'
+      - anyOf:
+          - type: string
+            description: event id (32-byte hex)
+            pattern: '^[a-f0-9]{64}$'
+          - type: string
+            description: event address (kind:pubkey:identifier)
+            pattern: '^\d+:[a-f0-9]{64}:.+$'
+      - anyOf:
+          - type: string
+            pattern: '^(ws://|wss://).+$'
+          - type: string
+            const: ""
       - $ref: "@/secp256k1.yaml"
     additionalItems: false
-

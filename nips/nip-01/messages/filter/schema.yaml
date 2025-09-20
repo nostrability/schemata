@@ -17,19 +17,19 @@ properties:
     type: "array"
     items: 
       type: "integer"
-      minimum: "0"
+      minimum: 0
     description: "A list of kind numbers"
   since: 
     type: "integer"
-    minimum: "0"
+    minimum: 0
     description: "An integer Unix timestamp in seconds, where events must have created_at >= since"
   until: 
     type: "integer"
-    minimum: "0"
+    minimum: 0
     description: "An integer Unix timestamp in seconds, where events must have created_at <= until"
   limit: 
     type: "integer"
-    minimum: "1"
+    minimum: 1
     description: "The maximum number of events relays SHOULD return in the initial query"
 patternProperties: 
   ^#[a-zA-Z]$: 
@@ -37,4 +37,4 @@ patternProperties:
     items: 
       type: "string"
     description: "A list of tag values, where specific tags (#e, #p) have designated meanings"
-additionalProperties: "false"
+additionalProperties: false
