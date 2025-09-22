@@ -16,7 +16,7 @@ allOf:
           - type: string
             description: event address (kind:pubkey:identifier)
             pattern: '^\d+:[a-f0-9]{64}:.+$'
-      - anyOf:
+      - oneOf:
           - type: string
             pattern: '^(ws://|wss://).+$'
           - type: string
