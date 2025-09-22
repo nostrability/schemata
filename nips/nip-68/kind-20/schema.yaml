@@ -1,0 +1,16 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind20
+description: "Picture-first event defined by NIP-68"
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 20
+        errorMessage: "kind must equal 20"
+      tags:
+        allOf:
+          - contains:
+              $ref: "@/tag/title.yaml"
+          - contains:
+              $ref: "@/tag/imeta.yaml"
