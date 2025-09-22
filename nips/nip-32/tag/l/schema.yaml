@@ -1,0 +1,16 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    description: "Label tag (NIP-32). Second element is label value; optional third element 'mark' matches an 'L' tag in the same event."
+    minItems: 2
+    items:
+      - const: "l"
+      - type: string
+        title: "label"
+        description: "A short, meaningful label string."
+      - type: string
+        title: "mark"
+        description: "Optional namespace mark; SHOULD match an 'L' tag value in the same event if present."
+    additionalItems: false
+

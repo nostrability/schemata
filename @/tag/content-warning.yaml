@@ -1,0 +1,3 @@
+allOf:
+  - $ref: "nips/nip-36/tag/content-warning/schema.yaml"
+
