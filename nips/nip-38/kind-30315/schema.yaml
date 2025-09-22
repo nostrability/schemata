@@ -1,0 +1,32 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind30315
+description: User Status event (addressable, NIP-38)
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 30315
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        minItems: 1
+        contains:
+          $ref: "@/tag/status-type.yaml"
+        errorMessage:
+          contains: "tags must include a d tag identifying the user status type"
+        allOf:
+          - not:
+              contains:
+                type: array
+                minItems: 2
+                items:
+                  - const: "expiration"
+                  - type: string
+                    not:
+                      pattern: '^[0-9]+$'
+                additionalItems: true
+    required:
+      - kind
+      - tags
