@@ -1,0 +1,46 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+title: imeta tag
+description: "NIP-68 metadata describing an image attachment"
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    minItems: 2
+    items:
+      - const: "imeta"
+      - $ref: "#/definitions/metadataEntry"
+    additionalItems:
+      $ref: "#/definitions/metadataEntry"
+    allOf:
+      - contains:
+          type: string
+          pattern: "^url https?://\\S+$"
+      - contains:
+          type: string
+          pattern: "^m (image/(apng|avif|gif|jpeg|png|webp))$"
+definitions:
+  metadataEntry:
+    anyOf:
+      - type: string
+        pattern: "^url https?://\\S+$"
+        description: "Primary URL where the image is hosted"
+      - type: string
+        pattern: "^m (image/(apng|avif|gif|jpeg|png|webp))$"
+        description: "MIME media type for the image"
+      - type: string
+        pattern: "^blurhash .+$"
+        description: "Blurhash string for low-resolution previews"
+      - type: string
+        pattern: "^dim [0-9]{1,5}x[0-9]{1,5}$"
+        description: "Image dimensions in WIDTHxHEIGHT format"
+      - type: string
+        pattern: "^alt .+$"
+        description: "Human-readable alt text describing the image"
+      - type: string
+        pattern: "^x [a-f0-9]{64}$"
+        description: "SHA-256 hash of the image as defined in NIP-94"
+      - type: string
+        pattern: "^fallback https?://\\S+$"
+        description: "Fallback URL for alternate hosting"
+      - type: string
+        pattern: "^annotate-user [a-f0-9]{64}:[0-9]+(?:\\.[0-9]+)?:[0-9]+(?:\\.[0-9]+)?$"
+        description: "User annotation with coordinates within the image"
