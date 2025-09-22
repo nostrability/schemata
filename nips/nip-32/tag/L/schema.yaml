@@ -9,5 +9,5 @@ allOf:
       - type: string
         title: "namespace"
         description: "A namespace identifier; may start with '#' to indicate label applies to the value of the target tag."
-    additionalItems: true
+    additionalItems: false
 
