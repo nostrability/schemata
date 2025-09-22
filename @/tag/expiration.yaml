@@ -1,0 +1,2 @@
+allOf: 
+  - $ref: "nips/nip-38/tag/expiration/schema.yaml"
