@@ -16,7 +16,7 @@ oneOf:
           - type: string
             const: ""
       - type: string
-        enum: ["reply", "root"]
+        enum: ["reply", "root", "mention"]
       - $ref: "@/secp256k1.yaml"
     additionalItems: false
   # Deprecated positional e-tag: ["e", <event-id>, <relay-url>?]
