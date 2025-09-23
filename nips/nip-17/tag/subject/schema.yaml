@@ -1,0 +1,11 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    description: "Conversation subject for a private room"
+    minItems: 2
+    items:
+      - const: "subject"
+      - type: string
+        minLength: 1
+    additionalItems: false
