@@ -1,0 +1,11 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    description: "Blurhash placeholder for the encrypted media"
+    minItems: 2
+    items:
+      - const: "blurhash"
+      - type: string
+        minLength: 6
+    additionalItems: false
