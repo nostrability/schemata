@@ -7,5 +7,5 @@ allOf:
     items:
       - const: "file-type"
       - type: string
-        pattern: '^[\w!#$&^_.+-]+/[\w!#$&^_.+-]+$'
+        pattern: '^[a-zA-Z][a-zA-Z0-9!#$&^_-]*/[a-zA-Z0-9*][a-zA-Z0-9!#$&^_.+-]*(\s*;\s*[a-zA-Z0-9!#$&^_.+-]+=[a-zA-Z0-9!#$&^_.+-]+)*$'
     additionalItems: false
