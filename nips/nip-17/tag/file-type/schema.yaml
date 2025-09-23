@@ -1,0 +1,11 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    description: "MIME type of the original file before encryption"
+    minItems: 2
+    items:
+      - const: "file-type"
+      - type: string
+        pattern: '^[\w!#$&^_.+-]+/[\w!#$&^_.+-]+$'
+    additionalItems: false

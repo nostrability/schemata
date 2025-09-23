@@ -1,0 +1,38 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind14
+description: Private direct message event defined by NIP-17
+allOf:
+  - $ref: "@/note-unsigned.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 14
+        description: "Kind 14 identifies an unsigned private direct message"
+      id:
+        allOf:
+          - $ref: "@/secp256k1.yaml"
+        description: "Deterministic event hash as defined in NIP-01"
+      pubkey:
+        allOf:
+          - $ref: "@/secp256k1.yaml"
+        description: "Sender public key"
+      content:
+        type: string
+        description: "Plain text chat message content"
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        minItems: 1
+        allOf:
+          - contains:
+              $ref: "@/tag/p.yaml"
+        errorMessage:
+          contains: "tags must include at least one p tag identifying a receiver"
+    required:
+      - kind
+      - id
+      - pubkey
+  - not:
+      required:
+        - sig

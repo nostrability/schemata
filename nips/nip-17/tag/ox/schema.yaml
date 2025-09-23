@@ -1,0 +1,11 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    description: "Checksum of the original file prior to encryption"
+    minItems: 2
+    items:
+      - const: "ox"
+      - type: string
+        pattern: '^[a-f0-9]{64}$'
+    additionalItems: false
