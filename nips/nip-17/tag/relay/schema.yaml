@@ -1,0 +1,11 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    description: "Preferred relay endpoint for receiving direct messages"
+    minItems: 2
+    items:
+      - const: "relay"
+      - type: string
+        pattern: '^wss?://[a-zA-Z0-9.-]+(?::[0-9]+)?(?:/.*)?$'
+    additionalItems: false
