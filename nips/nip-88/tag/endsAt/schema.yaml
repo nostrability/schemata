@@ -1,0 +1,12 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    minItems: 2
+    items:
+      - const: "endsAt"
+      - type: string
+        pattern: '^[0-9]+$'
+    additionalItems: true
+    errorMessage:
+      items: "endsAt tag must start with 'endsAt' followed by a unix timestamp in seconds"

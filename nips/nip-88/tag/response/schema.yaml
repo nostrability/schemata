@@ -1,0 +1,12 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    minItems: 2
+    items:
+      - const: "response"
+      - type: string
+        pattern: '^[A-Za-z0-9]+$'
+    additionalItems: true
+    errorMessage:
+      items: "response tag must be ['response', '<alphanumeric option id>']"

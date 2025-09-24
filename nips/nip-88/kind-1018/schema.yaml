@@ -1,0 +1,35 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+title: kind1018
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 1018
+        errorMessage: "kind must be 1018 for poll responses"
+      tags:
+        type: array
+        contains:
+          $ref: "@/tag/response.yaml"
+        allOf:
+          - contains:
+              $ref: "@/tag/e.yaml"
+            errorMessage:
+              contains: "response events must reference a poll event via an e tag"
+        items:
+          allOf:
+            - if:
+                items:
+                  - const: "response"
+              then:
+                $ref: "@/tag/response.yaml"
+            - if:
+                items:
+                  - const: "e"
+              then:
+                $ref: "@/tag/e.yaml"
+        errorMessage:
+          contains: "response events must include at least one response tag"
+    required:
+      - kind
+      - tags
