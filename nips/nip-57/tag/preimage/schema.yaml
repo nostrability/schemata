@@ -6,7 +6,7 @@ allOf:
     items:
       - const: "preimage"
       - type: string
-        pattern: '^[a-f0-9]{64}$'
+        pattern: '^[a-fA-F0-9]{64}$'
         description: "Payment preimage (32-byte hex)"
     additionalItems: false
 
