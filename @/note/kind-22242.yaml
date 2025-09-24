@@ -1,0 +1,2 @@
+allOf:
+  - $ref: "nips/nip-42/kind-22242/schema.yaml"
