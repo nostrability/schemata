@@ -1,0 +1,3 @@
+allOf: 
+  - $ref: "nips/nip-b7/tag/server/schema.yaml"
+

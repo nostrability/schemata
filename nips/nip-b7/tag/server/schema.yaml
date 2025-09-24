@@ -1,0 +1,14 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    description: "Blossom server endpoint advertised by the user"
+    minItems: 2
+    items:
+      - const: "server"
+      - type: string
+        pattern: "^https?://.+$"
+    additionalItems: false
+    errorMessage:
+      minItems: "server tag must include the server URL"
+      additionalItems: "server tag accepts only the name and server URL"
