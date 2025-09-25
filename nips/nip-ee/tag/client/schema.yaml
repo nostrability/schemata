@@ -5,11 +5,19 @@ allOf:
     minItems: 2
     maxItems: 4
     items:
+      # Tag name, must be "client"
       - const: "client"
+        errorMessage: "First item must be the string 'client'."
+      # Client name (arbitrary string, min 1 character)
       - type: string
         minLength: 1
+        errorMessage: "Second item must be a non-empty client name."
+      # Identifier (64-character lowercase hex string)
       - type: string
         pattern: '^[a-f0-9]{64}$'
+        errorMessage: "Third item must be a 64-character lowercase hexadecimal identifier."
+      # Relay URL (must start with ws:// or wss://)
       - type: string
         pattern: '^(ws://|wss://).+$'
+        errorMessage: "Fourth item must be a relay URL starting with ws:// or wss://."
     additionalItems: false
