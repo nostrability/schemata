@@ -1,0 +1,35 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind1621
+description: NIP-34 issue event (markdown discussion thread)
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 1621
+      content:
+        type: string
+        minLength: 1
+        description: "Issue body as Markdown text"
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        minItems: 1
+        allOf:
+          - contains:
+              $ref: "@/tag/a.yaml"
+          - if:
+              contains:
+                type: array
+                items:
+                  - const: "subject"
+            then:
+              contains:
+                $ref: "@/tag/subject.yaml"
+        errorMessage:
+          contains: "tags must include required tag: a"
+    required:
+      - kind
+      - content
+      - tags

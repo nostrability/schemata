@@ -1,0 +1,14 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    description: "Git reference state entry"
+    minItems: 2
+    items:
+      - type: string
+        pattern: '^refs\/(heads|tags)\/[^\s]+$'
+      - type: string
+        pattern: '^[a-f0-9]{7,40}$'
+    additionalItems:
+      type: string
+      pattern: '^[a-f0-9]{7,40}$'
