@@ -1,0 +1,24 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind10051
+description: KeyPackage Relay List Event (NIP-EE)
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 10051
+      content:
+        type: string
+        errorMessage: "content must be a string (typically empty)"
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        minItems: 1
+        contains:
+          $ref: "@/tag/relay.yaml"
+        errorMessage:
+          contains: "tags must include at least one relay tag listing a KeyPackage relay"
+    required:
+      - kind
+      - tags
