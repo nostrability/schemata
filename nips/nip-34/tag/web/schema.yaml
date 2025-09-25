@@ -1,0 +1,13 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    description: "Repository browsing URLs"
+    minItems: 2
+    items:
+      - const: "web"
+      - type: string
+        pattern: '^(https?://).+$'
+    additionalItems:
+      type: string
+      pattern: '^(https?://).+$'

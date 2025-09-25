@@ -1,0 +1,11 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    minItems: 2
+    maxItems: 2
+    items:
+      - const: "merge-commit"
+      - type: string
+        pattern: '^[a-f0-9]{40}$'
+    additionalItems: false
