@@ -14,7 +14,7 @@ allOf:
         errorMessage: "Second item must be a non-empty client name."
       # Identifier (64-character lowercase hex string)
       - type: string
-        pattern: '^[a-f0-9]{64}$'
+        pattern: '^[0-9A-Fa-f]{64}$'
         errorMessage: "Third item must be a 64-character lowercase hexadecimal identifier."
       # Relay URL (must start with ws:// or wss://)
       - type: string
