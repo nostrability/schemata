@@ -1,0 +1,32 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind444
+description: MLS Welcome Event (NIP-EE)
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 444
+      sig:
+        const: ""
+      content:
+        type: string
+        minLength: 1
+        errorMessage: "content must contain the serialized MLS Welcome message"
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        minItems: 2
+        allOf:
+          - contains:
+              $ref: "@/tag/e.yaml"
+          - contains:
+              $ref: "@/tag/relays.yaml"
+        errorMessage:
+          contains: "tags must include e (KeyPackage reference) and relays tags"
+    required:
+      - kind
+      - sig
+      - content
+      - tags

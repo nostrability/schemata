@@ -1,0 +1,13 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    minItems: 2
+    maxItems: 2
+    items:
+      - const: "h"
+      - type: string
+        pattern: '^[0-9A-Fa-f]{64}$'
+    additionalItems: false
+    errorMessage:
+      pattern: "h tag value must be a 32-byte hex-encoded identifier"

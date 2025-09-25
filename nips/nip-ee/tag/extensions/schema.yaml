@@ -1,0 +1,12 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    minItems: 2
+    items:
+      - const: "extensions"
+    additionalItems:
+      type: string
+      pattern: '^0x[0-9A-Fa-f]{4}$'
+    errorMessage:
+      additionalItems: "extensions tag values must be 4-digit hex identifiers like 0x0001"

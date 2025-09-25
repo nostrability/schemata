@@ -1,0 +1,26 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind445
+description: MLS Group Message Event (NIP-EE)
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 445
+      content:
+        type: string
+        minLength: 1
+        errorMessage: "content must contain the NIP-44 encrypted MLSMessage"
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        minItems: 1
+        contains:
+          $ref: "@/tag/h.yaml"
+        errorMessage:
+          contains: "tags must include an h tag with the MLS group identifier"
+    required:
+      - kind
+      - content
+      - tags
