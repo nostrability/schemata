@@ -19,20 +19,19 @@ allOf:
         allOf:
           - contains:
               $ref: "@/tag/p.yaml"
-          - anyOf:
-              - not:
-                  contains:
-                    type: array
-                    minItems: 1
-                    items:
-                      - const: "e"
-              - contains:
-                  type: array
-                  minItems: 2
-                  items:
-                    - const: "e"
-                    - type: string
-                      pattern: "^[a-f0-9]{64}$"
+          - not:
+              contains:
+                type: array
+                minItems: 1
+                items:
+                  - const: "e"
+          - contains:
+              type: array
+              minItems: 2
+              items:
+                - const: "e"
+                - type: string
+                  pattern: "^[a-f0-9]{64}$"
         errorMessage:
           contains: "tags must include a p tag identifying the intended recipient"
     required:
