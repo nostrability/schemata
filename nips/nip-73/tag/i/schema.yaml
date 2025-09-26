@@ -1,0 +1,18 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+title: externalContentIdentifierTag
+description: External content identifier tag (NIP-73)
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    minItems: 2
+    maxItems: 3
+    items:
+      - const: "i"
+      - type: string
+        minLength: 1
+        description: Identifier or URI for the external resource
+      - type: string
+        pattern: "^https?://.+"
+        description: Optional URL pointing to the external resource
+    errorMessage:
+      minItems: "i tag must be ['i', <identifier>, ...]"
