@@ -24,18 +24,7 @@ allOf:
               then:
                 $ref: "@/tag/emoji.yaml"
         contains:
-          type: array
-          minItems: 2
-          maxItems: 4
-          items:
-            - const: "e"
-            - type: string
-              pattern: '^[a-f0-9]{64}$'
-            - type: string
-              pattern: '^(ws://|wss://).+$'
-            - allOf:
-                - $ref: "@/secp256k1.yaml"
-          additionalItems: false
+          $ref: "@/tag/reaction-e.yaml"
         allOf:
           - if:
               contains:
