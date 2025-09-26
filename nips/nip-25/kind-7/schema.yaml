@@ -1,0 +1,53 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind7
+description: Reaction event referencing a nostr event (NIP-25)
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 7
+      content:
+        type: string
+        description: "Reaction marker such as '+', '-', an emoji, or a custom :shortcode:"
+      tags:
+        type: array
+        minItems: 1
+        items:
+          allOf:
+            - $ref: "@/tag.yaml"
+            - if:
+                type: array
+                minItems: 1
+                items:
+                  - const: "emoji"
+              then:
+                $ref: "@/tag/emoji.yaml"
+        contains:
+          type: array
+          minItems: 2
+          maxItems: 4
+          items:
+            - const: "e"
+            - type: string
+              pattern: '^[a-f0-9]{64}$'
+            - type: string
+              pattern: '^(ws://|wss://).+$'
+            - allOf:
+                - $ref: "@/secp256k1.yaml"
+          additionalItems: false
+        allOf:
+          - if:
+              contains:
+                type: array
+                minItems: 1
+                items:
+                  - const: "emoji"
+            then:
+              contains:
+                $ref: "@/tag/emoji.yaml"
+        errorMessage:
+          contains: "tags must include an e tag referencing the reacted event"
+    required:
+      - kind
+      - tags
