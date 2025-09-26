@@ -13,8 +13,7 @@ allOf:
       anyOf:
         - type: string
           pattern: '^(ws://|wss://).+$'
-        - allOf:
-            - $ref: "@/secp256k1.yaml"
+        - $ref: "@/secp256k1.yaml"
         - type: string
           minLength: 1
     errorMessage:
