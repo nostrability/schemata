@@ -1,2 +1,2 @@
-allOf: 
+allOf:
   - $ref: "nips/nip-25/tag/emoji/schema.yaml"
