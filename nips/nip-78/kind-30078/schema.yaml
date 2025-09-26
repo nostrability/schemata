@@ -1,0 +1,22 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind30078
+description: NIP-78 Arbitrary custom app data (draft)
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 30078
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        minItems: 1
+        allOf:
+          - contains:
+              $ref: "@/tag/d.yaml"
+        errorMessage:
+          contains: "tags must include required tag: d"
+    required:
+      - kind
+      - tags

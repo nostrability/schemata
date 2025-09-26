@@ -1,0 +1,2 @@
+allOf: 
+  - $ref: "nips/nip-25/tag/e-react/schema.yaml"
