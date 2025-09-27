@@ -1,0 +1,30 @@
+{
+  "id": "4dad2f92479e78363889a5c8f85cfccbdc2d99a5ed212355c7905f6f1c863e1f",
+  "pubkey": "1ec454734dcbf6fe54901ce25c0c7c6bca5edd89443416761fadc321d38df139",
+  "content": "Zap!",
+  "sig": "0ebb0caa5b1c6626fea07c0b35f7268cd3e20f58afa8fe4524251456523e8bec35a73467570a14a0b915f15ca85085dd5e97b7882056339f8f6a15718c53f7ce",
+  "kind": 9734,
+  "created_at": 1758016706,
+  "tags": [
+    [
+      "p",
+      "50d94fc2d8580c682b071a542f8b1e31a200b0508bab95a33bef0855df281d63"
+    ],
+    [
+      "amount",
+      "111000"
+    ],
+    [
+      "relays",
+      "wss://temp.iris.to/",
+      "wss://vault.iris.to/",
+      "wss://relay.damus.io/",
+      "wss://relay.nostr.band/"
+    ],
+    [
+      "k",
+      "1"
+    ]
+  ]
+}
+

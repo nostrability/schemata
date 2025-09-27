@@ -1,0 +1,12 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    minItems: 2
+    items:
+      - const: "bolt11"
+      - type: string
+        pattern: '^ln[a-z0-9]+[02-9ac-hj-np-z]*1[02-9ac-hj-np-z]+$'
+        description: "Bolt11 invoice string"
+    additionalItems: false
+

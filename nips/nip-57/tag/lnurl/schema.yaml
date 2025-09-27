@@ -1,0 +1,12 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    minItems: 2
+    items:
+      - const: "lnurl"
+      - type: string
+        pattern: '^lnurl1[02-9ac-hj-np-z]+$'
+        description: "Bech32-encoded lnurl with 'lnurl1' prefix (bech32 character set, excludes 1, b, i, o)"
+    additionalItems: false
+
