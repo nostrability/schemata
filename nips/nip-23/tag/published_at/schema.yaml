@@ -6,6 +6,7 @@ allOf:
     items:
       - const: "published_at"
       - type: string
-        pattern: "^[0-9]+$"
+        pattern: '^\d+$'
+        description: "Unix timestamp in seconds (string) of first publication"
     additionalItems: true
 
