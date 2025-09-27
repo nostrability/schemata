@@ -1,0 +1,21 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: kind9321
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 9321
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        allOf:
+          - contains:
+              $ref: "@/tag/proof.yaml"
+          - contains:
+              $ref: "@/tag/u.yaml"
+          - contains:
+              $ref: "@/tag/p.yaml"
+    required:
+      - tags
