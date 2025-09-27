@@ -6,7 +6,7 @@ allOf:
     items:
       - const: "lnurl"
       - type: string
-        pattern: '^lnurl[0-9a-z]+$'
-        description: "Bech32-encoded lnurl with 'lnurl' prefix"
+        pattern: '^lnurl1[02-9ac-hj-np-z]+$'
+        description: "Bech32-encoded lnurl with 'lnurl1' prefix (bech32 character set, excludes 1, b, i, o)"
     additionalItems: false
 
