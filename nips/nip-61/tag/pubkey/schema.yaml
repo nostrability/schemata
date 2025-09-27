@@ -1,0 +1,10 @@
+$schema: "https://json-schema.org/draft/2020-12/schema"
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    minItems: 2
+    prefixItems:
+      - const: "pubkey"
+      - type: string
+        pattern: '^02[0-9a-fA-F]{64}$'
+    items: false

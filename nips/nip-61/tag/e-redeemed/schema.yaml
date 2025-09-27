@@ -1,0 +1,13 @@
+$schema: "https://json-schema.org/draft/2020-12/schema"
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    minItems: 4
+    maxItems: 4
+    prefixItems:
+      - const: "e"
+      - $ref: "@/secp256k1.yaml"
+      - type: string
+        pattern: '^((ws://|wss://).+)?$'
+      - const: "redeemed"
+    items: false
