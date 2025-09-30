@@ -1,0 +1,45 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+title: kind1068
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 1068
+        errorMessage: "kind must be 1068 for poll events"
+      tags:
+        type: array
+        contains:
+          $ref: "@/tag/option.yaml"
+        allOf:
+          - contains:
+              $ref: "@/tag/relay.yaml"
+            errorMessage:
+              contains: "poll events must include at least one relay tag"
+        items:
+          allOf:
+            - if:
+                items:
+                  - const: "option"
+              then:
+                $ref: "@/tag/option.yaml"
+            - if:
+                items:
+                  - const: "relay"
+              then:
+                $ref: "@/tag/relay.yaml"
+            - if:
+                items:
+                  - const: "polltype"
+              then:
+                $ref: "@/tag/polltype.yaml"
+            - if:
+                items:
+                  - const: "endsAt"
+              then:
+                $ref: "@/tag/endsAt.yaml"
+        errorMessage:
+          contains: "poll events must include at least one option tag"
+    required:
+      - kind
+      - tags
