@@ -1,4 +1,4 @@
-$schema: http://json-schema.org/draft-07/schema#
+$schema: https://json-schema.org/draft/2020-12/schema
 title: kind9734
 description: NIP-57 Zap Request event
 allOf:
@@ -19,8 +19,7 @@ allOf:
           - contains:
               $ref: "@/tag/p.yaml"
             errorMessage:
-              contains: "tags must include exactly one p tag for the recipient (cannot enforce count in draft-07)"
+              contains: "tags must include exactly one p tag for the recipient (cannot enforce exact count with contains)"
     required:
       - kind
       - tags
-

@@ -1,4 +1,4 @@
-$schema: http://json-schema.org/draft-07/schema#
+$schema: https://json-schema.org/draft/2020-12/schema
 title: nip05Identifier
 description: Internet Identifier for NIP-05 (email-like, case-insensitive local-part)
 type: string

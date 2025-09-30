@@ -1,4 +1,4 @@
-$schema: http://json-schema.org/draft-07/schema#
+$schema: https://json-schema.org/draft/2020-12/schema
 title: kind30403
 description: Draft/Inactive Classified Listing (NIP-99). Same structure as kind 30402.
 allOf:

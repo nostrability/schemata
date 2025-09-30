@@ -1,4 +1,4 @@
-$schema: http://json-schema.org/draft-07/schema#
+$schema: https://json-schema.org/draft/2020-12/schema
 title: kind30402
 description: Classified Listing (NIP-99). Addressable event describing a listing with structured metadata in tags.
 allOf:

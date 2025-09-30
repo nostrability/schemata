@@ -37,7 +37,7 @@ Create `schema.yaml` following this template:
 
 ```yaml
 $id: "https://schemata.nostr.watch/[type]/[subtype]"
-$schema: http://json-schema.org/draft-07/schema#
+$schema: https://json-schema.org/draft/2020-12/schema
 type: object  # or array, string, etc.
 title: "Descriptive Title"
 description: "What this schema validates"
@@ -98,7 +98,7 @@ For new tag types, follow this structure:
 
 ```yaml
 $id: 'https://schemata.nostr.watch/note/tag/x'
-$schema: "http://json-schema.org/draft-07/schema#"
+$schema: "https://json-schema.org/draft/2020-12/schema"
 title: xTag
 allOf:
   - $ref: "@/tag.yaml"  # Inherit base array structure
@@ -191,7 +191,7 @@ properties:
 ### Event Schema
 ```yaml
 $id: "https://schemata.nostr.watch/note/kind/XXXX"
-$schema: http://json-schema.org/draft-07/schema#
+$schema: https://json-schema.org/draft/2020-12/schema
 title: kindXXXX
 allOf: 
   - $ref: "@/note.yaml"
@@ -221,7 +221,7 @@ maxItems: 3
 For kinds with structured content, create `schema.content.yaml`:
 ```yaml
 $id: "https://schemata.nostr.watch/note/kind/XXXX/content"
-$schema: http://json-schema.org/draft-07/schema#
+$schema: https://json-schema.org/draft/2020-12/schema
 type: object
 properties:
   name:
