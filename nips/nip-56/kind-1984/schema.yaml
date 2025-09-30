@@ -11,7 +11,7 @@ allOf:
         allOf:
           # MUST include a p tag referencing the reported user's pubkey
           - contains:
-              $ref: "@/tag/p.yaml"
+              $ref: "nips/nip-56/tag/p/schema.yaml"
           # MUST include at least one report tag (p/e/x) with a report type as the 3rd item
           - contains:
               anyOf:
