@@ -1,0 +1,51 @@
+{
+  "name": "@nostrability/schemata",
+  "version": "0.1.6",
+  "type": "module",
+  "main": "dist/bundle/schemas.js",
+  "license": "MIT",
+  "dependencies": {
+    "@apidevtools/json-schema-ref-parser": "^11.7.2",
+    "ajv": "8.17.1",
+    "esbuild-yaml": "^1.2.0",
+    "json-loader": "0.5.7",
+    "quicktype": "23.0.170",
+    "quicktype-core": "23.0.170",
+    "webpack": "5.93.0",
+    "webpack-cli": "5.1.4",
+    "webpack-merge": "6.0.1",
+    "webpack-node-externals": "3.0.0",
+    "yaml": "2.4.5",
+    "yaml-convert": "1.0.1"
+  },
+  "devDependencies": {
+    "ajv-cli": "^5.0.0",
+    "ajv-formats": "^2.1.1",
+    "esbuild": "^0.24.2",
+    "rimraf": "^6.0.1",
+    "ts-loader": "^9.2.6",
+    "typedoc": "^0.22.15",
+    "typescript": "^4.5.2",
+    "vitest": "^0.20.2",
+    "yaml-convert": "1.0.1",
+    "yaml-loader": "0.8.1"
+  },
+  "scripts": {
+    "clean": "rm -rf dist && mkdir -p dist",
+    "build": "pnpm clean && make convert_json && make rewrite_refs && node ./scripts/add-schema-ids.js && make dereference_json && node ./build.js",
+    "build:all": "pnpm build && pnpm packages",
+    "build:test": "pnpm build && pnpm test",
+    "convert": "pnpm convert:note && pnpm convert:content",
+    "convert:note": "mkdir -p dist && yaml-convert -i src/schema.yaml -o dist/schema.json",
+    "convert:content": "mkdir -p dist && yaml-convert -i src/schema.content.yaml -o dist/schema.content.json",
+    "packages": "pnpm qt && pnpm qt2",
+    "pretest": "pnpm build",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "docs": "typedoc",
+    "validate": "bash scripts/validate-kind.sh"
+  },
+  "peerDependencies": {
+    "typescript": "^4.5.2"
+  }
+}
