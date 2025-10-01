@@ -29,7 +29,7 @@ This repository contains JSON Schema definitions for the Nostr protocol. The sch
 nips/nip-XX/kind-YYY/schema.yaml
 
 # Basic schema template (DO NOT include $id in source files)
-$schema: http://json-schema.org/draft-07/schema#
+$schema: https://json-schema.org/draft-07/schema#
 title: kindYYY
 allOf: 
   - $ref: "@/note.yaml"  # For event kinds
@@ -250,7 +250,7 @@ If GitHub Pages deployment fails:
 
 ### Event kinds
 ```yaml
-$schema: http://json-schema.org/draft-07/schema#
+$schema: https://json-schema.org/draft-07/schema#
 title: kindX
 allOf: 
   - $ref: "@/note.yaml"
@@ -263,7 +263,7 @@ allOf:
 
 ### Tags
 ```yaml
-$schema: "http://json-schema.org/draft-07/schema#"
+$schema: "https://json-schema.org/draft-07/schema#"
 allOf:
   - $ref: "@/tag.yaml"
   - type: array

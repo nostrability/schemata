@@ -1,4 +1,4 @@
-$schema: http://json-schema.org/draft-07/schema#
+$schema: https://json-schema.org/draft-07/schema#
 title: kind6
 description: Repost of a kind-1 note (NIP-18)
 allOf:
