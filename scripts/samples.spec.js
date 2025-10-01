@@ -1,6 +1,7 @@
 import { readdirSync, statSync, readFileSync, existsSync } from 'fs';
 import { join, resolve, sep } from 'path';
 import Ajv from 'ajv';
+import draft7MetaSchema from 'ajv/dist/refs/json-schema-draft-07.json' assert { type: 'json' };
 import { describe, test, expect, afterAll } from 'vitest';
 
 function* walkForSchemas(root) {
@@ -22,6 +23,9 @@ function loadJSON(path) {
 
 const summary = { totalSuites: 0, totalCases: 0, passed: 0, failed: 0, failures: [] };
 const ajv = new Ajv({ allErrors: true, strict: false });
+if (!ajv.getSchema(draft7MetaSchema.$id)) {
+  ajv.addMetaSchema(draft7MetaSchema);
+}
 
 // Scan all NIP schemas for samples
 for (const schemaDir of walkForSchemas('nips')) {
