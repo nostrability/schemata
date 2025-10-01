@@ -7,6 +7,6 @@ allOf:
       - const: "start_tzid"
       - type: string
         description: "IANA Time Zone Database identifier"
-        pattern: '^[A-Za-z_]+(?:\/[A-Za-z_+\-]+)+$'
+        pattern: '^[A-Za-z0-9_]+(?:\/[A-Za-z0-9_+\-]+)*$'
     additionalItems: false
 
