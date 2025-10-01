@@ -131,7 +131,7 @@ allOf:
               items:
                 - const: "expiration"
                 - type: string
-                  pattern: "^[0-9]{10}$"
+                  pattern: "^[0-9]+$"
 
           # Optional tags: validate if present
           # source: must be a URL if present
