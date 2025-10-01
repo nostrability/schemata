@@ -4,9 +4,9 @@ allOf:
   - type: array
     minItems: 2
     items:
-      - const: "published_at"
+      - const: "relay"
       - type: string
-        pattern: '^\d+$'
-        description: "Unix timestamp in seconds (string) of first publication"
+        pattern: '^(ws://|wss://).+$'
     additionalItems: true
-
+    errorMessage:
+      items: "relay tag must start with 'relay' followed by a valid ws or wss URL"

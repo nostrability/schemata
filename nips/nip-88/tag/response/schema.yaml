@@ -4,9 +4,9 @@ allOf:
   - type: array
     minItems: 2
     items:
-      - const: "published_at"
+      - const: "response"
       - type: string
-        pattern: '^\d+$'
-        description: "Unix timestamp in seconds (string) of first publication"
+        pattern: '^[A-Za-z0-9]+$'
     additionalItems: true
-
+    errorMessage:
+      items: "response tag must be ['response', '<alphanumeric option id>']"
