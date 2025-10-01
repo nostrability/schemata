@@ -28,24 +28,26 @@ allOf:
               $ref: "@/tag/status.yaml"
     allOf:
       # If status is 'declined', fb must not be present
-      - not:
-          allOf:
-            - properties:
-                tags:
-                  contains:
-                    type: array
-                    minItems: 2
-                    items:
-                      - const: "status"
-                      - type: string
-                        const: "declined"
-            - properties:
-                tags:
-                  contains:
-                    type: array
-                    minItems: 1
-                    items:
-                      - const: "fb"
+      # If status is 'declined', fb must not be present
+      - if:
+          properties:
+            tags:
+              contains:
+                type: array
+                minItems: 2
+                items:
+                  - const: "status"
+                  - type: string
+                    const: "declined"
+        then:
+          not:
+            properties:
+              tags:
+                contains:
+                  type: array
+                  minItems: 1
+                  items:
+                    - const: "fb"
       # If fb present, enforce enum
       - if:
           properties:
