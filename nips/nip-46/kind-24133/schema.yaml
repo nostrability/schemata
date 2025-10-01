@@ -1,4 +1,4 @@
-$schema: https://json-schema.org/draft-07/schema#
+$schema: "https://json-schema.org/draft-07/schema#"
 title: kind24133
 description: |
   NIP-46 Remote Signing request/response event.

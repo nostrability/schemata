@@ -1,4 +1,4 @@
-$schema: https://json-schema.org/draft-07/schema#
+$schema: "https://json-schema.org/draft-07/schema#"
 title: kind30023
 description: NIP-23 Long-form Content (published)
 allOf:
