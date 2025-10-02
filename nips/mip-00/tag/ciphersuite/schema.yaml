@@ -1,0 +1,11 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    minItems: 2
+    maxItems: 2
+    items:
+      - const: "ciphersuite"
+      - type: string
+        pattern: "^0x[0-9a-fA-F]{4}$"
+        description: "MLS ciphersuite identifier in 0xXXXX format"

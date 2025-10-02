@@ -1,0 +1,11 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    minItems: 2
+    maxItems: 2
+    items:
+      - const: "mls_protocol_version"
+      - type: string
+        pattern: "^[0-9]+(\\.[0-9]+)*$"
+        description: "MLS protocol version identifier"

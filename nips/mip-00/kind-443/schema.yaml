@@ -1,0 +1,35 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind443
+description: Marmot KeyPackage event (MIP-00)
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 443
+        description: "Kind number reserved for Marmot KeyPackage events"
+      content:
+        type: string
+        pattern: "^[0-9a-fA-F]+$"
+        minLength: 2
+        errorMessage: "content must be a hex-encoded MLS KeyPackage bundle"
+        description: "Hex-encoded TLS-serialized MLS KeyPackageBundle"
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        minItems: 4
+        allOf:
+          - contains:
+              $ref: "@/tag/mls_protocol_version.yaml"
+          - contains:
+              $ref: "@/tag/mls_ciphersuite.yaml"
+          - contains:
+              $ref: "@/tag/mls_extensions.yaml"
+          - contains:
+              $ref: "@/tag/relays.yaml"
+        errorMessage:
+          contains: "tags must include mls_protocol_version, ciphersuite, extensions, and relays tags"
+    required:
+      - kind
+      - tags
