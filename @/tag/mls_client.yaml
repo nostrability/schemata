@@ -1,0 +1,2 @@
+allOf:
+  - $ref: "nips/mip-00/tag/client/schema.yaml"
