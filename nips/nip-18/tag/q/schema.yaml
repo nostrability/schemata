@@ -1,25 +1,42 @@
 $schema: "http://json-schema.org/draft-07/schema#"
 allOf:
   - $ref: "@/tag.yaml"
-  - type: array
-    description: |
+  - description: |
       Quote tag for quote-reposts (NIP-18). Mirrors NIP-10 e-tag tuple without the mark argument.
       Structure: ["q", <event-id>, <relay-url>?, <pubkey>?]
-    minItems: 2
-    maxItems: 4
-    items:
-      - const: "q"
-      - anyOf:
-          - type: string
-            description: event id (32-byte hex)
-            pattern: '^[a-f0-9]{64}$'
-          - type: string
-            description: event address (kind:pubkey:identifier)
-            pattern: '^\d+:[a-f0-9]{64}:.+$'
-      - oneOf:
-          - type: string
-            pattern: '^(ws://|wss://).+$'
-          - type: string
-            const: ""
-      - $ref: "@/secp256k1.yaml"
-    additionalItems: false
+    oneOf:
+      # No relay provided; optional pubkey in position 3.
+      - type: array
+        minItems: 2
+        maxItems: 3
+        items:
+          - const: "q"
+          - anyOf:
+              - type: string
+                description: event id (32-byte hex)
+                pattern: '^[a-f0-9]{64}$'
+              - type: string
+                description: event address (kind:pubkey:identifier)
+                pattern: '^\d+:[a-f0-9]{64}:.+$'
+        additionalItems:
+          $ref: "@/secp256k1.yaml"
+      # Relay supplied (or explicitly empty); optional pubkey in position 4.
+      - type: array
+        minItems: 3
+        maxItems: 4
+        items:
+          - const: "q"
+          - anyOf:
+              - type: string
+                description: event id (32-byte hex)
+                pattern: '^[a-f0-9]{64}$'
+              - type: string
+                description: event address (kind:pubkey:identifier)
+                pattern: '^\d+:[a-f0-9]{64}:.+$'
+          - oneOf:
+              - type: string
+                pattern: '^(ws://|wss://).+$'
+              - type: string
+                const: ""
+        additionalItems:
+          $ref: "@/secp256k1.yaml"
