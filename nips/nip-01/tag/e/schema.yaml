@@ -7,7 +7,7 @@ oneOf:
     minItems: 4
     maxItems: 5
     items:
-      - const: "e"
+      - const: "e"  # tag identifier
       - type: string
         pattern: '^[a-f0-9]{64}$'
       - anyOf:
@@ -24,7 +24,7 @@ oneOf:
     minItems: 2
     maxItems: 3
     items:
-      - const: "e"
+      - const: "e"  # tag identifier
       - type: string
         pattern: '^[a-f0-9]{64}$'
       - type: string
