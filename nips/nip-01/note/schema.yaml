@@ -24,7 +24,7 @@ properties:
   sig:
     type: string
     pattern: "^[a-f0-9]{128}$"
-    errorMessage: "sig must be a string"
+    errorMessage: "sig must be 128 lowercase hex characters (64 bytes)"
     description: "The cryptographic signature of the note"
   tags:
     type: array
