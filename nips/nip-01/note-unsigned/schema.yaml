@@ -21,7 +21,8 @@ properties:
     errorMessage: "tags must be an array of valid tag tuples"
     description: "The tags of the note"
     items:
-      $ref: "@/tag.yaml"
+      allOf:
+        - $ref: "@/tag.yaml"
       
 required:
 - content
