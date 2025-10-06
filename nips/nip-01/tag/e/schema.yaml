@@ -4,7 +4,7 @@ allOf:
   - type: array
     minItems: 2
     items:
-      - const: "p"
+      - const: "e"
       - $ref: "@/secp256k1.yaml"
       - type: string
         pattern: '^(ws://|wss://).+$'
