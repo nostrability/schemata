@@ -19,14 +19,8 @@ allOf:
         allOf:
           - not:
               contains:
-                type: array
-                minItems: 2
-                items:
-                  - const: "expiration"
-                  - type: string
-                    not:
-                      pattern: '^[0-9]+$'
-                additionalItems: true
+                $ref: "@/tag/expiration.yaml"
+                not: true
     required:
       - kind
       - tags
