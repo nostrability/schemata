@@ -22,23 +22,26 @@ try {
   // multiple occurrences of the same absolute $id in a single output.
   // Keep the first occurrence; remove subsequent duplicates.
   const seen = new Set();
-  function dedupeIds(node) {
+  function dedupeIds(node, isRoot = false) {
     if (Array.isArray(node)) {
-      for (const item of node) dedupeIds(item);
+      for (const item of node) dedupeIds(item, false);
       return;
     }
     if (node && typeof node === "object") {
       if (typeof node.$id === "string") {
-        if (seen.has(node.$id)) {
+        if (!isRoot) {
+          // Drop inlined $id values to avoid duplicates across schemas.
+          delete node.$id;
+        } else if (seen.has(node.$id)) {
           delete node.$id;
         } else {
           seen.add(node.$id);
         }
       }
-      for (const val of Object.values(node)) dedupeIds(val);
+      for (const val of Object.values(node)) dedupeIds(val, false);
     }
   }
-  dedupeIds(deref);
+  dedupeIds(deref, true);
 
   await fs.writeFile(path.resolve(outputFile), JSON.stringify(deref, null, 2), "utf-8");
   console.log(`Schema written to ${outputFile}`);
