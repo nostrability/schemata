@@ -35,8 +35,10 @@ allOf:
                 pattern: '^\d+:[a-f0-9]{64}:.+$'
           - oneOf:
               - type: string
+                description: relay URL (ws or wss)
                 pattern: '^(ws://|wss://).+$'
               - type: string
-                const: ""
+                description: empty placeholder when relay is omitted
+                enum: [""]
         additionalItems:
           $ref: "@/secp256k1.yaml"
