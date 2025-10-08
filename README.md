@@ -9,6 +9,13 @@ JSON Schema definitions for Nostr protocol events, messages, and tags. Validate 
 ## Why JSON-Schema?
 [JSON-Schema has the most active, widely supported specification standard, with the largest community and ecosystem](https://github.com/json-schema-org/json-schema-spec). **Most importantly, it is one of the few schema specification standards that support deep specification of strings (via formats or regex), making the nostresque typing of strings and the tuples that contain them possible.** There are schema validators and generators [schema-to-code] for Server Stubs and Client-SDKs available in every single language provided by the JSON-Schema community. The wide availability of JSON-Schema tooling lends itself to creating a system that caters specifically to the requirements of nostr as well as creating an **extensible** and **maintainable** system; which is why this exists.
 
+## How is JSON-Schema different from Test Vectors?
+In a nutshell JSON-Schema validates that the structure of the JSON blob is correct. JSON-Schema for a particular [kind](https://github.com/nostr-protocol/nips?tab=readme-ov-file#event-kinds) returns either a pass, or a fail. Whereas test vectors are a deterministic check - a certain input is made, and a certain output is expected. JSON blob validation does not preclude test vectors approach. Test vectors are outside the scope of schemata.
+
+## Which JSON Schema specification version does schemata use?
+
+[Draft-07](https://json-schema.org/draft-07/schema) to maximize interoperability, and simplicity.
+
 ## What is `@nostrability/schemata` good for?
 - Integration Testing of both Clients and Relays
 - Discovering broken events through fuzz testing
@@ -258,7 +265,7 @@ For maintainers: See [RELEASE.md](RELEASE.md) for the step-by-step release proce
 
 ## License
 
-MIT
+[GPL-3.0](https://github.com/nostrability/schemata#GPL-3.0-1-ov-file)
 
 ## Support
 
