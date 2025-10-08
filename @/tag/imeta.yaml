@@ -1,0 +1,2 @@
+allOf: 
+  - $ref: "nips/nip-68/tag/imeta/schema.yaml"
