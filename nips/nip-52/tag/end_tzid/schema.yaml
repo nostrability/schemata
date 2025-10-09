@@ -1,0 +1,12 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    minItems: 2
+    items:
+      - const: "end_tzid"
+      - type: string
+        description: "IANA Time Zone Database identifier"
+        pattern: '^[A-Za-z0-9_\-+]+(?:\/[A-Za-z0-9_\-+]+)*$'
+    additionalItems: false
+

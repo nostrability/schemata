@@ -1,0 +1,30 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind9735
+description: NIP-57 Zap Receipt event
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 9735
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        allOf:
+          - contains:
+              $ref: "@/tag/p.yaml"
+            errorMessage:
+              contains: "tags must include a p tag for the zap recipient"
+          - contains:
+              $ref: "@/tag/bolt11.yaml"
+            errorMessage:
+              contains: "tags must include a bolt11 tag with the invoice"
+          - contains:
+              $ref: "@/tag/description.yaml"
+            errorMessage:
+              contains: "tags must include a description tag (JSON-encoded zap request)"
+    required:
+      - kind
+      - tags
+
