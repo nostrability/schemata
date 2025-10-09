@@ -1,6 +1,8 @@
-type: "array"
-items: 
-- const: "AUTH"
-- $ref: "@/note.yaml"
-minItems: "2"
-maxItems: "2"
+type: array
+title: Client Authentication Message
+description: Client-sent AUTH message containing a signed NIP-42 authentication event
+items:
+  - const: "AUTH"
+  - $ref: "@/note/kind-22242.yaml"
+minItems: 2
+maxItems: 2
