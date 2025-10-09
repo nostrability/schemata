@@ -1,4 +1,4 @@
-$schema: http://json-schema.org/draft-07/schema#
+$schema: "http://json-schema.org/draft-07/schema#"
 title: kind22242
 description: Ephemeral authentication event defined by NIP-42
 allOf:
