@@ -10,5 +10,5 @@ allOf:
         minLength: 1
     additionalItems: false
     errorMessage:
-      minItems: "challenge tag must include the relay-provided string"
+      minItems: "challenge tag must include both tag name and challenge value"
       additionalItems: "challenge tag accepts only the name and challenge value"
