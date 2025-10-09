@@ -15,7 +15,7 @@ allOf:
         minItems: 2
         allOf:
           - contains:
-              $ref: "@/tag/relay.yaml"
+              $ref: "@/tag/auth-relay.yaml"
             errorMessage:
               contains: "tags must include a relay tag identifying the authenticating relay"
           - contains:
