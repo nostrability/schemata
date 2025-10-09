@@ -7,7 +7,9 @@ allOf:
     items:
       - const: "server"
       - type: string
-        pattern: "^https?://.+$"
+        pattern: "^https?://[^/]+/?$"
+        errorMessage:
+          pattern: "server URL must be http(s) and must not include additional path segments"
     additionalItems: false
     errorMessage:
       minItems: "server tag must include the server URL"
