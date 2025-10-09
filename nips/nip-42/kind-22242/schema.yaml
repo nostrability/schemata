@@ -8,6 +8,11 @@ allOf:
       kind:
         const: 22242
         description: "Kind 22242 identifies an authentication event"
+        errorMessage: "kind must equal 22242"
+      content:
+        const: ""
+        description: "Content is always the empty string for NIP-42 authentication events"
+        errorMessage: "content must be empty for NIP-42 authentication events"
       tags:
         type: array
         items:
