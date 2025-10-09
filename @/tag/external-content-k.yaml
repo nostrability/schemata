@@ -1,0 +1,2 @@
+allOf:
+  - $ref: "nips/nip-73/tag/k/schema.yaml"
