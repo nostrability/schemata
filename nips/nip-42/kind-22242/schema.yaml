@@ -12,7 +12,6 @@ allOf:
         type: array
         items:
           $ref: "@/tag.yaml"
-        minItems: 2
         allOf:
           - contains:
               $ref: "@/tag/auth-relay.yaml"
