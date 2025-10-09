@@ -1,6 +1,6 @@
 type: array
-title: "Relay Authentication Challenge"
-description: "Relay-initiated AUTH message carrying the challenge the client must sign"
+title: Relay Authentication Challenge
+description: Relay-initiated AUTH message carrying the challenge the client must sign
 items:
   - const: "AUTH"
   - type: string
