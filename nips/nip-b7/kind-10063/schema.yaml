@@ -11,6 +11,7 @@ allOf:
         items: 
           $ref: "@/tag/server.yaml"
         additionalItems: false
+        # Blossom lists are intended to advertise at least one reachable server.
         minItems: 1
         errorMessage:
           type: "tags must be an array of server tags"
