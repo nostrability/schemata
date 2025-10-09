@@ -3,9 +3,10 @@ allOf:
   - $ref: "@/tag.yaml"
   - type: array
     minItems: 2
+    maxItems: 3
     items:
       - const: "mint"
       - type: string
         pattern: '^https?://.+$'
-    additionalItems:
-      type: string
+      - type: string
+    additionalItems: false
