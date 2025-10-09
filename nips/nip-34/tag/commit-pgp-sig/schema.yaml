@@ -10,5 +10,5 @@ allOf:
           - type: string
             const: ""
           - type: string
-            pattern: '^-----BEGIN PGP SIGNATURE-----'
+            pattern: '^\-\-\-\-\-BEGIN PGP SIGNATURE\-\-\-\-\-[\s\S]*\-\-\-\-\-END PGP SIGNATURE\-\-\-\-\-$'
     additionalItems: false
