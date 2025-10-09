@@ -6,5 +6,5 @@ allOf:
     items:
       - const: "pubkey"
       - type: string
-        pattern: '^02[0-9a-fA-F]{64}$'
+        pattern: '^[a-f0-9]{64}$'
     additionalItems: false
