@@ -1,0 +1,108 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind30403
+description: Draft/Inactive Classified Listing (NIP-99). Same structure as kind 30402.
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 30403
+      tags:
+        type: array
+        items:
+          allOf:
+            # title
+            - if:
+                type: array
+                items:
+                  - const: "title"
+              then:
+                type: array
+                minItems: 2
+                maxItems: 2
+                items:
+                  - const: "title"
+                  - type: string
+                    minLength: 1
+            # summary
+            - if:
+                type: array
+                items:
+                  - const: "summary"
+              then:
+                type: array
+                minItems: 2
+                maxItems: 2
+                items:
+                  - const: "summary"
+                  - type: string
+                    minLength: 1
+            # published_at (unix seconds as string)
+            - if:
+                type: array
+                items:
+                  - const: "published_at"
+              then:
+                type: array
+                minItems: 2
+                maxItems: 2
+                items:
+                  - const: "published_at"
+                  - type: string
+                    pattern: "^[0-9]+$"
+            # location
+            - if:
+                type: array
+                items:
+                  - const: "location"
+              then:
+                type: array
+                minItems: 2
+                maxItems: 2
+                items:
+                  - const: "location"
+                  - type: string
+                    minLength: 1
+            # status (active|sold)
+            - if:
+                type: array
+                items:
+                  - const: "status"
+              then:
+                type: array
+                minItems: 2
+                maxItems: 2
+                items:
+                  - const: "status"
+                  - type: string
+                    enum: ["active", "sold"]
+            # price ["price", "<number>", "<currency>", "<frequency>"?]
+            - if:
+                type: array
+                items:
+                  - const: "price"
+              then:
+                type: array
+                minItems: 3
+                maxItems: 4
+                items:
+                  - const: "price"
+                  - type: string
+                    pattern: "^\\d+(?:\\.\\d+)?$"
+                  - type: string
+                    pattern: "^[A-Za-z]{3,6}$"
+                  - type: string
+                    pattern: "^[A-Za-z]+$"
+            # geohash tag ["g", "<geohash>"]
+            - if:
+                type: array
+                items:
+                  - const: "g"
+              then:
+                type: array
+                minItems: 2
+                maxItems: 2
+                items:
+                  - const: "g"
+                  - type: string
+                    pattern: "^[0-9bcdefghjkmnpqrstuvwxyz]+$"

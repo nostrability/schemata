@@ -1,0 +1,58 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind1631
+description: NIP-34 status event indicating Applied / Merged / Resolved state
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 1631
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        minItems: 1
+        allOf:
+          - contains:
+              $ref: "@/tag/e-root.yaml"
+          - if:
+              contains:
+                type: array
+                minItems: 4
+                items:
+                  - const: "e"
+                  - type: string
+                  - {}
+                  - const: "reply"
+            then:
+              contains:
+                $ref: "@/tag/e-status-reply.yaml"
+          - if:
+              contains:
+                type: array
+                items:
+                  - const: "merge-commit"
+            then:
+              contains:
+                $ref: "@/tag/merge-commit.yaml"
+          - if:
+              contains:
+                type: array
+                items:
+                  - const: "applied-as-commits"
+            then:
+              contains:
+                $ref: "@/tag/applied-as-commits.yaml"
+          - if:
+              contains:
+                type: array
+                items:
+                  - const: "commit"
+            then:
+              contains:
+                $ref: "@/tag/commit.yaml"
+        errorMessage:
+          contains: "tags must include an e tag referencing the root event"
+    required:
+      - kind
+      - tags

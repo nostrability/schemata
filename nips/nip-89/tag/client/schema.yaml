@@ -1,0 +1,19 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    minItems: 4
+    items:
+      - const: "client"
+      - title: name
+        type: string
+        minLength: 1
+      - title: handler_address
+        type: string
+        # NIP-89 handler address should point to kind 31990
+        pattern: '^31990:[a-f0-9]{64}:.+$'
+      - title: relay_hint
+        type: string
+        pattern: '^(ws://|wss://).+$'
+    additionalItems: false
+

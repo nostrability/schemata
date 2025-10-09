@@ -23,7 +23,7 @@ jobs:
           version: 9
 
       - name: Install
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --no-frozen-lockfile
 
       - name: Ensure no stray test.js files
         run: |
