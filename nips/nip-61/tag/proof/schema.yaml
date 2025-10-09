@@ -1,9 +1,9 @@
-$schema: "https://json-schema.org/draft/2020-12/schema"
+$schema: "http://json-schema.org/draft-07/schema#"
 allOf:
   - $ref: "@/tag.yaml"
   - type: array
     minItems: 2
-    prefixItems:
+    items:
       - const: "proof"
       - type: string
-    items: false
+    additionalItems: false

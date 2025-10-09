@@ -1,7 +1,2 @@
-<<<<<<< HEAD
-allOf: 
-  - $ref: "nips/nip-61/tag/relay/schema.yaml"
-=======
 allOf:
   - $ref: "nips/nip-61/tag/relay/schema.yaml"
->>>>>>> master
