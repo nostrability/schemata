@@ -1,6 +1,6 @@
 $schema: "http://json-schema.org/draft-07/schema#"
 title: kind10063
-allOf: 
+allOf:
   - $ref: "@/note.yaml"
   - type: object
     properties: 
