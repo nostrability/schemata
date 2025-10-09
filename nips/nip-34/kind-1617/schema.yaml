@@ -1,0 +1,59 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind1617
+description: NIP-34 patch event (git format-patch payload)
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 1617
+      content:
+        type: string
+        minLength: 1
+        description: "Patch contents as produced by git format-patch"
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        minItems: 1
+        allOf:
+          - contains:
+              $ref: "@/tag/a.yaml"
+          - if:
+              contains:
+                type: array
+                items:
+                  - const: "commit"
+            then:
+              contains:
+                $ref: "@/tag/commit.yaml"
+          - if:
+              contains:
+                type: array
+                items:
+                  - const: "parent-commit"
+            then:
+              contains:
+                $ref: "@/tag/parent-commit.yaml"
+          - if:
+              contains:
+                type: array
+                items:
+                  - const: "commit-pgp-sig"
+            then:
+              contains:
+                $ref: "@/tag/commit-pgp-sig.yaml"
+          - if:
+              contains:
+                type: array
+                items:
+                  - const: "committer"
+            then:
+              contains:
+                $ref: "@/tag/committer.yaml"
+        errorMessage:
+          contains: "tags must include required tag: a"
+    required:
+      - kind
+      - content
+      - tags

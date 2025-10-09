@@ -1,0 +1,78 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind30617
+description: NIP-34 repository announcement event
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 30617
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        minItems: 1
+        allOf:
+          - contains:
+              $ref: "@/tag/d.yaml"
+          - if:
+              contains:
+                type: array
+                items:
+                  - const: "name"
+            then:
+              contains:
+                $ref: "@/tag/name.yaml"
+          - if:
+              contains:
+                type: array
+                items:
+                  - const: "description"
+            then:
+              contains:
+                $ref: "@/tag/description.yaml"
+          - if:
+              contains:
+                type: array
+                items:
+                  - const: "web"
+            then:
+              contains:
+                $ref: "@/tag/web.yaml"
+          - if:
+              contains:
+                type: array
+                items:
+                  - const: "clone"
+            then:
+              contains:
+                $ref: "@/tag/clone.yaml"
+          - if:
+              contains:
+                type: array
+                items:
+                  - const: "relays"
+            then:
+              contains:
+                $ref: "@/tag/relays.yaml"
+          - if:
+              contains:
+                type: array
+                items:
+                  - const: "maintainers"
+            then:
+              contains:
+                $ref: "@/tag/maintainers.yaml"
+          - if:
+              contains:
+                type: array
+                items:
+                  - const: "r"
+            then:
+              contains:
+                $ref: "@/tag/r-euc.yaml"
+        errorMessage:
+          contains: "tags must include required tag: d"
+    required:
+      - kind
+      - tags
