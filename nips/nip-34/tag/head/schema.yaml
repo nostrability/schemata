@@ -1,0 +1,12 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    description: "Repository HEAD reference"
+    minItems: 2
+    maxItems: 2
+    items:
+      - const: "HEAD"
+      - type: string
+        pattern: '^ref: refs/heads/[^\s]+$'
+    additionalItems: false

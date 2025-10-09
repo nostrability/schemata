@@ -1,0 +1,17 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    minItems: 5
+    maxItems: 5
+    items:
+      - const: "committer"
+      - type: string
+        minLength: 1
+      - type: string
+        pattern: '^[^\s@]+@[^\s@]+$'
+      - type: string
+        pattern: '^-?[0-9]+$'
+      - type: string
+        pattern: '^-?[0-9]+$'
+    additionalItems: false

@@ -1,0 +1,13 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    description: "Recognized maintainers for the repository"
+    minItems: 2
+    items:
+      - const: "maintainers"
+      - type: string
+        minLength: 1
+    additionalItems:
+      type: string
+      minLength: 1

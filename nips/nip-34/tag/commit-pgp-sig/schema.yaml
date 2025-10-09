@@ -1,0 +1,14 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    minItems: 2
+    maxItems: 2
+    items:
+      - const: "commit-pgp-sig"
+      - anyOf:
+          - type: string
+            const: ""
+          - type: string
+            pattern: '^-----BEGIN PGP SIGNATURE-----'
+    additionalItems: false

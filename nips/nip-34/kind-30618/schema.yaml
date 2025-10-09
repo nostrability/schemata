@@ -1,0 +1,39 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind30618
+description: NIP-34 repository state announcement event
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 30618
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        minItems: 1
+        allOf:
+          - contains:
+              $ref: "@/tag/d.yaml"
+          - if:
+              contains:
+                type: array
+                items:
+                  - type: string
+                    pattern: '^refs/.*'
+            then:
+              contains:
+                $ref: "@/tag/git-ref.yaml"
+          - if:
+              contains:
+                type: array
+                items:
+                  - const: "HEAD"
+            then:
+              contains:
+                $ref: "@/tag/head.yaml"
+        errorMessage:
+          contains: "tags must include required tag: d"
+    required:
+      - kind
+      - tags
