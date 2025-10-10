@@ -1,0 +1,19 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind7376
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 7376
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        allOf:
+          - contains:
+              $ref: "@/tag/e-redeemed.yaml"
+          - contains:
+              $ref: "@/tag/p.yaml"
+    required:
+      - tags
