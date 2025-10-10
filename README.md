@@ -265,7 +265,7 @@ For maintainers: See [RELEASE.md](RELEASE.md) for the step-by-step release proce
 
 ## License
 
-[GPL-3.0](https://github.com/nostrability/schemata#GPL-3.0-1-ov-file)
+[GPL-3.0-or-later](LICENSE)
 
 ## Support
 
