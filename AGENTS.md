@@ -147,6 +147,7 @@ schemata/
 - Utilize vitest framework
 - Make sure schemas test the data structure contained in payloads
 - Ensure that schemas provide programmatic results, such that the result can be used in the release workflow to block releases when a test is failing, or block a PR merge when a test is failing.
+- Use JSON Schema draft-07 for all schemata to minimize complexity and maintain stability and compatibility.
 
 ## Schema Validation Properties
 

@@ -1,0 +1,59 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind15
+description: Encrypted file message event defined by NIP-17
+allOf:
+  - $ref: "@/note-unsigned.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 15
+        description: "Kind 15 identifies an unsigned encrypted file message"
+      id:
+        allOf:
+          - $ref: "@/secp256k1.yaml"
+        description: "Deterministic event hash as defined in NIP-01"
+      pubkey:
+        allOf:
+          - $ref: "@/secp256k1.yaml"
+        description: "Sender public key"
+      content:
+        type: string
+        format: uri
+        description: "URL pointing to the encrypted file payload"
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        minItems: 6
+        allOf:
+          - contains:
+              $ref: "@/tag/p.yaml"
+            errorMessage:
+              contains: "tags must include at least one p tag identifying a receiver"
+          - contains:
+              $ref: "@/tag/file-type.yaml"
+            errorMessage:
+              contains: "tags must include a file-type tag specifying the original MIME type"
+          - contains:
+              $ref: "@/tag/encryption-algorithm.yaml"
+            errorMessage:
+              contains: "tags must include an encryption-algorithm tag"
+          - contains:
+              $ref: "@/tag/decryption-key.yaml"
+            errorMessage:
+              contains: "tags must include a decryption-key tag"
+          - contains:
+              $ref: "@/tag/decryption-nonce.yaml"
+            errorMessage:
+              contains: "tags must include a decryption-nonce tag"
+          - contains:
+              $ref: "@/tag/x.yaml"
+            errorMessage:
+              contains: "tags must include an x tag with the encrypted file checksum"
+    required:
+      - kind
+      - id
+      - pubkey
+  - not:
+      required:
+        - sig

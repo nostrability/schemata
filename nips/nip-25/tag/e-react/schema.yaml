@@ -1,0 +1,20 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+title: reactionETag
+description: Event reference tag for reaction events (NIP-25)
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    minItems: 2
+    items:
+      - const: "e"
+      - type: string
+        pattern: '^[a-f0-9]{64}$'
+    additionalItems:
+      anyOf:
+        - type: string
+          pattern: '^(ws://|wss://).+$'
+        - $ref: "@/secp256k1.yaml"
+        - type: string
+          minLength: 1
+    errorMessage:
+      minItems: "e tag must include the event id"

@@ -1,0 +1,12 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    minItems: 2
+    items:
+      - const: "applied-as-commits"
+      - type: string
+        pattern: '^[a-f0-9]{7,40}$'
+    additionalItems:
+      type: string
+      pattern: '^[a-f0-9]{7,40}$'

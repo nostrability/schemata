@@ -1,0 +1,27 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind10050
+description: Preferred DM relay list event defined by NIP-17
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 10050
+        description: "Kind 10050 enumerates preferred relays for receiving direct messages"
+      content:
+        type: string
+        description: "Optional human readable notes; usually an empty string"
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        allOf:
+          - if:
+              minItems: 1
+            then:
+              contains:
+                $ref: "@/tag/dm-relay.yaml"
+              errorMessage:
+                contains: "tags must include at least one relay tag when relays are configured"
+    required:
+      - kind

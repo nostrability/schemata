@@ -23,14 +23,14 @@ properties:
     description: "The public key of the note's author"
   sig:
     type: string
-    errorMessage: "sig must be a string"
-    description: "The cryprographic signature of the note"
+    pattern: "^[a-f0-9]{128}$"
+    errorMessage: "sig must be 128 lowercase hex characters (64 bytes)"
+    description: "The cryptographic signature of the note"
   tags:
     type: array
-    errorMessage: "tags must be an array of strings"
+    errorMessage: "tags must be an array of valid tag tuples"
     description: "The tags of the note"
-    items:
-    - $ref: "@/tag.yaml"
+    items: { $ref: "@/tag.yaml" }
       
 required:
 - content
@@ -40,3 +40,4 @@ required:
 - pubkey
 - sig
 - tags
+additionalProperties: false
