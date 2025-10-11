@@ -1,0 +1,54 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind444MarmotWelcome
+description: Unsigned Marmot Welcome event defined in MIP-02 and delivered via NIP-59 gift wrap.
+type: object
+additionalProperties: false
+properties:
+  id:
+    type: string
+    minLength: 64
+    maxLength: 64
+    pattern: '^[a-f0-9]{64}$'
+    description: 32-byte event identifier encoded as lowercase hex.
+    errorMessage:
+      pattern: id must be a 64 character lowercase hex string
+  pubkey:
+    allOf:
+      - $ref: "@/secp256k1.yaml"
+    description: Public key of the administrator sending the welcome.
+    errorMessage: pubkey must be the lowercase hex-encoded secp256k1 key of the sender
+  created_at:
+    type: integer
+    description: Unix timestamp, in seconds, when the welcome was produced.
+    errorMessage: created_at must be a unix timestamp expressed in seconds
+  kind:
+    const: 444
+    description: Event kind reserved for Marmot Welcome events (MIP-02).
+  content:
+    type: string
+    minLength: 2
+    pattern: '^(?:[0-9a-f]{2})+$'
+    description: Hex-encoded MLS Welcome object serialized as an MLSMessage.
+    errorMessage:
+      pattern: content must be a lowercase hex string representing the MLS Welcome payload
+      minLength: content must not be empty
+  tags:
+    type: array
+    items:
+      $ref: "@/tag.yaml"
+    minItems: 2
+    allOf:
+      - contains:
+          $ref: "@/tag/e.yaml"
+      - contains:
+          $ref: "@/tag/relays.yaml"
+    description: Tags MUST include both the referenced KeyPackage event (e tag) and relay hints for group traffic.
+    errorMessage:
+      contains: tags must include both an e tag referencing the key package event and a relays tag listing group relays
+required:
+  - id
+  - pubkey
+  - created_at
+  - kind
+  - content
+  - tags
