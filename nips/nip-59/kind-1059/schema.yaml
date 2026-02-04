@@ -1,0 +1,30 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind1059
+description: Gift wrap event containing encrypted seal (NIP-59)
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 1059
+        description: "Kind 1059 identifies a gift wrap containing an encrypted seal"
+      pubkey:
+        allOf:
+          - $ref: "@/secp256k1.yaml"
+        description: "Ephemeral public key (not the sender's real pubkey)"
+      content:
+        type: string
+        minLength: 1
+        description: "NIP-44 encrypted JSON of the seal event"
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        minItems: 1
+        allOf:
+          - contains:
+              $ref: "@/tag/p.yaml"
+        errorMessage:
+          contains: "tags must include exactly one p tag identifying the recipient"
+    required:
+      - kind
