@@ -1,0 +1,21 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind13
+description: Seal event containing encrypted rumor (NIP-59)
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 13
+        description: "Kind 13 identifies a seal containing an encrypted rumor"
+      content:
+        type: string
+        minLength: 1
+        description: "NIP-44 encrypted JSON of the rumor event"
+      tags:
+        type: array
+        maxItems: 0
+        description: "Seals MUST NOT have any tags to avoid metadata leakage"
+        errorMessage: "seals must not contain any tags"
+    required:
+      - kind
