@@ -1,0 +1,37 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind445MarmotGroupEvent
+description: Marmot Protocol group event carrying encrypted MLS messages as defined in MIP-03.
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 445
+        description: Event kind reserved for Marmot group Proposal, Commit, and Application messages.
+      pubkey:
+        allOf:
+          - $ref: "@/secp256k1.yaml"
+        description: Ephemeral secp256k1 public key generated uniquely for each group event publication.
+        errorMessage: pubkey must be a lowercase hex-encoded secp256k1 public key
+      content:
+        type: string
+        minLength: 4
+        pattern: '^[A-Za-z0-9+/]+={0,2}$'
+        description: Base64-encoded NIP-44 ciphertext encapsulating the MLSMessage derived from the exporter_secret key material.
+        errorMessage:
+          pattern: content must be a base64 string containing the NIP-44 encrypted MLSMessage payload
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        minItems: 1
+        allOf:
+          - contains:
+              $ref: "@/tag/h.yaml"
+        description: Tags MUST include the h tag containing the Marmot group identifier defined in MIP-01.
+        errorMessage:
+          contains: tags must include at least one h tag with the Marmot group identifier
+    required:
+      - kind
+      - content
+      - tags
