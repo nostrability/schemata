@@ -191,5 +191,5 @@ allOf:
       time:
         anyOf:
           - type: number
-          - type: null
+          - type: "null"
     # additionalProperties: false
