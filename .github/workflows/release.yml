@@ -90,10 +90,22 @@ jobs:
             echo "exists=false" >> $GITHUB_OUTPUT
           fi
 
+      - name: Debug token
+        run: |
+          if [ -z "${{ secrets.NPM_TOKEN }}" ]; then
+            echo "ERROR: NPM_TOKEN secret is empty or missing!"
+          else
+            echo "NPM_TOKEN is set (length: ${#NPM_TOKEN})"
+          fi
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
       - name: Publish to NPM
         if: steps.check_package.outputs.exists == 'false'
         run: |
           echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc
+          cat ~/.npmrc | head -c 40
+          echo "..."
           pnpm publish --no-git-checks --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
