@@ -96,4 +96,4 @@ jobs:
 
       - name: Publish to NPM
         if: steps.check_package.outputs.exists == 'false'
-        run: pnpm publish --no-git-checks --access public --provenance
+        run: npm publish --provenance --access public
