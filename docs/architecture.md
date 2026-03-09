@@ -82,6 +82,11 @@ nips/
 │   └── tag/          # Tag definitions
 ├── nip-XX/           # Other NIPs
 └── nipless/          # Experimental kinds
+
+mips/
+└── mip-00/           # MLS protocol (Marmot Improvement Proposals)
+    ├── kind-*/       # MIP event kinds
+    └── tag/          # MIP tag definitions
 ```
 
 ### Schema Inheritance

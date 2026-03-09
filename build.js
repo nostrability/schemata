@@ -1,7 +1,7 @@
 /**
  * build.js
  *
- * 1) Finds all .json in dist/@ and dist/nips.
+ * 1) Finds all .json in dist/@, dist/nips, and dist/mips.
  * 2) Builds named exports in dist/bundle/schemas.js with custom logic:
  *    - If parent (or grandparent) is "tag":
  *        * File named "_A" => "ATagSchema", "_P" => "PTagSchema", etc.
@@ -26,6 +26,7 @@ import { resolve, join, basename, dirname } from 'path';
 
 const aliasDir  = resolve('dist/@');
 const nipsDir   = resolve('dist/nips');
+const mipsDir   = resolve('dist/mips');
 const bundleDir = resolve('dist/bundle');
 
 function getAllJsonFiles(dir) {
@@ -193,11 +194,13 @@ function prioritizeExports(exports) {
 function main() {
   const aliasFiles = getAllJsonFiles(aliasDir);
   const nipsFiles  = getAllJsonFiles(nipsDir);
+  const mipsFiles  = getAllJsonFiles(mipsDir);
 
   const aliasExports = aliasFiles.map(generateAliasExports);
   const nipsExports  = nipsFiles.map(generateNipsExports);
+  const mipsExports  = mipsFiles.map(generateNipsExports);
 
-  const combined = prioritizeExports([...nipsExports, ...aliasExports]);
+  const combined = prioritizeExports([...nipsExports, ...mipsExports, ...aliasExports]);
 
   const exportLines = combined.map(({ exportName, relativePath }) =>
     `export { default as ${exportName} } from '../${relativePath}';`

@@ -5,7 +5,7 @@
  *
  * This script:
  *   1) Reads "input.json" (a schema).
- *   2) Finds any "$ref" that starts with "nips/" or "@/".
+ *   2) Finds any "$ref" that starts with "nips/", "mips/", or "@/".
  *   3) Replaces it with an absolute path pointing inside "dist/...".
  *   4) Writes the result back to "output.json".
  *
@@ -31,6 +31,9 @@ async function rewriteRefs(inputFile, outputFile) {
             const absolute = path.join(distRoot, val);
             obj[key] = absolute;
           } else if (val.startsWith("nips/")) {
+            const absolute = path.join(distRoot, val);
+            obj[key] = absolute;
+          } else if (val.startsWith("mips/")) {
             const absolute = path.join(distRoot, val);
             obj[key] = absolute;
           }

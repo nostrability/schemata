@@ -131,6 +131,81 @@ jobs:
             done
           fi
           
+          # Process all MIPs to extract kinds and messages
+          if [ -d "temp_dist/mips" ]; then
+            for mip_dir in temp_dist/mips/*; do
+              if [ -d "$mip_dir" ]; then
+                mip_name=$(basename "$mip_dir")
+
+                # Extract kind schemas (events)
+                for kind_dir in "$mip_dir"/kind-*; do
+                  if [ -d "$kind_dir" ]; then
+                    kind_num=$(basename "$kind_dir" | sed 's/kind-//')
+                    if [ -f "$kind_dir/schema.json" ]; then
+                      # Copy as {kind}.json to note/kind/
+                      cp "$kind_dir/schema.json" "pages_dist/note/kind/${kind_num}.json"
+                      echo "Copied kind $kind_num from $mip_name"
+                    fi
+                  fi
+                done
+
+                # Extract tag schemas
+                if [ -d "$mip_dir/tag" ]; then
+                  for tag_dir in "$mip_dir/tag"/*; do
+                    if [ -d "$tag_dir" ]; then
+                      tag_name=$(basename "$tag_dir")
+                      if [ -f "$tag_dir/schema.json" ]; then
+                        # If tag already exists from another NIP/MIP, use mip prefix
+                        if [ -f "pages_dist/tag/${tag_name}.json" ]; then
+                          tag_filename="${mip_name}_${tag_name}"
+                        else
+                          tag_filename="${tag_name}"
+                        fi
+
+                        cp "$tag_dir/schema.json" "pages_dist/tag/${tag_filename}.json"
+                        echo "Copied tag $tag_name from $mip_name"
+                      fi
+                    fi
+                  done
+                fi
+
+                # Extract message schemas (protocol messages)
+                if [ -d "$mip_dir/messages" ]; then
+                  for msg_dir in "$mip_dir/messages"/*; do
+                    if [ -d "$msg_dir" ]; then
+                      msg_type=$(basename "$msg_dir")
+                      if [ -f "$msg_dir/schema.json" ]; then
+                        # Convert message type to uppercase for consistency
+                        # Use same mappings as NIP block and $id generation
+                        case "$msg_type" in
+                          client-req) msg_name="REQ" ;;
+                          client-event) msg_name="EVENT" ;;
+                          client-close) msg_name="CLOSE" ;;
+                          client-auth) msg_name="AUTH" ;;
+                          relay-event) msg_name="EVENT" ;;
+                          relay-ok) msg_name="OK" ;;
+                          relay-eose) msg_name="EOSE" ;;
+                          relay-closed) msg_name="CLOSED" ;;
+                          relay-notice) msg_name="NOTICE" ;;
+                          relay-auth) msg_name="AUTH" ;;
+                          *) msg_name=$(echo "$msg_type" | tr '[:lower:]' '[:upper:]' | tr '-' '_') ;;
+                        esac
+
+                        # If message already exists, use mip prefix
+                        if [ -f "pages_dist/message/${msg_name}.json" ]; then
+                          msg_name="${mip_name}_${msg_name}"
+                        fi
+
+                        cp "$msg_dir/schema.json" "pages_dist/message/${msg_name}.json"
+                        echo "Copied message $msg_name from $mip_name"
+                      fi
+                    fi
+                  done
+                fi
+              fi
+            done
+          fi
+
           # Create an index.html for basic navigation
           cat > pages_dist/index.html << 'EOF'
           <!DOCTYPE html>
