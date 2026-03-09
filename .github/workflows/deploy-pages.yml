@@ -176,7 +176,20 @@ jobs:
                       msg_type=$(basename "$msg_dir")
                       if [ -f "$msg_dir/schema.json" ]; then
                         # Convert message type to uppercase for consistency
-                        msg_name=$(echo "$msg_type" | tr '[:lower:]' '[:upper:]' | tr '-' '_')
+                        # Use same mappings as NIP block and $id generation
+                        case "$msg_type" in
+                          client-req) msg_name="REQ" ;;
+                          client-event) msg_name="EVENT" ;;
+                          client-close) msg_name="CLOSE" ;;
+                          client-auth) msg_name="AUTH" ;;
+                          relay-event) msg_name="EVENT" ;;
+                          relay-ok) msg_name="OK" ;;
+                          relay-eose) msg_name="EOSE" ;;
+                          relay-closed) msg_name="CLOSED" ;;
+                          relay-notice) msg_name="NOTICE" ;;
+                          relay-auth) msg_name="AUTH" ;;
+                          *) msg_name=$(echo "$msg_type" | tr '[:lower:]' '[:upper:]' | tr '-' '_') ;;
+                        esac
 
                         # If message already exists, use mip prefix
                         if [ -f "pages_dist/message/${msg_name}.json" ]; then
