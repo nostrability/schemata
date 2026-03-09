@@ -9,6 +9,11 @@ properties:
     type: integer
     errorMessage: "created_at must be a timestamp expressed in seconds (not milliseconds)"
     description: "The timestamp of the note creation"
+  id:
+    allOf:
+    - $ref: "@/secp256k1.yaml"
+    errorMessage: "id must be a valid hash"
+    description: "The id is a hash derived as specified in NIP-01"
   kind:
     type: integer
   pubkey:
