@@ -30,6 +30,7 @@ schemata/
 2. **For experimental kinds**: `nips/nipless/kind-XXXX/`
 3. **For new message types**: `nips/nip-XX/messages/[client|relay]/`
 4. **For new tag types**: `nips/nip-XX/tag/[letter]/`
+5. **For MIPs (Marmot Improvement Proposals)**: `mips/mip-XX/`
 
 ### Step 2: Create Schema File
 

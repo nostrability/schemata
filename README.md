@@ -238,9 +238,12 @@ schemata/
 ├── nips/               # Schema implementations by NIP
 │   ├── nip-01/        # Core protocol
 │   └── nip-*/         # Other NIPs
+├── mips/               # Schema implementations by MIP (Marmot Improvement Proposals)
+│   └── mip-00/        # MLS protocol schemas
 ├── dist/               # Built schemas (git-ignored)
 │   ├── @/             # Compiled aliases
 │   ├── nips/          # Compiled schemas
+│   ├── mips/          # Compiled MIP schemas
 │   └── bundle/        # JavaScript bundle
 └── docs/              # Documentation
 ```

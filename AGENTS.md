@@ -9,7 +9,7 @@ This repository contains JSON Schema definitions for the Nostr protocol. The sch
 ## Key Concepts
 
 ### Schema Organization
-- **Source schemas**: Located in `nips/` directory, organized by NIP number
+- **Source schemas**: Located in `nips/` directory, organized by NIP number; MIP schemas in `mips/`
 - **Aliases**: Located in `@/` directory, providing shortcuts to commonly used schemas
 - **Built schemas**: Generated in `dist/` directory (git-ignored)
 
@@ -120,6 +120,8 @@ schemata/
 │   │   ├── messages/      # Protocol messages
 │   │   └── tag/           # Tag definitions
 │   └── nip-*/             # Other NIPs
+├── mips/                   # Source schemas by MIP (Marmot Improvement Proposals)
+│   └── mip-00/            # MLS protocol schemas
 ├── dist/                   # Built output (git-ignored)
 ├── scripts/                # Build scripts
 ├── .github/workflows/      # CI/CD
@@ -302,14 +304,17 @@ When implementing new features in this repository:
 
 3. **Follow Conventions**
    ```yaml
-   # New event kind schema structure
+   # New NIP event kind schema structure
    nips/nip-XX/kind-YYY/schema.yaml
-   
-   # New message schema structure
+
+   # New NIP message schema structure
    nips/nip-XX/messages/message-type/schema.yaml
-   
-   # New tag schema structure
+
+   # New NIP tag schema structure
    nips/nip-XX/tag/tagname/schema.yaml
+
+   # New MIP schema structure
+   mips/mip-XX/kind-YYY/schema.yaml
    ```
 
 4. **Test the Changes**

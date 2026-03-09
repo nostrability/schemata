@@ -1,7 +1,7 @@
 /**
  * add-schema-ids.js
  * 
- * Adds $id property to all JSON schema files in dist/nips
+ * Adds $id property to all JSON schema files in dist/nips and dist/mips
  * The $id will point to the GitHub Pages URL matching the flattened structure
  */
 
@@ -15,6 +15,7 @@ import { resolve, join, basename, dirname } from 'path';
 
 const GITHUB_PAGES_BASE = 'https://nostrability.github.io/schemata';
 const nipsDir = resolve('dist/nips');
+const mipsDir = resolve('dist/mips');
 
 function getAllJsonFiles(dir) {
   if (!existsSync(dir)) return [];
@@ -33,7 +34,12 @@ function getAllJsonFiles(dir) {
 
 function getSchemaId(filePath) {
   // Parse the path to determine the type and generate the correct URL
-  const relativePath = filePath.replace(nipsDir, '').replace(/^[\\/]/, '');
+  let relativePath;
+  if (filePath.startsWith(mipsDir)) {
+    relativePath = filePath.replace(mipsDir, '').replace(/^[\\/]/, '');
+  } else {
+    relativePath = filePath.replace(nipsDir, '').replace(/^[\\/]/, '');
+  }
   const parts = relativePath.split(/[/\\]/);
   
   // parts[0] = nip-XX
@@ -127,7 +133,7 @@ function processSchema(filePath) {
 function main() {
   console.log('Adding $id properties to schema files...');
   
-  const jsonFiles = getAllJsonFiles(nipsDir);
+  const jsonFiles = [...getAllJsonFiles(nipsDir), ...getAllJsonFiles(mipsDir)];
   console.log(`Found ${jsonFiles.length} JSON files to process`);
   
   jsonFiles.forEach(processSchema);

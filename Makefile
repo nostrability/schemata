@@ -1,7 +1,8 @@
-# Makefile that converts all *.yaml in nips/ and @ -> dist/,
+# Makefile that converts all *.yaml in nips/, mips/ and @ -> dist/,
 # rewrites references to absolute paths, then dereferences them.
 
 NIPS_DIR := nips
+MIPS_DIR := mips
 ALIASES_DIR := @
 DIST_DIR := dist
 
@@ -10,8 +11,9 @@ REWRITE_SCRIPT := node $(realpath scripts/rewriteRefs.js)
 DEREF_SCRIPT := node $(realpath scripts/deref.js)
 
 SCHEMA_YAMLS := $(shell find $(NIPS_DIR) -type f -name "*.yaml")
+MIP_YAMLS    := $(shell find $(MIPS_DIR) -type f -name "*.yaml")
 ALIAS_YAMLS  := $(shell find $(ALIASES_DIR) -type f -name "*.yaml")
-ALL_YAMLS    := $(SCHEMA_YAMLS) $(ALIAS_YAMLS)
+ALL_YAMLS    := $(SCHEMA_YAMLS) $(MIP_YAMLS) $(ALIAS_YAMLS)
 
 JSON_SCHEMAS := $(patsubst %.yaml,$(DIST_DIR)/%.json,$(ALL_YAMLS))
 
