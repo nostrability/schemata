@@ -313,8 +313,10 @@ When implementing new features in this repository:
    # New NIP tag schema structure
    nips/nip-XX/tag/tagname/schema.yaml
 
-   # New MIP schema structure
+   # New MIP schema structures
    mips/mip-XX/kind-YYY/schema.yaml
+   mips/mip-XX/tag/tagname/schema.yaml
+   mips/mip-XX/messages/message-type/schema.yaml
    ```
 
 4. **Test the Changes**
