@@ -1,8 +1,16 @@
 /**
  * add-schema-ids.js
- * 
- * Adds $id property to all JSON schema files in dist/nips and dist/mips
- * The $id will point to the GitHub Pages URL matching the flattened structure
+ *
+ * Adds $id property to all JSON schema files in dist/nips and dist/mips.
+ * The $id will point to the GitHub Pages URL matching the flattened structure.
+ *
+ * Uses a two-pass system to detect name collisions between NIPs and MIPs:
+ *   Pass 1: collect all schemas and their intended output slots
+ *   Pass 2: detect collisions, assign prefixed names, write $id
+ *
+ * NIPs are processed first (alphabetically), then MIPs — matching the
+ * glob order used by deploy-pages.yml. The first claimant gets the bare
+ * name; subsequent claimants get "${source}_${name}".
  */
 
 import {
@@ -11,7 +19,7 @@ import {
   writeFileSync,
   existsSync
 } from 'fs';
-import { resolve, join, basename, dirname } from 'path';
+import { resolve, join, basename } from 'path';
 
 const GITHUB_PAGES_BASE = 'https://nostrability.github.io/schemata';
 const nipsDir = resolve('dist/nips');
@@ -32,8 +40,32 @@ function getAllJsonFiles(dir) {
   });
 }
 
-function getSchemaId(filePath) {
-  // Parse the path to determine the type and generate the correct URL
+/**
+ * Convert a message directory name to its uppercase protocol name.
+ */
+function messageSlotName(messageType) {
+  switch (messageType) {
+    case 'client-req': return 'REQ';
+    case 'client-event': return 'EVENT';
+    case 'client-close': return 'CLOSE';
+    case 'client-auth': return 'AUTH';
+    case 'relay-event': return 'EVENT';
+    case 'relay-ok': return 'OK';
+    case 'relay-eose': return 'EOSE';
+    case 'relay-closed': return 'CLOSED';
+    case 'relay-notice': return 'NOTICE';
+    case 'relay-auth': return 'AUTH';
+    default: return messageType.toUpperCase().replace(/-/g, '_');
+  }
+}
+
+/**
+ * Parse a schema file path into a descriptor: { type, slot, source, filePath }
+ *   type:   'kind' | 'tag' | 'message' | null
+ *   slot:   the bare output name (e.g. 'client', 'REQ', '1')
+ *   source: the NIP/MIP directory name (e.g. 'nip-89', 'mip-00')
+ */
+function parseSchema(filePath) {
   let relativePath;
   if (filePath.startsWith(mipsDir)) {
     relativePath = filePath.replace(mipsDir, '').replace(/^[\\/]/, '');
@@ -41,103 +73,113 @@ function getSchemaId(filePath) {
     relativePath = filePath.replace(nipsDir, '').replace(/^[\\/]/, '');
   }
   const parts = relativePath.split(/[/\\]/);
-  
-  // parts[0] = nip-XX
-  // parts[1] = kind-YY | messages | tag | ...
-  // parts[2] = schema.json or subfolder
-  
+
   if (parts.length < 3) return null;
-  
-  const nipDir = parts[0]; // e.g., "nip-01"
-  const typeDir = parts[1]; // e.g., "kind-1", "messages", "tag"
-  
-  // Handle kind schemas
+  if (basename(filePath) !== 'schema.json') return null;
+
+  const source = parts[0];  // e.g. "nip-01", "mip-00"
+  const typeDir = parts[1]; // e.g. "kind-1", "messages", "tag"
+
+  // Kind schemas
   if (typeDir.startsWith('kind-')) {
     const kind = typeDir.replace('kind-', '');
-    if (basename(filePath) === 'schema.json') {
-      return `${GITHUB_PAGES_BASE}/note/kind/${kind}.json`;
-    }
+    return { type: 'kind', slot: kind, source, filePath };
   }
-  
-  // Handle message schemas
-  if (typeDir === 'messages' && parts.length >= 3) {
-    const messageType = parts[2]; // e.g., "client-req", "relay-event"
-    if (basename(filePath) === 'schema.json') {
-      // Convert message type to uppercase format used in GitHub Pages
-      let msgName;
-      switch(messageType) {
-        case 'client-req': msgName = 'REQ'; break;
-        case 'client-event': msgName = 'EVENT'; break;
-        case 'client-close': msgName = 'CLOSE'; break;
-        case 'client-auth': msgName = 'AUTH'; break;
-        case 'relay-event': msgName = 'EVENT'; break;
-        case 'relay-ok': msgName = 'OK'; break;
-        case 'relay-eose': msgName = 'EOSE'; break;
-        case 'relay-closed': msgName = 'CLOSED'; break;
-        case 'relay-notice': msgName = 'NOTICE'; break;
-        case 'relay-auth': msgName = 'AUTH'; break;
-        default: 
-          msgName = messageType.toUpperCase().replace(/-/g, '_');
-      }
-      
-      // Note: In the deploy workflow, if there are conflicts, it prefixes with nip name
-      // For now, we'll use the simple name as the primary ID
-      return `${GITHUB_PAGES_BASE}/message/${msgName}.json`;
-    }
-  }
-  
-  // Handle tag schemas
-  if (typeDir === 'tag') {
-    // If we only have nip-XX/tag/schema.json (generic tag schema)
-    if (parts.length === 2 && parts[1] === 'tag' && basename(filePath) === 'schema.json') {
-      return `${GITHUB_PAGES_BASE}/tag/generic.json`;
-    } 
-    // If we have nip-XX/tag/X/schema.json (specific tag schema)
-    else if (parts.length >= 3 && parts[2] !== 'schema.json') {
-      const tagName = parts[2]; // e.g., "e", "p", "a", "_P"
-      if (basename(filePath) === 'schema.json') {
-        return `${GITHUB_PAGES_BASE}/tag/${tagName}.json`;
-      }
-    }
-    // If parts[2] is 'schema.json', it means we have nip-XX/tag/schema.json
-    else if (parts.length === 3 && parts[2] === 'schema.json') {
-      return `${GITHUB_PAGES_BASE}/tag/generic.json`;
-    }
-  }
-  
-  // For other schemas that don't match the flattened structure, return null
-  return null;
-}
 
-function processSchema(filePath) {
-  try {
-    const content = readFileSync(filePath, 'utf8');
-    const schema = JSON.parse(content);
-    
-    const schemaId = getSchemaId(filePath);
-    if (schemaId) {
-      // Add or overwrite the $id property
-      schema['$id'] = schemaId;
-      
-      // Write back the modified schema
-      writeFileSync(filePath, JSON.stringify(schema, null, 2));
-      console.log(`Added $id to ${filePath}: ${schemaId}`);
-    } else {
-      console.log(`Skipping ${filePath} - doesn't match flattened structure`);
-    }
-  } catch (error) {
-    console.error(`Error processing ${filePath}:`, error.message);
+  // Message schemas
+  if (typeDir === 'messages' && parts.length >= 4) {
+    const messageType = parts[2];
+    return { type: 'message', slot: messageSlotName(messageType), source, filePath };
   }
+
+  // Tag schemas
+  if (typeDir === 'tag') {
+    // nip-XX/tag/schema.json — generic tag
+    if (parts.length === 3 && parts[2] === 'schema.json') {
+      return { type: 'tag', slot: 'generic', source, filePath };
+    }
+    // nip-XX/tag/X/schema.json — named tag
+    if (parts.length >= 4) {
+      const tagName = parts[2];
+      return { type: 'tag', slot: tagName, source, filePath };
+    }
+  }
+
+  return null;
 }
 
 function main() {
   console.log('Adding $id properties to schema files...');
-  
+
+  // Collect all JSON files — NIPs first (alphabetically), then MIPs
   const jsonFiles = [...getAllJsonFiles(nipsDir), ...getAllJsonFiles(mipsDir)];
   console.log(`Found ${jsonFiles.length} JSON files to process`);
-  
-  jsonFiles.forEach(processSchema);
-  
+
+  // Pass 1: parse all schemas into descriptors
+  const descriptors = [];
+  for (const filePath of jsonFiles) {
+    const desc = parseSchema(filePath);
+    if (desc) {
+      descriptors.push(desc);
+    } else {
+      console.log(`Skipping ${filePath} - doesn't match flattened structure`);
+    }
+  }
+
+  // Pass 2: detect collisions and assign $id
+  // Track claimed slots per type: Map<slot, source>
+  const seenTags = new Map();
+  const seenMessages = new Map();
+
+  for (const desc of descriptors) {
+    let outputName;
+
+    if (desc.type === 'tag') {
+      if (seenTags.has(desc.slot)) {
+        // Collision: prefix with source
+        outputName = `${desc.source}_${desc.slot}`;
+        console.log(`  Collision: tag "${desc.slot}" already claimed by ${seenTags.get(desc.slot)}, using ${outputName} for ${desc.source}`);
+      } else {
+        outputName = desc.slot;
+        seenTags.set(desc.slot, desc.source);
+      }
+    } else if (desc.type === 'message') {
+      if (seenMessages.has(desc.slot)) {
+        outputName = `${desc.source}_${desc.slot}`;
+        console.log(`  Collision: message "${desc.slot}" already claimed by ${seenMessages.get(desc.slot)}, using ${outputName} for ${desc.source}`);
+      } else {
+        outputName = desc.slot;
+        seenMessages.set(desc.slot, desc.source);
+      }
+    } else if (desc.type === 'kind') {
+      // Kinds: no collision handling (separate issue)
+      outputName = desc.slot;
+    } else {
+      continue;
+    }
+
+    // Build the $id URL
+    let schemaId;
+    if (desc.type === 'kind') {
+      schemaId = `${GITHUB_PAGES_BASE}/note/kind/${outputName}.json`;
+    } else if (desc.type === 'tag') {
+      schemaId = `${GITHUB_PAGES_BASE}/tag/${outputName}.json`;
+    } else if (desc.type === 'message') {
+      schemaId = `${GITHUB_PAGES_BASE}/message/${outputName}.json`;
+    }
+
+    // Write $id into the schema file
+    try {
+      const content = readFileSync(desc.filePath, 'utf8');
+      const schema = JSON.parse(content);
+      schema['$id'] = schemaId;
+      writeFileSync(desc.filePath, JSON.stringify(schema, null, 2));
+      console.log(`Added $id to ${desc.filePath}: ${schemaId}`);
+    } catch (error) {
+      console.error(`Error processing ${desc.filePath}:`, error.message);
+    }
+  }
+
   console.log('Finished adding $id properties!');
 }
 
