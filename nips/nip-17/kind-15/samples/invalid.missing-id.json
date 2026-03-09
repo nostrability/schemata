@@ -1,0 +1,14 @@
+{
+  "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "created_at": 1700000000,
+  "kind": 15,
+  "tags": [
+    ["p", "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"],
+    ["file-type", "image/png"],
+    ["encryption-algorithm", "aes-gcm"],
+    ["decryption-key", "abc123def456"],
+    ["decryption-nonce", "nonce789"],
+    ["x", "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"]
+  ],
+  "content": "https://example.com/encrypted-file.bin"
+}
