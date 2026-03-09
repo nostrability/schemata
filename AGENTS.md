@@ -53,7 +53,7 @@ pnpm build:test     # Build + run tests
 **Build Process**:
 1. `make convert_json` - Converts YAML to JSON
 2. `make rewrite_refs` - Rewrites references to absolute paths
-3. `scripts/add-schema-ids.js` - Adds `$id` properties with GitHub Pages URLs (before dereferencing)
+3. `scripts/add-schema-ids.js` - Adds `$id` properties with GitHub Pages URLs (collision-aware: if two specs define the same tag or message name, the later one gets a `${source}_${name}` prefix)
 4. `make dereference_json` - Dereferences schemas (embeds references inline, preserving `$id`)
 5. `build.js` - Creates JavaScript bundle with exports
 
@@ -186,7 +186,7 @@ properties:
 
 ### Deploy Pages Workflow (`deploy-pages.yml`)
 - **Trigger**: After successful release or manual
-- **Actions**: Download release, flatten structure, deploy to GitHub Pages
+- **Actions**: Download release, flatten structure, rewrite `$id` to match published paths, deploy to GitHub Pages
 - **Permissions**: contents (read), pages (write), id-token (write)
 
 ## Testing
@@ -220,6 +220,8 @@ When flattening for GitHub Pages:
 - `relay-ok` → `OK`
 - `relay-eose` → `EOSE`
 - `relay-notice` → `NOTICE`
+
+**Collision handling**: When multiple NIPs/MIPs define the same tag or message name, the first one (alphabetically by NIP/MIP, NIPs before MIPs) gets the bare name; subsequent ones are prefixed with their source: `${source}_${name}` (e.g. `mip-00_client`). This applies to both `add-schema-ids.js` (build-time `$id`) and `deploy-pages.yml` (deploy-time flattening). Kind collisions are not currently handled (last writer wins).
 
 ## Quick Commands Reference
 
