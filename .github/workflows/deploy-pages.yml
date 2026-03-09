@@ -295,6 +295,25 @@ jobs:
           echo "Protocol message schemas:"
           ls -la pages_dist/message/ | head -20
 
+      - name: Rewrite $id to match published paths
+        run: |
+          # Safety net: rewrite $id in all flattened schemas to match their
+          # actual published URL. Catches any drift between the JS $id logic
+          # (add-schema-ids.js) and the bash flattening logic above.
+          echo "Rewriting \$id values to match published paths..."
+          for dir in pages_dist/note/kind pages_dist/tag pages_dist/message; do
+            for json_file in "$dir"/*.json; do
+              [ -f "$json_file" ] || continue
+              rel_path="${json_file#pages_dist/}"
+              correct_id="https://nostrability.github.io/schemata/${rel_path}"
+              if jq -e '."$id"' "$json_file" > /dev/null 2>&1; then
+                tmp=$(mktemp)
+                jq --arg id "$correct_id" '."$id" = $id' "$json_file" > "$tmp" && mv "$tmp" "$json_file"
+                echo "  $rel_path"
+              fi
+            done
+          done
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
