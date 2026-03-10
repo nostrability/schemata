@@ -1,0 +1,33 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: NIP-46 Nostr Connect Request/Response Event (kind 24133)
+description: Nostr Connect request/response event (NIP-46)
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 24133
+        description: "Kind 24133 identifies a Nostr Connect request or response"
+        errorMessage: "kind must equal 24133"
+      content:
+        type: string
+        minLength: 1
+        description: "NIP-44 encrypted JSON-RPC message"
+        errorMessage:
+          minLength: "content must be a non-empty string"
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        minItems: 1
+        errorMessage:
+          minItems: "tags must contain at least one tag"
+        allOf:
+          - contains:
+              $ref: "@/tag/p.yaml"
+            errorMessage:
+              contains: "tags must include a p tag identifying the recipient"
+    required:
+      - kind
+      - content
+      - tags
