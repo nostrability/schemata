@@ -1,8 +1,9 @@
 $schema: "http://json-schema.org/draft-07/schema#"
+title: MLS Extensions
 allOf:
   - $ref: "@/tag.yaml"
   - type: array
-    minItems: 2
+    minItems: 3
     uniqueItems: true
     items:
       - const: "mls_extensions"
@@ -12,3 +13,12 @@ allOf:
     additionalItems:
       type: string
       pattern: "^0x[0-9a-fA-F]{4}$"
+    allOf:
+      - contains:
+          const: "0xf2ee"
+        errorMessage:
+          contains: "mls_extensions must include 0xf2ee (marmot_group_data, MIP-01)"
+      - contains:
+          const: "0x000a"
+        errorMessage:
+          contains: "mls_extensions must include 0x000a (last_resort, MIP-00)"
