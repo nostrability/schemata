@@ -20,7 +20,7 @@ allOf:
           $ref: "@/tag.yaml"
         minItems: 1
         contains:
-          $ref: "mips/mip-03/tag/h/schema.yaml"
+          $ref: "@/tag/h.yaml"
         errorMessage:
           contains: "tags must include an h tag with the hex-encoded nostr_group_id"
     required:

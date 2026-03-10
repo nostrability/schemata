@@ -31,7 +31,7 @@ allOf:
           - contains:
               $ref: "@/tag/encoding.yaml"
           - contains:
-              $ref: "mips/mip-00/tag/i/schema.yaml"
+              $ref: "@/tag/mip-00_i.yaml"
         errorMessage:
           contains: "tags must include mls_protocol_version, mls_ciphersuite, mls_extensions, relays, encoding, and i tags"
     required:
