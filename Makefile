@@ -6,7 +6,7 @@ MIPS_DIR := mips
 ALIASES_DIR := @
 DIST_DIR := dist
 
-YAMLCONVERT := yaml-convert
+YAMLCONVERT := node $(realpath node_modules/yaml-convert/cli.js)
 REWRITE_SCRIPT := node $(realpath scripts/rewriteRefs.js)
 DEREF_SCRIPT := node $(realpath scripts/deref.js)
 
