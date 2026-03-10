@@ -5,8 +5,8 @@ allOf:
     minItems: 2
     maxItems: 2
     items:
-      - const: "mls_protocol_version"
+      - const: "h"
       - type: string
-        pattern: "^[0-9]+(\\.[0-9]+)*$"
-        description: "MLS protocol version identifier"
+        pattern: "^[a-f0-9]{64}$"
+        description: "Hex-encoded nostr_group_id (32-byte random identifier)"
     additionalItems: false

@@ -1,0 +1,45 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind444
+description: Marmot Welcome event — private group invitation delivered via NIP-59 gift-wrapping (MIP-02). This event is unsigned to prevent accidental public publishing.
+allOf:
+  - $ref: "@/note-unsigned.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 444
+        description: "Kind number for Marmot Welcome events"
+      id:
+        allOf:
+          - $ref: "@/secp256k1.yaml"
+        description: "Deterministic event hash as defined in NIP-01"
+      pubkey:
+        allOf:
+          - $ref: "@/secp256k1.yaml"
+        description: "Sender public key"
+      content:
+        type: string
+        pattern: "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$"
+        minLength: 160
+        errorMessage: "content must be a base64-encoded MLS Welcome object (at least 160 characters)"
+        description: "Base64-encoded MLS Welcome object"
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        minItems: 3
+        allOf:
+          - contains:
+              $ref: "@/tag/e.yaml"
+          - contains:
+              $ref: "@/tag/relays.yaml"
+          - contains:
+              $ref: "@/tag/encoding.yaml"
+        errorMessage:
+          contains: "tags must include an e tag, relays, and encoding tags"
+    required:
+      - kind
+      - id
+      - pubkey
+  - not:
+      required:
+        - sig

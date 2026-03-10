@@ -1,0 +1,29 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind445
+description: Marmot Group Event — encrypted container for all group communication including MLS control messages (Proposals/Commits) and application messages (MIP-03). Each event uses a fresh ephemeral Nostr keypair for unlinkability.
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 445
+        description: "Kind number for Marmot Group Events"
+      content:
+        type: string
+        pattern: "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$"
+        minLength: 40
+        errorMessage: "content must be a base64-encoded encrypted payload"
+        description: "Base64-encoded payload: 12-byte nonce concatenated with ChaCha20-Poly1305 ciphertext"
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        minItems: 1
+        contains:
+          $ref: "mips/mip-03/tag/h/schema.yaml"
+        errorMessage:
+          contains: "tags must include an h tag with the hex-encoded nostr_group_id"
+    required:
+      - kind
+      - content
+      - tags

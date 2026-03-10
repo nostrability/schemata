@@ -1,12 +1,13 @@
 $schema: "http://json-schema.org/draft-07/schema#"
+title: Encoding
 allOf:
   - $ref: "@/tag.yaml"
   - type: array
     minItems: 2
     maxItems: 2
     items:
-      - const: "mls_protocol_version"
+      - const: "encoding"
       - type: string
-        pattern: "^[0-9]+(\\.[0-9]+)*$"
-        description: "MLS protocol version identifier"
+        enum: ["base64"]
+        description: "Content encoding format"
     additionalItems: false

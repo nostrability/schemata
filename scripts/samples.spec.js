@@ -23,15 +23,15 @@ function loadJSON(path) {
 const summary = { totalSuites: 0, totalCases: 0, passed: 0, failed: 0, failures: [] };
 const ajv = new Ajv({ allErrors: true, strict: false });
 
-// Scan all NIP schemas for samples
-for (const schemaDir of walkForSchemas('nips')) {
+// Scan all NIP and MIP schemas for samples
+for (const schemaDir of [...walkForSchemas('nips'), ...walkForSchemas('mips')]) {
   const samplesDir = join(schemaDir, 'samples');
   if (!existsSync(samplesDir)) continue;
   const rel = schemaDir.split(sep).join('/');
   const distSchema = `dist/${rel}/schema.json`;
   summary.totalSuites += 1;
 
-  describe(`Samples: ${rel.replace(/^nips\//, '')}`, () => {
+  describe(`Samples: ${rel.replace(/^(nips|mips)\//, '')}`, () => {
     if (!existsSync(distSchema)) {
       test.skip('schema not built yet', () => {});
       return;
@@ -48,15 +48,20 @@ for (const schemaDir of walkForSchemas('nips')) {
       test(`${name} should be ${expectValid ? 'valid' : 'invalid'}`, () => {
         const data = loadJSON(file);
         const ok = validate(data);
+        const testPassed = expectValid ? ok : !ok;
+        if (!testPassed) {
+          const errors = expectValid
+            ? validate.errors
+            : [{ message: 'expected invalid but validated' }];
+          summary.failures.push({ schema: rel, sample: name, errors });
+        }
+        summary.passed += testPassed ? 1 : 0;
+        summary.failed += testPassed ? 0 : 1;
         if (expectValid) {
-          if (!ok) summary.failures.push({ schema: rel, sample: name, errors: validate.errors });
           expect(ok).toBe(true);
         } else {
-          if (ok) summary.failures.push({ schema: rel, sample: name, errors: [{ message: 'expected invalid but validated' }] });
           expect(ok).toBe(false);
         }
-        summary.passed += ok ? 1 : 0;
-        summary.failed += ok ? 0 : 1;
       });
     }
   });

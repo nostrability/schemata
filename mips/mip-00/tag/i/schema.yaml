@@ -1,0 +1,16 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+title: KeyPackageRef
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    minItems: 2
+    maxItems: 2
+    items:
+      - const: "i"
+      - type: string
+        pattern: "^[a-f0-9]{64}$"
+        description: "Hex-encoded KeyPackageRef (SHA-256 hash of the KeyPackage)"
+    additionalItems: false
+    errorMessage:
+      minItems: "i tag must have exactly two elements: ['i', <KeyPackageRef>]"
+      maxItems: "i tag must have exactly two elements: ['i', <KeyPackageRef>]"
