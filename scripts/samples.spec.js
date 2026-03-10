@@ -41,7 +41,7 @@ for (const schemaDir of [...walkForSchemas('nips'), ...walkForSchemas('mips')]) 
     const files = readdirSync(samplesDir).filter((f) => f.endsWith('.json')).map((f) => join(samplesDir, f));
     for (const file of files) {
       const name = file.split(sep).pop() || file;
-      const expectValid = name === 'valid.json';
+      const expectValid = name.startsWith('valid');
       const expectInvalid = name.startsWith('invalid');
       if (!expectValid && !expectInvalid) continue;
       summary.totalCases += 1;
