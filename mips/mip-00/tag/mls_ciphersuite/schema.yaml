@@ -8,6 +8,6 @@ allOf:
     items:
       - const: "mls_ciphersuite"
       - type: string
-        pattern: "^0x[0-9a-fA-F]{4}$"
+        pattern: "^0x[0-9a-f]{4}$"
         description: "MLS ciphersuite identifier in 0xXXXX format"
     additionalItems: false
