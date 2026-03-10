@@ -15,16 +15,24 @@ allOf:
         allOf:
           - contains:
               $ref: "@/tag/d.yaml"
+            errorMessage:
+              contains: "tags must include a d tag"
           - contains:
               $ref: "@/tag/room.yaml"
+            errorMessage:
+              contains: "tags must include a room tag"
           - contains:
               $ref: "@/tag/status-room.yaml"
+            errorMessage:
+              contains: "tags must include a status tag"
           - contains:
               $ref: "@/tag/service.yaml"
+            errorMessage:
+              contains: "tags must include a service tag"
           - contains:
               $ref: "@/tag/p.yaml"
-        errorMessage:
-          contains: "tags must include required tags: d, room, status, service, and at least one p tag"
+            errorMessage:
+              contains: "tags must include at least one p tag"
     required:
       - kind
       - tags
