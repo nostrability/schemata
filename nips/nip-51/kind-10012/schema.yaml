@@ -1,0 +1,11 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind10012
+description: Relay Feeds List (NIP-51)
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 10012
+    required:
+      - kind

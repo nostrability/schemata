@@ -1,0 +1,11 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind10009
+description: Simple Groups List (NIP-51)
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 10009
+    required:
+      - kind

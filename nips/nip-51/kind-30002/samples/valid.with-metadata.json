@@ -1,0 +1,15 @@
+{
+  "content": "",
+  "created_at": 1760000000,
+  "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "kind": 30002,
+  "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "sig": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+  "tags": [
+    ["d", "my-relays"],
+    ["relay", "wss://relay.example.com"],
+    ["title", "My Set Title"],
+    ["image", "https://example.com/image.png"],
+    ["description", "A description of this set"]
+  ]
+}

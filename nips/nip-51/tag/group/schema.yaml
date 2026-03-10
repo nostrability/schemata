@@ -1,0 +1,15 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    minItems: 3
+    maxItems: 4
+    items:
+      - const: "group"
+      - type: string
+        minLength: 1
+      - type: string
+        pattern: '^(ws://|wss://).+$'
+      - type: string
+        description: "Optional group name"
+    additionalItems: false

@@ -1,0 +1,13 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    minItems: 2
+    maxItems: 2
+    items:
+      - const: "word"
+      - type: string
+        minLength: 1
+        pattern: '^[^A-Z]+$'
+        description: "Lowercase muted word or phrase"
+    additionalItems: false
