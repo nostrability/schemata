@@ -3,8 +3,9 @@ allOf:
   - $ref: "@/tag.yaml"
   - type: array
     minItems: 2
+    uniqueItems: true
     items:
-      - const: "extensions"
+      - const: "mls_extensions"
       - type: string
         pattern: "^0x[0-9a-fA-F]{4}$"
         description: "MLS extension identifier"

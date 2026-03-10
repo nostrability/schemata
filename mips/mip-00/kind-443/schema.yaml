@@ -10,15 +10,15 @@ allOf:
         description: "Kind number reserved for Marmot KeyPackage events"
       content:
         type: string
-        pattern: "^[0-9a-fA-F]+$"
-        minLength: 2
-        errorMessage: "content must be a hex-encoded MLS KeyPackage bundle"
-        description: "Hex-encoded TLS-serialized MLS KeyPackageBundle"
+        pattern: "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$"
+        minLength: 48
+        errorMessage: "content must be a base64-encoded MLS KeyPackage bundle"
+        description: "Base64-encoded TLS-serialized MLS KeyPackageBundle"
       tags:
         type: array
         items:
           $ref: "@/tag.yaml"
-        minItems: 4
+        minItems: 6
         allOf:
           - contains:
               $ref: "@/tag/mls_protocol_version.yaml"
@@ -28,8 +28,12 @@ allOf:
               $ref: "@/tag/mls_extensions.yaml"
           - contains:
               $ref: "@/tag/relays.yaml"
+          - contains:
+              $ref: "@/tag/encoding.yaml"
+          - contains:
+              $ref: "mips/mip-00/tag/i/schema.yaml"
         errorMessage:
-          contains: "tags must include mls_protocol_version, ciphersuite, extensions, and relays tags"
+          contains: "tags must include mls_protocol_version, mls_ciphersuite, mls_extensions, relays, encoding, and i tags"
     required:
       - kind
       - tags
