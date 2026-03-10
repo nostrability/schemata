@@ -137,6 +137,12 @@ echo '$id: "https://schemata.nostr.watch/note/kind/YYYY"' > nips/nip-XX/kind-YYY
 - `kind-1111` - Comment (NIP-22)
 - `kind-9802` - Highlight (NIP-84)
 - `kind-10002` - Relay list metadata (NIP-65)
+- `kind-13194` - Wallet Connect info (NIP-47)
+- `kind-23194` - Wallet Connect request (NIP-47)
+- `kind-23195` - Wallet Connect response (NIP-47)
+- `kind-23196` - Wallet Connect notification, NIP-04 (NIP-47)
+- `kind-23197` - Wallet Connect notification, NIP-44 (NIP-47)
+- `kind-24133` - Nostr Connect request/response (NIP-46)
 
 </details>
 
@@ -183,6 +189,10 @@ echo '$id: "https://schemata.nostr.watch/note/kind/YYYY"' > nips/nip-XX/kind-YYY
 - `_P` - Uppercase public key reference
 - `_A` - Uppercase replaceable event reference
 - `_K` - Uppercase kind reference
+
+**NIP-47 Tags:**
+- `encryption` - Supported encryption method
+- `notifications` - Supported notification types
 
 </details>
 

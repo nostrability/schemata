@@ -1,0 +1,17 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: NIP-47 Wallet Connect Info Event (kind 13194)
+description: Wallet Connect info event advertising capabilities (NIP-47)
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 13194
+        description: "Kind 13194 identifies a Wallet Connect info event"
+        errorMessage: "kind must equal 13194"
+      content:
+        type: string
+        description: "Space-separated list of supported methods"
+    required:
+      - kind
+      - content

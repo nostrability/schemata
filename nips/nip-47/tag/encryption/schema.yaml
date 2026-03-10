@@ -1,0 +1,14 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+title: Encryption tag
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    description: "Encryption method supported by wallet service"
+    minItems: 2
+    maxItems: 2
+    items:
+      - const: "encryption"
+      - type: string
+        minLength: 1
+        description: "Supported encryption method identifier"
+    additionalItems: false

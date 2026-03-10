@@ -1,0 +1,33 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: NIP-47 Wallet Connect Request Event (kind 23194)
+description: Wallet Connect request event (NIP-47)
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 23194
+        description: "Kind 23194 identifies a Wallet Connect request"
+        errorMessage: "kind must equal 23194"
+      content:
+        type: string
+        minLength: 1
+        description: "Encrypted JSON-RPC request"
+        errorMessage:
+          minLength: "content must be a non-empty string"
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        minItems: 1
+        errorMessage:
+          minItems: "tags must contain at least one tag"
+        allOf:
+          - contains:
+              $ref: "@/tag/p.yaml"
+            errorMessage:
+              contains: "tags must include a p tag identifying the wallet service"
+    required:
+      - kind
+      - content
+      - tags
