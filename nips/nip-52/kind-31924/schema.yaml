@@ -12,9 +12,13 @@ allOf:
           # required: d
           - contains:
               $ref: "@/tag/d.yaml"
+            errorMessage:
+              contains: "tags must include a d tag"
           # required: title
           - contains:
               $ref: "@/tag/title.yaml"
+            errorMessage:
+              contains: "tags must include a title tag"
     # Optional tags: if present, enforce shape
     allOf:
       # references to 31922/31923 events via a

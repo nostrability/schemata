@@ -13,6 +13,8 @@ allOf:
         allOf:
           - contains:
               $ref: "@/tag/l.yaml"
+            errorMessage:
+              contains: "tags must include at least one l (label) tag"
           - contains:
               anyOf:
                 - $ref: "@/tag/e.yaml"
@@ -20,3 +22,5 @@ allOf:
                 - $ref: "@/tag/a.yaml"
                 - $ref: "@/tag/r.yaml"
                 - $ref: "@/tag/t.yaml"
+            errorMessage:
+              contains: "tags must include at least one target tag (e, p, a, r, or t)"

@@ -12,7 +12,11 @@ allOf:
           - contains:
               allOf:
                 - $ref: "@/tag/d.yaml"
+            errorMessage:
+              contains: "tags must include a d tag identifying a supported event kind"
           # At least one ["a", "31990:<pubkey>:<identifier>", <relay?>, <platform?>]
           - contains:
               allOf:
                 - $ref: "@/tag/a.yaml"
+            errorMessage:
+              contains: "tags must include an a tag referencing a handler (kind 31990)"

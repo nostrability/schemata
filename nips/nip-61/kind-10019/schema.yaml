@@ -13,9 +13,15 @@ allOf:
         allOf:
           - contains:
               $ref: "@/tag/relay.yaml"
+            errorMessage:
+              contains: "tags must include a relay tag"
           - contains:
               $ref: "@/tag/mint.yaml"
+            errorMessage:
+              contains: "tags must include a mint tag"
           - contains:
               $ref: "@/tag/pubkey.yaml"
+            errorMessage:
+              contains: "tags must include a pubkey tag for receiving nutzaps"
     required:
       - tags

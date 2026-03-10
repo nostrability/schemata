@@ -12,9 +12,13 @@ allOf:
           # required: d
           - contains:
               $ref: "@/tag/d.yaml"
+            errorMessage:
+              contains: "tags must include a d tag"
           # required: title
           - contains:
               $ref: "@/tag/title.yaml"
+            errorMessage:
+              contains: "tags must include a title tag"
           # required: start (unix timestamp in seconds as string)
           - contains:
               allOf:
@@ -26,6 +30,8 @@ allOf:
                     - type: string
                       pattern: '^[0-9]+$'
                   additionalItems: true
+            errorMessage:
+              contains: "tags must include a start tag with a unix timestamp"
     # Optional tags: if present, enforce shape
     allOf:
       # summary
