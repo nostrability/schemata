@@ -37,3 +37,17 @@ jobs:
 
       - name: Test
         run: pnpm test
+
+      - name: Generate Rust package
+        run: pnpm packages
+
+      - name: Setup Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cargo check generated Rust
+        working-directory: dist/packages/rust
+        run: cargo check
+
+      - name: Rust smoke tests
+        working-directory: dist/packages/rust
+        run: cargo test

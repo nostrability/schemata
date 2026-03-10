@@ -57,6 +57,10 @@ pnpm build:test     # Build + run tests
 4. `make dereference_json` - Dereferences schemas (embeds references inline, preserving `$id`)
 5. `build.js` - Creates JavaScript bundle with exports
 
+**Code Generation** (`pnpm build:all`):
+After the core build, `pnpm packages` generates typed packages from the dereferenced schemas:
+- `pnpm packages:rust` — Runs `scripts/gen-rust.js`, which uses quicktype to generate a Rust crate at `dist/packages/rust/` with serde types for all event kinds, tags, and messages. Produces `CODEGEN_REPORT.md` with success/skip counts and smoke test coverage.
+
 ### 3. Creating a Release
 
 **Prerequisites**:
@@ -183,6 +187,10 @@ properties:
 - **Trigger**: Push tag `v*.*.*` or manual
 - **Actions**: Build, create GitHub release, publish NPM
 - **Secrets needed**: `SCHEMATA_PAT`, `NPM_TOKEN`
+
+### Test Workflow (`test.yml`)
+- **Trigger**: Pull requests, push to `master`
+- **Actions**: Install, run `pnpm test` (172 vitest schema tests), generate Rust package (`pnpm packages`), run `cargo check` and `cargo test` on generated crate
 
 ### Deploy Pages Workflow (`deploy-pages.yml`)
 - **Trigger**: After successful release or manual
