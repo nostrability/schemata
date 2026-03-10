@@ -8,11 +8,11 @@ allOf:
     items:
       - const: "mls_extensions"
       - type: string
-        pattern: "^0x[0-9a-fA-F]{4}$"
+        pattern: "^0x[0-9a-f]{4}$"
         description: "MLS extension identifier"
     additionalItems:
       type: string
-      pattern: "^0x[0-9a-fA-F]{4}$"
+      pattern: "^0x[0-9a-f]{4}$"
     allOf:
       - contains:
           const: "0xf2ee"
