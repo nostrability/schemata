@@ -1,0 +1,22 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+title: Notifications tag
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    description: "Notification types supported by wallet service"
+    minItems: 2
+    maxItems: 2
+    items:
+      - const: "notifications"
+        errorMessage: "first element must be 'notifications'"
+      - type: string
+        minLength: 1
+        pattern: "^\\S+( \\S+)*$"
+        description: "Space-separated list of supported notification types"
+        errorMessage:
+          minLength: "notification type list must not be empty"
+          pattern: "notification types must be space-separated non-whitespace tokens"
+    additionalItems: false
+    errorMessage:
+      minItems: "notifications tag must have exactly 2 elements"
+      maxItems: "notifications tag must have exactly 2 elements"
