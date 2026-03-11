@@ -6,6 +6,7 @@ allOf:
     properties:
       kind:
         const: 1984
+        errorMessage: "kind must equal 1984"
       tags:
         type: array
         allOf:

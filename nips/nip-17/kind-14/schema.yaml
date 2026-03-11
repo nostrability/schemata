@@ -8,6 +8,7 @@ allOf:
       kind:
         const: 14
         description: "Kind 14 identifies an unsigned private direct message"
+        errorMessage: "kind must equal 14"
       id:
         allOf:
           - $ref: "@/secp256k1.yaml"
@@ -27,8 +28,8 @@ allOf:
         allOf:
           - contains:
               $ref: "@/tag/p.yaml"
-        errorMessage:
-          contains: "tags must include at least one p tag identifying a receiver"
+            errorMessage:
+              contains: "tags must include a p tag"
     required:
       - kind
       - id

@@ -8,6 +8,7 @@ allOf:
       kind:
         const: 15
         description: "Kind 15 identifies an unsigned encrypted file message"
+        errorMessage: "kind must equal 15"
       id:
         allOf:
           - $ref: "@/secp256k1.yaml"

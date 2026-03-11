@@ -7,3 +7,4 @@ allOf:
     properties:
       kind:
         const: 10013
+        errorMessage: "kind must equal 10013"

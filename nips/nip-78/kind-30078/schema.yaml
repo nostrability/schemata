@@ -7,6 +7,7 @@ allOf:
     properties:
       kind:
         const: 30078
+        errorMessage: "kind must equal 30078"
       tags:
         type: array
         items:
@@ -15,8 +16,8 @@ allOf:
         allOf:
           - contains:
               $ref: "@/tag/d.yaml"
-        errorMessage:
-          contains: "tags must include required tag: d"
+            errorMessage:
+              contains: "tags must include a d tag"
     required:
       - kind
       - tags

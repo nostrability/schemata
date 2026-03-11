@@ -8,6 +8,7 @@ allOf:
       kind:
         const: 22242
         description: "Kind 22242 identifies an authentication event"
+        errorMessage: "kind must equal 22242"
       tags:
         type: array
         items:
