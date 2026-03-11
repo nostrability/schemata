@@ -1,0 +1,45 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind38383
+description: "Peer-to-peer order event defined by NIP-69"
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 38383
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        allOf:
+          - contains:
+              $ref: "@/tag/d.yaml"
+          - contains:
+              $ref: "@/tag/nip-69_k.yaml"
+          - contains:
+              $ref: "@/tag/f.yaml"
+          - contains:
+              $ref: "@/tag/s.yaml"
+          - contains:
+              $ref: "@/tag/amt.yaml"
+          - contains:
+              $ref: "@/tag/fa.yaml"
+          - contains:
+              $ref: "@/tag/pm.yaml"
+          - contains:
+              $ref: "@/tag/premium.yaml"
+          - contains:
+              $ref: "@/tag/network.yaml"
+          - contains:
+              $ref: "@/tag/layer.yaml"
+          - contains:
+              $ref: "@/tag/expires_at.yaml"
+          - contains:
+              $ref: "@/tag/expiration.yaml"
+          - contains:
+              $ref: "@/tag/y.yaml"
+          - contains:
+              $ref: "@/tag/z.yaml"
+    required:
+      - tags
+    additionalProperties: true
