@@ -7,6 +7,7 @@ allOf:
     properties:
       kind:
         const: 4
+        errorMessage: "kind must equal 4"
       content:
         type: string
         pattern: "^[A-Za-z0-9+/]+={0,2}\\?iv=[A-Za-z0-9+/]+={0,2}$"
@@ -19,6 +20,8 @@ allOf:
         allOf:
           - contains:
               $ref: "@/tag/p.yaml"
+            errorMessage:
+              contains: "tags must include a p tag"
           - anyOf:
               - not:
                   contains:
@@ -33,8 +36,6 @@ allOf:
                     - const: "e"
                     - type: string
                       pattern: "^[a-f0-9]{64}$"
-        errorMessage:
-          contains: "tags must include a p tag identifying the intended recipient"
     required:
       - kind
       - content

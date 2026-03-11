@@ -7,6 +7,7 @@ allOf:
     properties:
       kind:
         const: 16
+        errorMessage: "kind must equal 16"
       content:
         type: string
         description: Stringified JSON of the reposted event (MAY be empty).
@@ -18,8 +19,8 @@ allOf:
         allOf:
           - contains:
               $ref: "@/tag/k.yaml"
-        errorMessage:
-          contains: "tags must include a k tag with the reposted kind as a string"
+            errorMessage:
+              contains: "tags must include a k tag with the original event kind"
     required:
       - kind
       - tags
