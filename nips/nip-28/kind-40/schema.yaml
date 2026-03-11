@@ -1,0 +1,13 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: NIP-28 Channel Creation (kind 40)
+description: Channel creation event (NIP-28)
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 40
+        description: "Kind 40 identifies a channel creation event"
+        errorMessage: "kind must equal 40"
+    required:
+      - kind

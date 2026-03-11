@@ -1,0 +1,13 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: NIP-90 DVM Job Request (kind 5000)
+description: Data Vending Machine job request for text extraction (NIP-90)
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 5000
+        description: "Kind 5000 identifies a text extraction job request"
+        errorMessage: "kind must equal 5000"
+    required:
+      - kind

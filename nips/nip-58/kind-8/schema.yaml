@@ -1,0 +1,30 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: NIP-58 Badge Award (kind 8)
+description: Badge award event (NIP-58)
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 8
+        description: "Kind 8 identifies a badge award"
+        errorMessage: "kind must equal 8"
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        minItems: 2
+        errorMessage:
+          minItems: "tags must contain at least two tags (a, p)"
+        allOf:
+          - contains:
+              $ref: "@/tag/a.yaml"
+            errorMessage:
+              contains: "tags must include an a tag referencing the badge definition"
+          - contains:
+              $ref: "@/tag/p.yaml"
+            errorMessage:
+              contains: "tags must include a p tag for the badge recipient"
+    required:
+      - kind
+      - tags
