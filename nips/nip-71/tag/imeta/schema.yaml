@@ -1,0 +1,16 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+title: video imeta tag
+description: "NIP-71 metadata describing a video attachment"
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    minItems: 2
+    items:
+      - const: "imeta"
+      - type: string
+    additionalItems:
+      type: string
+    allOf:
+      - contains:
+          type: string
+          pattern: "^url https?://\\S+$"

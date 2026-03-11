@@ -1,0 +1,24 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind9005
+description: "Delete event defined by NIP-29"
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 9005
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        allOf:
+          - contains:
+              $ref: "@/tag/h.yaml"
+            errorMessage:
+              contains: "tags must include an h tag with a group identifier"
+          - contains:
+              $ref: "@/tag/e.yaml"
+            errorMessage:
+              contains: "tags must include an e tag"
+    required:
+      - tags

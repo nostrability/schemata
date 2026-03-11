@@ -1,0 +1,13 @@
+{
+  "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "created_at": 1670000000,
+  "kind": 27235,
+  "tags": [
+    ["u", "https://example.com/api/upload"],
+    ["method", "POST"],
+    ["payload", "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"]
+  ],
+  "content": "",
+  "sig": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+}

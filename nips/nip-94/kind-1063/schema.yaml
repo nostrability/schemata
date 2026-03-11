@@ -1,0 +1,32 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind1063
+description: "File metadata event defined by NIP-94"
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 1063
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        allOf:
+          - contains:
+              $ref: "@/tag/url.yaml"
+            errorMessage:
+              contains: "tags must include a url tag"
+          - contains:
+              $ref: "@/tag/m.yaml"
+            errorMessage:
+              contains: "tags must include an m tag with MIME type"
+          - contains:
+              $ref: "@/tag/x.yaml"
+            errorMessage:
+              contains: "tags must include an x tag with SHA-256 hash"
+          - contains:
+              $ref: "@/tag/ox.yaml"
+            errorMessage:
+              contains: "tags must include an ox tag with original file hash"
+    required:
+      - tags

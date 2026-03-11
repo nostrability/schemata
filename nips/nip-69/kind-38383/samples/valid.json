@@ -1,0 +1,24 @@
+{
+  "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "created_at": 1670000000,
+  "kind": 38383,
+  "tags": [
+    ["d", "order-1"],
+    ["k", "sell"],
+    ["f", "USD"],
+    ["s", "pending"],
+    ["amt", "100000"],
+    ["fa", "50"],
+    ["pm", "bank-transfer"],
+    ["premium", "3"],
+    ["network", "mainnet"],
+    ["layer", "lightning"],
+    ["expires_at", "1670100000"],
+    ["expiration", "1670100000"],
+    ["y", "mostro"],
+    ["z", "order"]
+  ],
+  "content": "",
+  "sig": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+}

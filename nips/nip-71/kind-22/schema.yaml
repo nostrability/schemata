@@ -1,0 +1,19 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind22
+description: "Vertical video event defined by NIP-71"
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 22
+      tags:
+        allOf:
+          - contains:
+              $ref: "@/tag/title.yaml"
+            errorMessage:
+              contains: "tags must include a title tag"
+          - contains:
+              $ref: "nips/nip-71/tag/imeta/schema.yaml"
+            errorMessage:
+              contains: "tags must include an imeta tag with video metadata"

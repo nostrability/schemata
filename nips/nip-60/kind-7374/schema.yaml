@@ -1,0 +1,24 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind7374
+description: "Quote state event defined by NIP-60"
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 7374
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        allOf:
+          - contains:
+              $ref: "@/tag/expiration.yaml"
+            errorMessage:
+              contains: "tags must include an expiration tag"
+          - contains:
+              $ref: "@/tag/mint.yaml"
+            errorMessage:
+              contains: "tags must include a mint tag"
+    required:
+      - tags
