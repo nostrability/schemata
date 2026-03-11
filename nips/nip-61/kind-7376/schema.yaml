@@ -13,7 +13,11 @@ allOf:
         allOf:
           - contains:
               $ref: "@/tag/e-redeemed.yaml"
+            errorMessage:
+              contains: "tags must include an e tag referencing the redeemed nutzap event"
           - contains:
               $ref: "@/tag/p.yaml"
+            errorMessage:
+              contains: "tags must include a p tag identifying the sender"
     required:
       - tags

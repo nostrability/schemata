@@ -22,18 +22,28 @@ allOf:
         allOf:
           - contains:
               $ref: "@/tag/mls_protocol_version.yaml"
+            errorMessage:
+              contains: "tags must include an mls_protocol_version tag"
           - contains:
               $ref: "@/tag/mls_ciphersuite.yaml"
+            errorMessage:
+              contains: "tags must include an mls_ciphersuite tag"
           - contains:
               $ref: "@/tag/mls_extensions.yaml"
+            errorMessage:
+              contains: "tags must include an mls_extensions tag"
           - contains:
               $ref: "@/tag/relays.yaml"
+            errorMessage:
+              contains: "tags must include a relays tag"
           - contains:
               $ref: "@/tag/encoding.yaml"
+            errorMessage:
+              contains: "tags must include an encoding tag"
           - contains:
               $ref: "@/tag/mip-00_i.yaml"
-        errorMessage:
-          contains: "tags must include mls_protocol_version, mls_ciphersuite, mls_extensions, relays, encoding, and i tags"
+            errorMessage:
+              contains: "tags must include an i tag"
     required:
       - kind
       - tags

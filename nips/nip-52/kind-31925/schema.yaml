@@ -20,12 +20,18 @@ allOf:
                     - type: string
                       pattern: '^(31922|31923):[a-f0-9]{64}:.+$'
                   additionalItems: true
+            errorMessage:
+              contains: "tags must include an a tag referencing a calendar event (kind 31922 or 31923)"
           # required: d
           - contains:
               $ref: "@/tag/d.yaml"
+            errorMessage:
+              contains: "tags must include a d tag"
           # required: status
           - contains:
               $ref: "@/tag/status.yaml"
+            errorMessage:
+              contains: "tags must include a status tag"
     allOf:
       # If status is 'declined', fb must not be present
       # If status is 'declined', fb must not be present

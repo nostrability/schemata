@@ -15,10 +15,12 @@ allOf:
         allOf:
           - contains:
               $ref: "@/tag/d.yaml"
+            errorMessage:
+              contains: "tags must include a d tag"
           - contains:
               $ref: "@/tag/title.yaml"
-        errorMessage:
-          contains: "tags must include required tags: d, title"
+            errorMessage:
+              contains: "tags must include a title tag"
     required:
       - kind
       - tags

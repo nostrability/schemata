@@ -13,9 +13,15 @@ allOf:
         allOf:
           - contains:
               $ref: "@/tag/proof.yaml"
+            errorMessage:
+              contains: "tags must include a proof tag with P2PK-locked tokens"
           - contains:
               $ref: "@/tag/u.yaml"
+            errorMessage:
+              contains: "tags must include a u tag identifying the mint"
           - contains:
               $ref: "@/tag/p.yaml"
+            errorMessage:
+              contains: "tags must include a p tag identifying the recipient"
     required:
       - tags

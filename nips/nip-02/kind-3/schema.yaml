@@ -11,7 +11,5 @@ allOf:
         items: 
           $ref: "@/tag/p.yaml"
         additionalItems: false
-        minItems: 1
         errorMessage:
           type: "tags must be an array of p tags and only p tags"
-          minItems: "tags array must have at least one p tag"

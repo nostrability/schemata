@@ -30,12 +30,16 @@ allOf:
         allOf:
           - contains:
               $ref: "@/tag/e.yaml"
+            errorMessage:
+              contains: "tags must include an e tag"
           - contains:
               $ref: "@/tag/relays.yaml"
+            errorMessage:
+              contains: "tags must include a relays tag"
           - contains:
               $ref: "@/tag/encoding.yaml"
-        errorMessage:
-          contains: "tags must include an e tag, relays, and encoding tags"
+            errorMessage:
+              contains: "tags must include an encoding tag"
     required:
       - kind
       - id

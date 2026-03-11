@@ -11,10 +11,14 @@ allOf:
         allOf:
           # MUST include a p tag referencing the reported user's pubkey
           - contains:
-              $ref: "nips/nip-56/tag/p/schema.yaml"
+              $ref: "@/tag/nip-56_p.yaml"
+            errorMessage:
+              contains: "tags must include a p tag referencing the reported user"
           # MUST include at least one report tag (p/e/x) with a report type as the 3rd item
           - contains:
               anyOf:
-                - $ref: "nips/nip-56/tag/p/schema.yaml"
-                - $ref: "nips/nip-56/tag/e/schema.yaml"
-                - $ref: "nips/nip-56/tag/x/schema.yaml"
+                - $ref: "@/tag/nip-56_p.yaml"
+                - $ref: "@/tag/nip-56_e.yaml"
+                - $ref: "@/tag/nip-56_x.yaml"
+            errorMessage:
+              contains: "tags must include at least one report tag (p, e, or x) with a report type"

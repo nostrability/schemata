@@ -12,5 +12,9 @@ allOf:
         allOf:
           - contains:
               $ref: "@/tag/title.yaml"
+            errorMessage:
+              contains: "tags must include a title tag"
           - contains:
               $ref: "@/tag/imeta.yaml"
+            errorMessage:
+              contains: "tags must include an imeta tag with image metadata"
