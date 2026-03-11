@@ -1,0 +1,14 @@
+{
+  "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "created_at": 1670000000,
+  "kind": 1063,
+  "tags": [
+    ["url", "https://example.com/files/photo.jpg"],
+    ["m", "image/jpeg"],
+    ["x", "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"],
+    ["ox", "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"]
+  ],
+  "content": "A beautiful landscape photo",
+  "sig": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+}

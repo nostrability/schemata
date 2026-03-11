@@ -1,0 +1,24 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind1063
+description: "File metadata event defined by NIP-94"
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 1063
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        allOf:
+          - contains:
+              $ref: "@/tag/url.yaml"
+          - contains:
+              $ref: "@/tag/m.yaml"
+          - contains:
+              $ref: "@/tag/x.yaml"
+          - contains:
+              $ref: "@/tag/ox.yaml"
+    required:
+      - tags
