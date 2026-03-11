@@ -7,5 +7,5 @@ allOf:
     items:
       - const: "m"
       - type: string
-        pattern: '^[a-z]+/[a-z0-9.+]+$'
+        pattern: '^[a-z]+/[a-z0-9.+-]+$'
     additionalItems: false
