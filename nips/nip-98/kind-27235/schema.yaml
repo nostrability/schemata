@@ -1,0 +1,20 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind27235
+description: "HTTP authentication event defined by NIP-98"
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 27235
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        allOf:
+          - contains:
+              $ref: "@/tag/u.yaml"
+          - contains:
+              $ref: "@/tag/method.yaml"
+    required:
+      - tags
