@@ -1,0 +1,21 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind22
+description: "Vertical video event defined by NIP-71"
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 22
+      tags:
+        allOf:
+          - contains:
+              $ref: "@/tag/title.yaml"
+          - contains:
+              allOf:
+                - $ref: "@/tag.yaml"
+                - type: array
+                  minItems: 2
+                  items:
+                    - const: "imeta"
+                  additionalItems: true
