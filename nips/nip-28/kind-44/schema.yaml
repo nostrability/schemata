@@ -1,0 +1,26 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: NIP-28 Mute User (kind 44)
+description: Mute user event (NIP-28)
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 44
+        description: "Kind 44 identifies a channel mute user event"
+        errorMessage: "kind must equal 44"
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        minItems: 1
+        errorMessage:
+          minItems: "tags must contain at least one tag"
+        allOf:
+          - contains:
+              $ref: "@/tag/p.yaml"
+            errorMessage:
+              contains: "tags must include a p tag for the user to mute"
+    required:
+      - kind
+      - tags
