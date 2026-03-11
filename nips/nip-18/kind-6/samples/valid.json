@@ -1,0 +1,12 @@
+{
+  "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "created_at": 1670000000,
+  "kind": 6,
+  "tags": [
+    ["e", "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc", "wss://relay.example.com"],
+    ["p", "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"]
+  ],
+  "content": "{\"id\":\"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc\",\"pubkey\":\"dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd\",\"created_at\":1670000000,\"kind\":1,\"tags\":[],\"content\":\"hello world\",\"sig\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}",
+  "sig": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+}

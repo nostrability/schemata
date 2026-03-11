@@ -1,0 +1,13 @@
+{
+  "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "created_at": 1670000000,
+  "kind": 9321,
+  "tags": [
+    ["proof", "{\"proofs\":[{\"id\":\"abc\",\"amount\":1,\"secret\":\"xyz\",\"C\":\"02abc\"}]}"],
+    ["u", "https://mint.example.com"],
+    ["p", "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"]
+  ],
+  "content": "",
+  "sig": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+}

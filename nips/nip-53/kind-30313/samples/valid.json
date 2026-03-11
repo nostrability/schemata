@@ -1,0 +1,15 @@
+{
+  "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "created_at": 1670000000,
+  "kind": 30313,
+  "tags": [
+    ["d", "meeting-1"],
+    ["a", "30312:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc:room-1"],
+    ["title", "Weekly Standup"],
+    ["starts", "1670000000"],
+    ["status", "planned"]
+  ],
+  "content": "",
+  "sig": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+}

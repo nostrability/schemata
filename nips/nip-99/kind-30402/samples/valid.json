@@ -1,0 +1,15 @@
+{
+  "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "created_at": 1670000000,
+  "kind": 30402,
+  "tags": [
+    ["d", "listing-1"],
+    ["title", "Vintage Camera"],
+    ["summary", "A classic 35mm film camera in great condition"],
+    ["location", "New York"],
+    ["price", "100", "USD"]
+  ],
+  "content": "Selling my vintage camera. Works perfectly.",
+  "sig": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+}
