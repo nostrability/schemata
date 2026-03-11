@@ -1,0 +1,9 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind7375
+description: "Token event defined by NIP-60"
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 7375
