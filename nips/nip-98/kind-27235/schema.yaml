@@ -14,7 +14,11 @@ allOf:
         allOf:
           - contains:
               $ref: "@/tag/u.yaml"
+            errorMessage:
+              contains: "tags must include a u tag with the request URL"
           - contains:
               $ref: "@/tag/method.yaml"
+            errorMessage:
+              contains: "tags must include a method tag with the HTTP method"
     required:
       - tags

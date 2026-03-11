@@ -14,5 +14,7 @@ allOf:
         allOf:
           - contains:
               $ref: "@/tag/mint.yaml"
+            errorMessage:
+              contains: "tags must include a mint tag"
     required:
       - tags

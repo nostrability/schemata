@@ -14,5 +14,7 @@ allOf:
         allOf:
           - contains:
               $ref: "@/tag/h.yaml"
+            errorMessage:
+              contains: "tags must include an h tag with a group identifier"
     required:
       - tags

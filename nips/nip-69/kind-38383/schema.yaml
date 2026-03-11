@@ -14,32 +14,60 @@ allOf:
         allOf:
           - contains:
               $ref: "@/tag/d.yaml"
+            errorMessage:
+              contains: "tags must include a d tag"
           - contains:
               $ref: "@/tag/nip-69_k.yaml"
+            errorMessage:
+              contains: "tags must include a k tag with order type"
           - contains:
               $ref: "@/tag/f.yaml"
+            errorMessage:
+              contains: "tags must include an f tag with currency code"
           - contains:
               $ref: "@/tag/s.yaml"
+            errorMessage:
+              contains: "tags must include an s tag with order status"
           - contains:
               $ref: "@/tag/amt.yaml"
+            errorMessage:
+              contains: "tags must include an amt tag with amount in satoshis"
           - contains:
               $ref: "@/tag/fa.yaml"
+            errorMessage:
+              contains: "tags must include an fa tag with fiat amount"
           - contains:
               $ref: "@/tag/pm.yaml"
+            errorMessage:
+              contains: "tags must include a pm tag with payment method"
           - contains:
               $ref: "@/tag/premium.yaml"
+            errorMessage:
+              contains: "tags must include a premium tag"
           - contains:
               $ref: "@/tag/network.yaml"
+            errorMessage:
+              contains: "tags must include a network tag"
           - contains:
               $ref: "@/tag/layer.yaml"
+            errorMessage:
+              contains: "tags must include a layer tag"
           - contains:
               $ref: "@/tag/expires_at.yaml"
+            errorMessage:
+              contains: "tags must include an expires_at tag"
           - contains:
               $ref: "@/tag/expiration.yaml"
+            errorMessage:
+              contains: "tags must include an expiration tag"
           - contains:
               $ref: "@/tag/y.yaml"
+            errorMessage:
+              contains: "tags must include a y tag with platform identifier"
           - contains:
               $ref: "@/tag/z.yaml"
+            errorMessage:
+              contains: "tags must include a z tag"
     required:
       - tags
     additionalProperties: true

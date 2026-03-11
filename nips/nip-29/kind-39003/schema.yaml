@@ -14,6 +14,8 @@ allOf:
         allOf:
           - contains:
               $ref: "@/tag/d.yaml"
+            errorMessage:
+              contains: "tags must include a d tag"
     required:
       - tags
     additionalProperties: true
