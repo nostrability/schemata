@@ -1,0 +1,15 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    minItems: 2
+    maxItems: 3
+    items:
+      - const: "bid"
+      - type: string
+        pattern: "^[0-9]+$"
+        description: "Bid amount in millisats"
+      - type: string
+        pattern: "^[0-9]+$"
+        description: "Maximum bid amount in millisats"
+    additionalItems: false
