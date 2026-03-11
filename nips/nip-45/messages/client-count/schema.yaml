@@ -1,0 +1,9 @@
+type: "array"
+items:
+- const: "COUNT"
+- type: "string"
+  description: "Subscription ID"
+- $ref: "@/message/filter.yaml"
+minItems: 3
+additionalItems:
+  $ref: "@/message/filter.yaml"
