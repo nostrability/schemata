@@ -7,5 +7,5 @@ allOf:
     items:
       - const: "method"
       - type: string
-        enum: ["GET", "POST", "PUT", "PATCH", "DELETE"]
+        pattern: '^[A-Z]+$'
     additionalItems: false
