@@ -1,0 +1,20 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind9000
+description: "Put user event defined by NIP-29"
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 9000
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        allOf:
+          - contains:
+              $ref: "@/tag/h.yaml"
+          - contains:
+              $ref: "@/tag/p.yaml"
+    required:
+      - tags

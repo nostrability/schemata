@@ -1,0 +1,19 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind39000
+description: "Group metadata event defined by NIP-29"
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 39000
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        allOf:
+          - contains:
+              $ref: "@/tag/d.yaml"
+    required:
+      - tags
+    additionalProperties: true
