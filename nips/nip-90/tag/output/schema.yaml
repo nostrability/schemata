@@ -7,5 +7,6 @@ allOf:
     items:
       - const: "output"
       - type: string
+        minLength: 1
         description: "MIME type of desired output"
     additionalItems: false

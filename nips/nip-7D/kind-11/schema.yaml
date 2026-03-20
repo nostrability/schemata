@@ -9,18 +9,5 @@ allOf:
         const: 11
         description: "Kind 11 identifies a thread root post"
         errorMessage: "kind must equal 11"
-      tags:
-        type: array
-        items:
-          $ref: "@/tag.yaml"
-        minItems: 1
-        errorMessage:
-          minItems: "tags must contain at least one tag"
-        allOf:
-          - contains:
-              $ref: "@/tag/title.yaml"
-            errorMessage:
-              contains: "tags must include a title tag"
     required:
       - kind
-      - tags
