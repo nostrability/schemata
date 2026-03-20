@@ -1,0 +1,13 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: NIP-7D Thread Root (kind 11)
+description: Thread root post (NIP-7D)
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 11
+        description: "Kind 11 identifies a thread root post"
+        errorMessage: "kind must equal 11"
+    required:
+      - kind

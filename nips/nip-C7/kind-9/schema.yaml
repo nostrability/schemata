@@ -1,0 +1,13 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: NIP-C7 Chat Message (kind 9)
+description: Chat message event (NIP-C7)
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 9
+        description: "Kind 9 identifies a chat message"
+        errorMessage: "kind must equal 9"
+    required:
+      - kind

@@ -1,0 +1,26 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: NIP-28 Hide Message (kind 43)
+description: Hide message event (NIP-28)
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 43
+        description: "Kind 43 identifies a channel hide message event"
+        errorMessage: "kind must equal 43"
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        minItems: 1
+        errorMessage:
+          minItems: "tags must contain at least one tag"
+        allOf:
+          - contains:
+              $ref: "@/tag/e.yaml"
+            errorMessage:
+              contains: "tags must include an e tag referencing the message to hide"
+    required:
+      - kind
+      - tags

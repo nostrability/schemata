@@ -1,0 +1,31 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: NIP-58 Profile Badges (kind 30008)
+description: Profile badges event (NIP-58)
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 30008
+        description: "Kind 30008 identifies a profile badges list"
+        errorMessage: "kind must equal 30008"
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        minItems: 1
+        errorMessage:
+          minItems: "tags must contain at least one tag"
+        allOf:
+          - contains:
+              allOf:
+                - $ref: "@/tag/d.yaml"
+                - type: array
+                  items:
+                    - const: "d"
+                    - const: "profile_badges"
+            errorMessage:
+              contains: "tags must include a d tag with value profile_badges"
+    required:
+      - kind
+      - tags
