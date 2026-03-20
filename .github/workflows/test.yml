@@ -35,5 +35,14 @@ jobs:
             exit 1
           fi
 
+      - name: Ensure no $id in source schemas
+        run: |
+          offenders=$(grep -rE '["'"'"']?\$id["'"'"']?\s*:' nips/ @/ mips/ 2>/dev/null || true)
+          if [ -n "$offenders" ]; then
+            echo "Forbidden \$id in source files (auto-generated during build):"
+            echo "$offenders"
+            exit 1
+          fi
+
       - name: Test
         run: pnpm test

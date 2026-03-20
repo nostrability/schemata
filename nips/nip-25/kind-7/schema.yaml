@@ -7,6 +7,7 @@ allOf:
     properties:
       kind:
         const: 7
+        errorMessage: "kind must equal 7"
       content:
         type: string
         description: "Reaction marker such as '+', '-', an emoji, or a custom :shortcode:"
@@ -35,6 +36,8 @@ allOf:
             then:
               contains:
                 $ref: "@/tag/emoji.yaml"
+            errorMessage:
+              contains: "tags must include a valid emoji tag when custom emoji reactions are used"
         errorMessage:
           contains: "tags must include an e tag referencing the reacted event"
     required:

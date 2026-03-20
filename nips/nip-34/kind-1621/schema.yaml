@@ -7,6 +7,7 @@ allOf:
     properties:
       kind:
         const: 1621
+        errorMessage: "kind must equal 1621"
       content:
         type: string
         minLength: 1
@@ -19,6 +20,8 @@ allOf:
         allOf:
           - contains:
               $ref: "@/tag/a.yaml"
+            errorMessage:
+              contains: "tags must include an a tag referencing the repository"
           - if:
               contains:
                 type: array
@@ -27,8 +30,6 @@ allOf:
             then:
               contains:
                 $ref: "@/tag/subject.yaml"
-        errorMessage:
-          contains: "tags must include required tag: a"
     required:
       - kind
       - content

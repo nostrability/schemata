@@ -7,6 +7,7 @@ allOf:
     properties:
       kind:
         const: 445
+        errorMessage: "kind must equal 445"
         description: "Kind number for Marmot Group Events"
       content:
         type: string

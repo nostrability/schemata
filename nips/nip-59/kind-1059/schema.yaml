@@ -8,6 +8,7 @@ allOf:
       kind:
         const: 1059
         description: "Kind 1059 identifies a gift wrap containing an encrypted seal"
+        errorMessage: "kind must equal 1059"
       pubkey:
         allOf:
           - $ref: "@/secp256k1.yaml"
@@ -24,7 +25,7 @@ allOf:
         allOf:
           - contains:
               $ref: "@/tag/p.yaml"
-        errorMessage:
-          contains: "tags must include exactly one p tag identifying the recipient"
+            errorMessage:
+              contains: "tags must include a p tag"
     required:
       - kind

@@ -7,5 +7,6 @@ allOf:
     properties:
       kind:
         const: 10015
+        errorMessage: "kind must equal 10015"
     required:
       - kind

@@ -8,6 +8,7 @@ allOf:
       kind:
         const: 13
         description: "Kind 13 identifies a seal containing an encrypted rumor"
+        errorMessage: "kind must equal 13"
       content:
         type: string
         minLength: 1

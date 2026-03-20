@@ -8,6 +8,7 @@ allOf:
       kind:
         const: 10050
         description: "Kind 10050 enumerates preferred relays for receiving direct messages"
+        errorMessage: "kind must equal 10050"
       content:
         type: string
         description: "Optional human readable notes; usually an empty string"
