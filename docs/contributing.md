@@ -37,7 +37,7 @@ schemata/
 Create `schema.yaml` following this template:
 
 ```yaml
-$id: "https://schemata.nostr.watch/[type]/[subtype]"
+# Do NOT add $id — auto-generated during build
 $schema: http://json-schema.org/draft-07/schema#
 type: object  # or array, string, etc.
 title: "Descriptive Title"
@@ -51,18 +51,9 @@ required:
 
 ### Step 3: Schema Conventions
 
-#### ID Pattern
-Always use this format for `$id`:
-```yaml
-# For events
-$id: "https://schemata.nostr.watch/note/kind/[number]"
-
-# For tags
-$id: "https://schemata.nostr.watch/note/tag/[letter]"
-
-# For messages
-$id: "https://schemata.nostr.watch/message/[client|relay]/[type]"
-```
+#### $id — Auto-Generated
+Do NOT add `$id` to source files. The build process (`scripts/add-schema-ids.js`)
+adds `$id` automatically with the correct GitHub Pages URL.
 
 #### Error Messages
 Include helpful error messages:
@@ -98,7 +89,7 @@ allOf:
 For new tag types, follow this structure:
 
 ```yaml
-$id: 'https://schemata.nostr.watch/note/tag/x'
+# Do NOT add $id — auto-generated during build
 $schema: "http://json-schema.org/draft-07/schema#"
 title: xTag
 allOf:
@@ -191,7 +182,7 @@ properties:
 
 ### Event Schema
 ```yaml
-$id: "https://schemata.nostr.watch/note/kind/XXXX"
+# Do NOT add $id — auto-generated during build
 $schema: http://json-schema.org/draft-07/schema#
 title: kindXXXX
 allOf: 
@@ -206,7 +197,7 @@ allOf:
 
 ### Message Schema
 ```yaml
-$id: 'https://schemata.nostr.watch/message/client/mymessage'
+# Do NOT add $id — auto-generated during build
 type: "array"
 items: 
 - const: "MYMESSAGE"
@@ -221,7 +212,7 @@ maxItems: 3
 ### Complex Content Schema
 For kinds with structured content, create `schema.content.yaml`:
 ```yaml
-$id: "https://schemata.nostr.watch/note/kind/XXXX/content"
+# Do NOT add $id — auto-generated during build
 $schema: http://json-schema.org/draft-07/schema#
 type: object
 properties:
