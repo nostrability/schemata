@@ -26,7 +26,7 @@ allOf:
             errorMessage:
               contains: "tags must include a p tag with the customer's pubkey"
           - contains:
-              $ref: "@/tag/status.yaml"
+              $ref: "nips/nip-90/tag/status/schema.yaml"
             errorMessage:
               contains: "tags must include a status tag with processing status"
     required:
