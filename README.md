@@ -1,5 +1,6 @@
 # @nostrability/schemata
 
+[![Test](https://github.com/nostrability/schemata/actions/workflows/test.yml/badge.svg)](https://github.com/nostrability/schemata/actions/workflows/test.yml)
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/nostrability/schemata)
 
 JSON Schema definitions for Nostr protocol events, messages, and tags. Validate Nostr data structures in any programming language.
