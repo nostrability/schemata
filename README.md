@@ -60,8 +60,8 @@ Validators wrap a JSON Schema library and the data package to provide nostr-spec
 | Go | [`schemata-validator-go`](https://github.com/nostrability/schemata-validator-go) | [jsonschema/v6](https://github.com/santhosh-tekuri/jsonschema) |
 | Python | [`schemata-validator-py`](https://github.com/nostrability/schemata-validator-py) | [jsonschema](https://python-jsonschema.readthedocs.io/) |
 | Kotlin | [`schemata-validator-kt`](https://github.com/nostrability/schemata-validator-kt) | [json-schema-validator](https://github.com/networknt/json-schema-validator) |
-| Swift | [`schemata-validator-swift`](https://github.com/nostrability/schemata-validator-swift) | structural (draft-07 library TBD) |
-| Dart | [`schemata-validator-dart`](https://github.com/nostrability/schemata-validator-dart) | structural (draft-07 library TBD) |
+| Swift | [`schemata-validator-swift`](https://github.com/nostrability/schemata-validator-swift) | [JSONSchema.swift](https://github.com/kylef/JSONSchema.swift) |
+| Dart | [`schemata-validator-dart`](https://github.com/nostrability/schemata-validator-dart) | [json_schema](https://pub.dev/packages/json_schema) |
 
 ## Adding new Schemas
 `@nostrability/schemata` assumes a kind is associated to a NIP and so the schemas are organized by NIP. The system has `aliases` that are generated via the build-script. The aliases make it easier to reference commonly reused schemas (such as tags, and base schemata like `note`). 
