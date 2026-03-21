@@ -1,0 +1,34 @@
+# Notify downstream data packages when a new schemata release is published.
+#
+# REQUIRED SECRET: DISPATCH_TOKEN
+#   A GitHub Personal Access Token (classic) with `repo` scope, stored as a
+#   repository secret on nostrability/schemata. The token owner must have
+#   write access to every downstream repo listed in the matrix below.
+#   Fine-grained tokens need "Contents: read & write" on each target repo.
+
+name: Notify downstream packages
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        repo:
+          - schemata-rs
+          - schemata-go
+          - schemata-py
+          - schemata-kt
+          - schemata-swift
+          - schemata-dart
+    steps:
+      - name: Trigger schema update in ${{ matrix.repo }}
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.DISPATCH_TOKEN }}
+          repository: nostrability/${{ matrix.repo }}
+          event-type: schema-update
+          client-payload: '{"tag": "${{ github.event.release.tag_name }}"}'
