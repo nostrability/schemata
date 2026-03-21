@@ -35,10 +35,33 @@ Read this closely and please understand: **Tuples of Strongly Typed Strings.** Y
 `@nostability/schemata` aims to produce JSON-Schema that can be consumed by validators (for example, `ajv`). Ideally, each language would have one or more validator wrappers. The validator wrappers provide nostr specific methods to make utilization more straightforward for implementers. The original author of this repo has provided an example of this approach below
 
 
-## Validators
-Validators are tools that wrap the schemata to provide validation capabilities and expose a generic interface so that they can be implemented without any domain knowledge in json-schemas or json-schema validators. They can be written in any language, and there are JSON-Schema validators available in practically every language. Validators utilize the compiled json-schema artifacts produced by this repository either by importing them with NPM (in the TS/JS case), downloading the release artifacts or referencing the schemas remotely (all the schemas have remotely addressable IDs that are generated during releases)
+## Data Packages
 
-- [`@nostrwatch/schemata-js-ajv`](https://github.com/sandwichfarm/nostr-watch/tree/next/libraries/schemata-js-ajv) - A validator written in Typescript that wraps `ajv` and leverages `@nostrability/schemata`
+Data packages vendor the compiled JSON schemas and provide a registry lookup for each language. They are consumed by validators.
+
+| Language | Data Package | Registry API |
+|----------|-------------|--------------|
+| JS/TS | [`@nostrability/schemata`](https://www.npmjs.com/package/@nostrability/schemata) (npm) | `import { kind1Schema } from '@nostrability/schemata'` |
+| Rust | [`schemata-rs`](https://github.com/nostrability/schemata-rs) | `schemata_rs::get("kind1Schema")` |
+| Go | [`schemata-go`](https://github.com/nostrability/schemata-go) | `schemata.Get("kind1Schema")` |
+| Python | [`schemata-py`](https://github.com/nostrability/schemata-py) | `schemata.get("kind1Schema")` |
+| Kotlin | [`schemata-kt`](https://github.com/nostrability/schemata-kt) | `Schemata.get("kind1Schema")` |
+| Swift | [`schemata-swift`](https://github.com/nostrability/schemata-swift) | `Schemata.get("kind1Schema")` |
+| Dart | [`schemata-dart`](https://github.com/nostrability/schemata-dart) | `Schemata.get('kind1Schema')` |
+
+## Validators
+
+Validators wrap a JSON Schema library and the data package to provide nostr-specific validation methods (`validateNote`, `validateNip11`, `validateMessage`). Best used in **CI and integration tests**, not runtime hot paths.
+
+| Language | Validator | JSON Schema Library |
+|----------|-----------|-------------------|
+| JS/TS | [`@nostrwatch/schemata-js-ajv`](https://github.com/sandwichfarm/nostr-watch/tree/next/libraries/schemata-js-ajv) | [ajv](https://ajv.js.org/) |
+| Rust | [`schemata-validator-rs`](https://github.com/nostrability/schemata-validator-rs) | [jsonschema](https://crates.io/crates/jsonschema) |
+| Go | [`schemata-validator-go`](https://github.com/nostrability/schemata-validator-go) | [jsonschema/v6](https://github.com/santhosh-tekuri/jsonschema) |
+| Python | [`schemata-validator-py`](https://github.com/nostrability/schemata-validator-py) | [jsonschema](https://python-jsonschema.readthedocs.io/) |
+| Kotlin | [`schemata-validator-kt`](https://github.com/nostrability/schemata-validator-kt) | [json-schema-validator](https://github.com/networknt/json-schema-validator) |
+| Swift | [`schemata-validator-swift`](https://github.com/nostrability/schemata-validator-swift) | structural (draft-07 library TBD) |
+| Dart | [`schemata-validator-dart`](https://github.com/nostrability/schemata-validator-dart) | structural (draft-07 library TBD) |
 
 ## Adding new Schemas
 `@nostrability/schemata` assumes a kind is associated to a NIP and so the schemas are organized by NIP. The system has `aliases` that are generated via the build-script. The aliases make it easier to reference commonly reused schemas (such as tags, and base schemata like `note`). 
