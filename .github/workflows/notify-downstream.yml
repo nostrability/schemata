@@ -24,6 +24,11 @@ jobs:
           - schemata-kt
           - schemata-swift
           - schemata-dart
+          - schemata-java
+          - schemata-php
+          - schemata-csharp
+          - schemata-cpp
+          - schemata-ruby
     steps:
       - name: Trigger schema update in ${{ matrix.repo }}
         uses: peter-evans/repository-dispatch@v3
