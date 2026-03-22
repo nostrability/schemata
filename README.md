@@ -47,8 +47,13 @@ Data packages vendor the compiled JSON schemas and provide a registry lookup for
 | Go | [`schemata-go`](https://github.com/nostrability/schemata-go) | `schemata.Get("kind1Schema")` |
 | Python | [`schemata-py`](https://github.com/nostrability/schemata-py) | `schemata.get("kind1Schema")` |
 | Kotlin | [`schemata-kt`](https://github.com/nostrability/schemata-kt) | `Schemata.get("kind1Schema")` |
+| Java | [`schemata-java`](https://github.com/nostrability/schemata-java) | `Schemata.get("kind1Schema")` |
 | Swift | [`schemata-swift`](https://github.com/nostrability/schemata-swift) | `Schemata.get("kind1Schema")` |
 | Dart | [`schemata-dart`](https://github.com/nostrability/schemata-dart) | `Schemata.get('kind1Schema')` |
+| PHP | [`schemata-php`](https://github.com/nostrability/schemata-php) | `Schemata::get('kind1Schema')` |
+| C#/.NET | [`schemata-csharp`](https://github.com/nostrability/schemata-csharp) | `Schemata.Get("kind1Schema")` |
+| C++ | [`schemata-cpp`](https://github.com/nostrability/schemata-cpp) | `schemata::get("kind1Schema")` |
+| Ruby | [`schemata-ruby`](https://github.com/nostrability/schemata-ruby) | `SchemataNostr.get('kind1Schema')` |
 
 ## Validators
 
@@ -61,8 +66,13 @@ Validators wrap a JSON Schema library and the data package to provide nostr-spec
 | Go | [`schemata-validator-go`](https://github.com/nostrability/schemata-validator-go) | [jsonschema/v6](https://github.com/santhosh-tekuri/jsonschema) |
 | Python | [`schemata-validator-py`](https://github.com/nostrability/schemata-validator-py) | [jsonschema](https://python-jsonschema.readthedocs.io/) |
 | Kotlin | [`schemata-validator-kt`](https://github.com/nostrability/schemata-validator-kt) | [json-schema-validator](https://github.com/networknt/json-schema-validator) |
+| Java | [`schemata-validator-java`](https://github.com/nostrability/schemata-validator-java) | [json-schema-validator](https://github.com/networknt/json-schema-validator) |
 | Swift | [`schemata-validator-swift`](https://github.com/nostrability/schemata-validator-swift) | [JSONSchema.swift](https://github.com/kylef/JSONSchema.swift) |
 | Dart | [`schemata-validator-dart`](https://github.com/nostrability/schemata-validator-dart) | [json_schema](https://pub.dev/packages/json_schema) |
+| PHP | [`schemata-validator-php`](https://github.com/nostrability/schemata-validator-php) | [opis/json-schema](https://opis.io/json-schema/) |
+| C#/.NET | [`schemata-validator-csharp`](https://github.com/nostrability/schemata-validator-csharp) | [JsonSchema.Net](https://github.com/gregsdennis/json-everything) |
+| C++ | [`schemata-validator-cpp`](https://github.com/nostrability/schemata-validator-cpp) | [valijson](https://github.com/tristanpenman/valijson) |
+| Ruby | [`schemata-validator-ruby`](https://github.com/nostrability/schemata-validator-ruby) | [json_schemer](https://github.com/davishmcclurg/json_schemer) |
 
 ## Adding new Schemas
 `@nostrability/schemata` assumes a kind is associated to a NIP and so the schemas are organized by NIP. The system has `aliases` that are generated via the build-script. The aliases make it easier to reference commonly reused schemas (such as tags, and base schemata like `note`). 
