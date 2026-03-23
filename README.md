@@ -296,13 +296,13 @@ schemata/
 
 ## Used By
 
-| Project | Language | Usage |
-|---------|----------|-------|
-| [nostr-watch](https://github.com/sandwichfarm/nostr-watch) | TypeScript | NIP-11/NIP-01/NIP-02/NIP-22 relay auditing pipeline and GUI validation |
-| [Synvya/client](https://github.com/Synvya/client) | TypeScript | Runtime validation of kind-0, kind-1, and kind-30402 events |
-| [applesauce](https://github.com/hzrd149/applesauce) | TypeScript | NIP-01 schema validation in test suite |
-| [notedeck](https://github.com/damus-io/notedeck) | Rust | enostr::Note serialization validation in CI |
-| [damus](https://github.com/damus-io/damus) | Swift | NostrEvent serialization validation in CI |
+| Project | Language | Usage | Status |
+|---------|----------|-------|--------|
+| [nostr-watch](https://github.com/sandwichfarm/nostr-watch) | TypeScript | NIP-11/NIP-01/NIP-02/NIP-22 relay auditing pipeline and GUI validation | Merged ([`0e865bf`](https://github.com/sandwichfarm/nostr-watch/commit/0e865bfccd307f39e87433f1823c00e457383459)) |
+| [Synvya/client](https://github.com/Synvya/client) | TypeScript | Runtime validation of kind-0, kind-1, and kind-30402 events | Merged ([#159](https://github.com/Synvya/client/pull/159)) |
+| [applesauce](https://github.com/hzrd149/applesauce) | TypeScript | NIP-01 schema validation in test suite | Merged ([#39](https://github.com/hzrd149/applesauce/pull/39)) |
+| [notedeck](https://github.com/damus-io/notedeck) | Rust | enostr::Note serialization validation in CI | PR ([#1405](https://github.com/damus-io/notedeck/pull/1405)) |
+| [damus](https://github.com/damus-io/damus) | Swift | NostrEvent serialization validation in CI | PR ([#3716](https://github.com/damus-io/damus/pull/3716)) |
 
 ## Contributing
 
