@@ -294,9 +294,15 @@ schemata/
 └── docs/              # Documentation
 ```
 
-## Related Projects
+## Used By
 
-- [`@nostrwatch/schemata-js-ajv`](https://github.com/sandwichfarm/nostr-watch/tree/next/libraries/schemata-js-ajv) - TypeScript validation library using these schemas
+| Project | Language | Usage |
+|---------|----------|-------|
+| [nostr-watch](https://github.com/sandwichfarm/nostr-watch) | TypeScript | NIP-11/NIP-01/NIP-02/NIP-22 relay auditing pipeline and GUI validation |
+| [Synvya/client](https://github.com/Synvya/client) | TypeScript | Runtime validation of kind-0, kind-1, and kind-30402 events |
+| [applesauce](https://github.com/hzrd149/applesauce) | TypeScript | NIP-01 schema validation in test suite |
+| [notedeck](https://github.com/damus-io/notedeck) | Rust | enostr::Note serialization validation in CI |
+| [damus](https://github.com/damus-io/damus) | Swift | NostrEvent serialization validation in CI |
 
 ## Contributing
 
