@@ -91,18 +91,38 @@ if (validate(event)) {
 }
 ```
 
+### Rust
+
+```toml
+# Cargo.toml
+[dependencies]
+schemata-validator-rs = { git = "https://github.com/nostrability/schemata-validator-rs.git" }
+```
+
+```rust
+use schemata_validator_rs::{validate_note, get_schema};
+
+let result = validate_note(&event_json);
+assert!(result.valid);
+```
+
+### Swift
+
+```swift
+// Package.swift
+.package(url: "https://github.com/nostrability/schemata-validator-swift.git", branch: "main")
+```
+
+```swift
+import SchemataValidator
+
+let result = SchemataValidator.validateNote(event)
+let schema = SchemataValidator.getSchema("kind1Schema")
+```
+
 ### Other Languages
 
-After downloading the release artifact, use the generated code for your language:
-
-- **Python**: `dist/packages/python/`
-- **Rust**: `dist/packages/rust/`
-- **Go**: `dist/packages/go/`
-- **Java**: `dist/packages/java/`
-- **Swift**: `dist/packages/swift/`
-- **Kotlin**: `dist/packages/kotlin/`
-
-Each language directory contains generated validation code with language-specific usage instructions.
+The JSON schemas can be used directly with any JSON Schema (draft-07) validator. Download the release ZIP for raw schema files.
 
 ### Direct JSON Schema Usage
 

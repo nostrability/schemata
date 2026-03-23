@@ -48,12 +48,14 @@ Data packages vendor the compiled JSON schemas and provide a registry lookup for
 | Python | [`schemata-py`](https://github.com/nostrability/schemata-py) | `schemata.get("kind1Schema")` |
 | Kotlin | [`schemata-kt`](https://github.com/nostrability/schemata-kt) | `Schemata.get("kind1Schema")` |
 | Java | [`schemata-java`](https://github.com/nostrability/schemata-java) | `Schemata.get("kind1Schema")` |
-| Swift | [`schemata-swift`](https://github.com/nostrability/schemata-swift) | `Schemata.get("kind1Schema")` |
+| Swift | *(bundled in validator)* | `SchemataValidator.getSchema("kind1Schema")` |
 | Dart | [`schemata-dart`](https://github.com/nostrability/schemata-dart) | `Schemata.get('kind1Schema')` |
 | PHP | [`schemata-php`](https://github.com/nostrability/schemata-php) | `Schemata::get('kind1Schema')` |
 | C#/.NET | [`schemata-csharp`](https://github.com/nostrability/schemata-csharp) | `Schemata.Get("kind1Schema")` |
 | C++ | [`schemata-cpp`](https://github.com/nostrability/schemata-cpp) | `schemata::get("kind1Schema")` |
 | Ruby | [`schemata-ruby`](https://github.com/nostrability/schemata-ruby) | `SchemataNostr.get('kind1Schema')` |
+
+> **Note:** Swift uses a single-package approach (schemas inlined into the validator) because SPM resource bundles cause iOS codesign failures. See [#88](https://github.com/nostrability/schemata/issues/88) for details on how this applies to future Kotlin Multiplatform support.
 
 ## Validators
 
