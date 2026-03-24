@@ -19,6 +19,7 @@ allOf:
         allOf:
           - contains:
               type: array
+              minItems: 2
               items:
                 - const: "t"
                 - type: string
