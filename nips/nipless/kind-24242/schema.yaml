@@ -1,0 +1,35 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind24242
+description: "Blossom Authorization Event (BUD-11)"
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 24242
+        errorMessage: "kind must equal 24242"
+      content:
+        type: string
+        description: "Human-readable description of the intended action"
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        minItems: 2
+        allOf:
+          - contains:
+              type: array
+              items:
+                - const: "t"
+                - type: string
+                  enum: ["get", "upload", "list", "delete", "media"]
+            errorMessage:
+              contains: "tags must include a t tag with action verb (get, upload, list, delete, or media)"
+          - contains:
+              $ref: "@/tag/expiration.yaml"
+            errorMessage:
+              contains: "tags must include an expiration tag"
+    required:
+      - kind
+      - content
+      - tags
