@@ -1,0 +1,34 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind2003
+description: NIP-35 torrent metadata event
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 2003
+        errorMessage: "kind must equal 2003"
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        allOf:
+          - contains:
+              $ref: "@/tag/title.yaml"
+            errorMessage:
+              contains: "tags must include a title tag"
+          - contains:
+              allOf:
+                - $ref: "@/tag.yaml"
+                - type: array
+                  minItems: 2
+                  items:
+                    - const: "x"
+                    - type: string
+                      pattern: "^[a-fA-F0-9]{40}$"
+                      description: "V1 BitTorrent info hash (SHA-1)"
+            errorMessage:
+              contains: "tags must include an x tag with a V1 BitTorrent info hash"
+    required:
+      - kind
+      - tags

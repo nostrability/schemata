@@ -1,0 +1,18 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind64
+description: NIP-64 chess game in Portable Game Notation (PGN) format
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 64
+        errorMessage: "kind must equal 64"
+      content:
+        type: string
+        minLength: 1
+        errorMessage: "content must be a non-empty PGN string"
+        description: "PGN-database string representing a chess game"
+    required:
+      - kind
+      - content

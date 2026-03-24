@@ -1,0 +1,21 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind34550
+description: NIP-72 community definition event
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 34550
+        errorMessage: "kind must equal 34550"
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        contains:
+          $ref: "@/tag/d.yaml"
+        errorMessage:
+          contains: "tags must include a d tag with the community identifier"
+    required:
+      - kind
+      - tags
