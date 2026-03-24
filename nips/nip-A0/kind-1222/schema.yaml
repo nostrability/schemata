@@ -1,0 +1,18 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind1222
+description: "NIP-A0 Voice Message"
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 1222
+        errorMessage: "kind must equal 1222"
+      content:
+        type: string
+        pattern: "^https?://\\S+$"
+        description: "URL pointing directly to an audio file"
+        errorMessage: "content must be a URL to an audio file"
+    required:
+      - kind
+      - content
