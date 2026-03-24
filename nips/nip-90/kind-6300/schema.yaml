@@ -1,0 +1,33 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind6300
+description: NIP-90 DVM content discovery job result
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 6300
+        errorMessage: "kind must equal 6300"
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        minItems: 3
+        errorMessage:
+          minItems: "tags must contain at least three tags (e, p, request)"
+        allOf:
+          - contains:
+              $ref: "@/tag/e.yaml"
+            errorMessage:
+              contains: "tags must include an e tag referencing the job request event"
+          - contains:
+              $ref: "@/tag/p.yaml"
+            errorMessage:
+              contains: "tags must include a p tag with the customer's pubkey"
+          - contains:
+              $ref: "@/tag/request.yaml"
+            errorMessage:
+              contains: "tags must include a request tag with the original job request JSON"
+    required:
+      - kind
+      - tags
