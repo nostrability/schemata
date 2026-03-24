@@ -1,5 +1,6 @@
 # @nostrability/schemata
 
+[![npm](https://img.shields.io/npm/v/@nostrability/schemata)](https://www.npmjs.com/package/@nostrability/schemata)
 [![Test](https://github.com/nostrability/schemata/actions/workflows/test.yml/badge.svg)](https://github.com/nostrability/schemata/actions/workflows/test.yml)
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/nostrability/schemata)
 
