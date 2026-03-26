@@ -4,8 +4,8 @@
   "created_at": 1670000000,
   "kind": 3,
   "tags": [
-    ["e", "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"]
+    ["p", 12345]
   ],
-  "content": "{}",
+  "content": "",
   "sig": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
 }
