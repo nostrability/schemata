@@ -1,0 +1,13 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind11316
+description: "CVM Server Announcement (CEP-06)"
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 11316
+        description: "Kind 11316 identifies a CVM server announcement"
+        errorMessage: "kind must equal 11316"
+    required:
+      - kind

@@ -1,0 +1,13 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind11317
+description: "CVM Published Tools List (CEP-06)"
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 11317
+        description: "Kind 11317 identifies a CVM published tools list"
+        errorMessage: "kind must equal 11317"
+    required:
+      - kind
