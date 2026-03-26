@@ -55,6 +55,7 @@ Data packages vendor the compiled JSON schemas and provide a registry lookup for
 | C#/.NET | [`schemata-csharp`](https://github.com/nostrability/schemata-csharp) | `Schemata.Get("kind1Schema")` |
 | C++ | [`schemata-cpp`](https://github.com/nostrability/schemata-cpp) | `schemata::get("kind1Schema")` |
 | Ruby | [`schemata-ruby`](https://github.com/nostrability/schemata-ruby) | `SchemataNostr.get('kind1Schema')` |
+| C | [`schemata-c`](https://github.com/nostrability/schemata-c) | `schemata_get("kind1Schema")` |
 
 > **Note:** Swift uses a single-package approach (schemas inlined into the validator) because SPM resource bundles cause iOS codesign failures. See [#88](https://github.com/nostrability/schemata/issues/88) for details on how this applies to future Kotlin Multiplatform support.
 
@@ -76,6 +77,7 @@ Validators wrap a JSON Schema library and the data package to provide nostr-spec
 | C#/.NET | [`schemata-validator-csharp`](https://github.com/nostrability/schemata-validator-csharp) | [JsonSchema.Net](https://github.com/gregsdennis/json-everything) |
 | C++ | [`schemata-validator-cpp`](https://github.com/nostrability/schemata-validator-cpp) | [valijson](https://github.com/tristanpenman/valijson) |
 | Ruby | [`schemata-validator-ruby`](https://github.com/nostrability/schemata-validator-ruby) | [json_schemer](https://github.com/davishmcclurg/json_schemer) |
+| C | [`schemata-validator-c`](https://github.com/nostrability/schemata-validator-c) | [jsonc-daccord](https://github.com/nostrability/jsonc-daccord) (nostrability fork) |
 
 ## Adding new Schemas
 `@nostrability/schemata` assumes a kind is associated to a NIP and so the schemas are organized by NIP. The system has `aliases` that are generated via the build-script. The aliases make it easier to reference commonly reused schemas (such as tags, and base schemata like `note`). 
