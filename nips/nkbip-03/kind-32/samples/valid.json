@@ -1,0 +1,17 @@
+{
+  "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "created_at": 1670000000,
+  "kind": 32,
+  "tags": [
+    ["accessed_on", "2024-06-01T00:00:00Z"],
+    ["title", "The Bitcoin Standard"],
+    ["author", "Saifedean Ammous"],
+    ["published_on", "2018-03-23T00:00:00Z"],
+    ["published_by", "Wiley"],
+    ["page_range", "45-67"],
+    ["chapter_title", "Digital Money"]
+  ],
+  "content": "The most important application of the blockchain is as a monetary system.",
+  "sig": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+}

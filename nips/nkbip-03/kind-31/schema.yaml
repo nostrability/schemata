@@ -1,0 +1,51 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind31
+description: "NKBIP-03 External web reference (citation)"
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 31
+        errorMessage: "kind must equal 31"
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        minItems: 1
+        allOf:
+          - contains:
+              $ref: "@/tag/u.yaml"
+            errorMessage:
+              contains: "tags must include a u tag with the URL of the citation"
+          - contains:
+              $ref: "@/tag/accessed_on.yaml"
+            errorMessage:
+              contains: "tags must include an accessed_on tag with the access date"
+          - contains:
+              $ref: "@/tag/title.yaml"
+            errorMessage:
+              contains: "tags must include a title tag for the citation"
+          - contains:
+              $ref: "@/tag/author.yaml"
+            errorMessage:
+              contains: "tags must include an author tag"
+          - if:
+              contains:
+                type: array
+                items:
+                  - const: "published_on"
+            then:
+              contains:
+                $ref: "@/tag/published_on.yaml"
+          - if:
+              contains:
+                type: array
+                items:
+                  - const: "version"
+            then:
+              contains:
+                $ref: "@/tag/version.yaml"
+    required:
+      - kind
+      - tags

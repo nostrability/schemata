@@ -2,10 +2,11 @@
   "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
   "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
   "created_at": 1670000000,
-  "kind": 1059,
+  "kind": 30819,
   "tags": [
-    ["t", "nostr"]
+    ["d", "btc"],
+    ["a", "30818:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc:bitcoin", "wss://relay.example.com"]
   ],
-  "content": "nip44-encrypted-seal-payload-here",
+  "content": "this should be empty",
   "sig": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
 }

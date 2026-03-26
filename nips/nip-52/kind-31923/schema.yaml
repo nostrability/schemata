@@ -20,6 +20,18 @@ allOf:
               $ref: "@/tag/title.yaml"
             errorMessage:
               contains: "tags must include a title tag"
+          # required: D (day-granularity unix timestamp)
+          - contains:
+              allOf:
+                - $ref: "@/tag.yaml"
+                - type: array
+                  minItems: 2
+                  items:
+                    - const: "D"
+                    - type: string
+                      pattern: '^[0-9]+$'
+            errorMessage:
+              contains: "tags must include a D tag with a day-granularity unix timestamp"
           # required: start (unix timestamp in seconds as string)
           - contains:
               allOf:

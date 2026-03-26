@@ -1,0 +1,15 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    minItems: 2
+    items:
+      - const: "author"
+      - type: string
+        minLength: 1
+        description: "Author name for the citation"
+    additionalItems:
+      type: string
+      minLength: 1
+    errorMessage:
+      minItems: "author tag must have at least 2 elements"

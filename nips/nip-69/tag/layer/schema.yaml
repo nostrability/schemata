@@ -7,5 +7,8 @@ allOf:
     items:
       - const: "layer"
       - type: string
-        enum: ["onchain", "lightning", "liquid"]
+        minLength: 1
+        description: "Payment layer (e.g. onchain, lightning, liquid)"
     additionalItems: false
+    errorMessage:
+      minItems: "layer tag must have at least 2 elements"

@@ -1,0 +1,28 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind24
+description: "NIP-A4 Public Message event"
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 24
+        errorMessage: "kind must equal 24"
+      content:
+        type: string
+        minLength: 1
+        description: "The message text in plain text"
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        minItems: 1
+        allOf:
+          - contains:
+              $ref: "@/tag/p.yaml"
+            errorMessage:
+              contains: "tags must include at least one p tag for the message receiver"
+    required:
+      - kind
+      - content
+      - tags

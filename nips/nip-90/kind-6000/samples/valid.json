@@ -6,7 +6,7 @@
   "tags": [
     ["e", "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"],
     ["p", "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"],
-    ["request", "{\"id\":\"dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd\"}"]
+    ["amount", "1000"]
   ],
   "content": "Extracted text content here",
   "sig": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"

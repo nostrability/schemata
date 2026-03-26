@@ -1,0 +1,14 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    minItems: 2
+    maxItems: 2
+    items:
+      - const: "chapter_title"
+      - type: string
+        minLength: 1
+        description: "Chapter or section the citation is found in"
+    additionalItems: false
+    errorMessage:
+      minItems: "chapter_title tag must have at least 2 elements"

@@ -1,0 +1,14 @@
+{
+  "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "created_at": 1670000000,
+  "kind": 31,
+  "tags": [
+    ["u", "https://example.com/article"],
+    ["accessed_on", "2024-03-15T10:30:00Z"],
+    ["title", "Understanding Nostr Protocol"],
+    ["author", "Alice Bob"]
+  ],
+  "content": "The Nostr protocol is a simple, open protocol for decentralized social networking.",
+  "sig": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+}

@@ -1,0 +1,16 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    minItems: 2
+    maxItems: 3
+    items:
+      - const: "published_in"
+      - type: string
+        minLength: 1
+        description: "Journal name"
+      - type: string
+        description: "Volume number"
+    additionalItems: false
+    errorMessage:
+      minItems: "published_in tag must have at least 2 elements"

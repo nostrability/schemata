@@ -1,0 +1,20 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+title: MLS Proposals
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    minItems: 2
+    uniqueItems: true
+    items:
+      - const: "mls_proposals"
+      - type: string
+        pattern: "^0x[0-9a-f]{4}$"
+        description: "MLS proposal type identifier"
+    additionalItems:
+      type: string
+      pattern: "^0x[0-9a-f]{4}$"
+    allOf:
+      - contains:
+          const: "0x000a"
+        errorMessage:
+          contains: "mls_proposals must include 0x000a (self_remove)"

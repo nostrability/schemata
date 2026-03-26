@@ -1,0 +1,14 @@
+{
+  "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "created_at": 1670000000,
+  "kind": 38172,
+  "tags": [
+    ["d", "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"],
+    ["u", "https://cashu.example.com"],
+    ["nuts", "1,2,3,4,5,6,7"],
+    ["n", "mainnet"]
+  ],
+  "content": "{\"name\":\"Example Mint\",\"about\":\"A test cashu mint\"}",
+  "sig": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+}
