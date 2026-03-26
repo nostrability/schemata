@@ -7,6 +7,7 @@
     ["mls_protocol_version", "1.0"],
     ["mls_ciphersuite", "0x0001"],
     ["mls_extensions", "0xf2ee", "0x000a"],
+    ["mls_proposals", "0x000a"],
     ["relays", "wss://relay.example.com", "wss://relay2.example.com"],
     ["encoding", "base64"],
     ["i", "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"]

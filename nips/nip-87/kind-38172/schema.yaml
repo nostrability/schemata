@@ -1,0 +1,35 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind38172
+description: "NIP-87 Cashu Mint Announcement event"
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 38172
+        errorMessage: "kind must equal 38172"
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        minItems: 1
+        allOf:
+          - contains:
+              $ref: "@/tag/d.yaml"
+            errorMessage:
+              contains: "tags must include a d tag with the mint pubkey"
+          - contains:
+              $ref: "@/tag/u.yaml"
+            errorMessage:
+              contains: "tags must include a u tag with the mint URL"
+          - contains:
+              $ref: "@/tag/nuts.yaml"
+            errorMessage:
+              contains: "tags must include a nuts tag with supported NUT numbers"
+          - contains:
+              $ref: "@/tag/n.yaml"
+            errorMessage:
+              contains: "tags must include an n tag with the network identifier"
+    required:
+      - kind
+      - tags

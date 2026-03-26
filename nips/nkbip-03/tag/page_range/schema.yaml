@@ -1,0 +1,14 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    minItems: 2
+    maxItems: 2
+    items:
+      - const: "page_range"
+      - type: string
+        minLength: 1
+        description: "Pages the citation is found on"
+    additionalItems: false
+    errorMessage:
+      minItems: "page_range tag must have at least 2 elements"

@@ -1,0 +1,79 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind32
+description: "NKBIP-03 Hardcopy reference (citation)"
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 32
+        errorMessage: "kind must equal 32"
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        minItems: 1
+        allOf:
+          - contains:
+              $ref: "@/tag/accessed_on.yaml"
+            errorMessage:
+              contains: "tags must include an accessed_on tag"
+          - contains:
+              $ref: "@/tag/title.yaml"
+            errorMessage:
+              contains: "tags must include a title tag for the citation"
+          - contains:
+              $ref: "@/tag/author.yaml"
+            errorMessage:
+              contains: "tags must include an author tag"
+          - if:
+              contains:
+                type: array
+                items:
+                  - const: "page_range"
+            then:
+              contains:
+                $ref: "@/tag/page_range.yaml"
+          - if:
+              contains:
+                type: array
+                items:
+                  - const: "chapter_title"
+            then:
+              contains:
+                $ref: "@/tag/chapter_title.yaml"
+          - if:
+              contains:
+                type: array
+                items:
+                  - const: "editor"
+            then:
+              contains:
+                $ref: "@/tag/editor.yaml"
+          - if:
+              contains:
+                type: array
+                items:
+                  - const: "doi"
+            then:
+              contains:
+                $ref: "@/tag/doi.yaml"
+          - if:
+              contains:
+                type: array
+                items:
+                  - const: "published_in"
+            then:
+              contains:
+                $ref: "@/tag/published_in.yaml"
+          - if:
+              contains:
+                type: array
+                items:
+                  - const: "version"
+            then:
+              contains:
+                $ref: "@/tag/version.yaml"
+    required:
+      - kind
+      - tags

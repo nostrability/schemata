@@ -1,0 +1,14 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    minItems: 2
+    maxItems: 2
+    items:
+      - const: "c"
+      - type: string
+        pattern: '^[a-f0-9]{40}$'
+        description: "Git commit hash (40 hex chars)"
+    additionalItems: false
+    errorMessage:
+      minItems: "c tag must have at least 2 elements"

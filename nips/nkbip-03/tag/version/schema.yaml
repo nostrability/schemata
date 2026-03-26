@@ -1,0 +1,14 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    minItems: 2
+    maxItems: 2
+    items:
+      - const: "version"
+      - type: string
+        minLength: 1
+        description: "Version or edition of the publication or model"
+    additionalItems: false
+    errorMessage:
+      minItems: "version tag must have at least 2 elements"

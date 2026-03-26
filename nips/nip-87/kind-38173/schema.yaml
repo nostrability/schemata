@@ -1,0 +1,45 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind38173
+description: "NIP-87 Fedimint Announcement event"
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 38173
+        errorMessage: "kind must equal 38173"
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        minItems: 1
+        allOf:
+          - contains:
+              $ref: "@/tag/d.yaml"
+            errorMessage:
+              contains: "tags must include a d tag with the federation ID"
+          # u tag is inline because its value is an invite code, not a URL;
+          # reusing the NIP-61 u tag (which expects a URL) would be incorrect.
+          - contains:
+              allOf:
+                - $ref: "@/tag.yaml"
+                - type: array
+                  minItems: 2
+                  items:
+                    - const: "u"
+                    - type: string
+                      minLength: 1
+                  additionalItems: false
+            errorMessage:
+              contains: "tags must include a u tag with a fedimint invite code"
+          - contains:
+              $ref: "@/tag/modules.yaml"
+            errorMessage:
+              contains: "tags must include a modules tag with supported module names"
+          - contains:
+              $ref: "@/tag/n.yaml"
+            errorMessage:
+              contains: "tags must include an n tag with the network identifier"
+    required:
+      - kind
+      - tags

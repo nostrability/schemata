@@ -1,0 +1,14 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    minItems: 2
+    maxItems: 2
+    items:
+      - const: "nuts"
+      - type: string
+        pattern: '^[0-9]+(,[0-9]+)*$'
+        description: "Comma-separated NUT specification numbers"
+    additionalItems: false
+    errorMessage:
+      minItems: "nuts tag must have at least 2 elements"

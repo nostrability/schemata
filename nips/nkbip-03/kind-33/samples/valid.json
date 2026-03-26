@@ -1,0 +1,14 @@
+{
+  "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "created_at": 1670000000,
+  "kind": 33,
+  "tags": [
+    ["llm", "Claude 3.5 Sonnet"],
+    ["accessed_on", "2024-12-01T14:00:00Z"],
+    ["version", "claude-3-5-sonnet-20241022"],
+    ["summary", "Explain the nostr protocol in simple terms"]
+  ],
+  "content": "Nostr is a decentralized protocol for social networking that uses cryptographic keypairs.",
+  "sig": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+}

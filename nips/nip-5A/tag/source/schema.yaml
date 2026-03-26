@@ -1,0 +1,14 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    minItems: 2
+    maxItems: 2
+    items:
+      - const: "source"
+      - type: string
+        pattern: '^https?://.+'
+        description: "URL to the site source code repository or archive"
+    additionalItems: false
+    errorMessage:
+      minItems: "source tag must have at least 2 elements"

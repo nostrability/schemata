@@ -1,0 +1,14 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    minItems: 2
+    maxItems: 2
+    items:
+      - const: "published_by"
+      - type: string
+        minLength: 1
+        description: "Publisher of the citation"
+    additionalItems: false
+    errorMessage:
+      minItems: "published_by tag must have at least 2 elements"

@@ -2,8 +2,10 @@
   "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
   "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
   "created_at": 1670000000,
-  "kind": 17375,
-  "tags": [],
-  "content": "encrypted-wallet-data",
+  "kind": 62,
+  "tags": [
+    ["relay", "ALL_RELAYS"]
+  ],
+  "content": "",
   "sig": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
 }

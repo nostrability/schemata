@@ -14,7 +14,7 @@ allOf:
           $ref: "@/tag.yaml"
         minItems: 3
         errorMessage:
-          minItems: "tags must contain at least three tags (e, p, request)"
+          minItems: "tags must contain at least three tags (e, p, amount)"
         allOf:
           - contains:
               $ref: "@/tag/e.yaml"
@@ -25,9 +25,17 @@ allOf:
             errorMessage:
               contains: "tags must include a p tag with the customer's pubkey"
           - contains:
-              $ref: "@/tag/request.yaml"
+              $ref: "nips/nip-90/tag/amount/schema.yaml"
             errorMessage:
-              contains: "tags must include a request tag with the original job request JSON"
+              contains: "tags must include an amount tag with the charge in millisats"
+          - if:
+              contains:
+                type: array
+                items:
+                  - const: "request"
+            then:
+              contains:
+                $ref: "@/tag/request.yaml"
     required:
       - kind
       - tags

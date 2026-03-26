@@ -1,0 +1,14 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    minItems: 2
+    maxItems: 2
+    items:
+      - const: "editor"
+      - type: string
+        minLength: 1
+        description: "Editor of the publication"
+    additionalItems: false
+    errorMessage:
+      minItems: "editor tag must have at least 2 elements"

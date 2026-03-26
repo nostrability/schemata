@@ -1,0 +1,15 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    minItems: 2
+    maxItems: 2
+    items:
+      - const: "modules"
+      - type: string
+        minLength: 1
+        pattern: '^[A-Za-z0-9_]+(,[A-Za-z0-9_]+)*$'
+        description: "Comma-separated module names"
+    additionalItems: false
+    errorMessage:
+      minItems: "modules tag must have at least 2 elements"

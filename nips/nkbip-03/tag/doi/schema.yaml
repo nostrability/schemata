@@ -1,0 +1,15 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    minItems: 2
+    maxItems: 2
+    items:
+      - const: "doi"
+      - type: string
+        minLength: 1
+        pattern: '^10\.\d{4,9}/.+$'
+        description: "DOI number for the publication"
+    additionalItems: false
+    errorMessage:
+      minItems: "doi tag must have at least 2 elements"

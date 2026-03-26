@@ -3,7 +3,15 @@ allOf:
   - $ref: "@/tag.yaml"
   - type: array
     minItems: 2
+    maxItems: 3
     items:
       - const: "r"
       - type: string
-    additionalItems: true
+        pattern: '^(ws://|wss://).+$'
+        description: "Relay URL"
+      - type: string
+        enum: ["read", "write"]
+        description: "Optional read/write marker"
+    additionalItems: false
+    errorMessage:
+      minItems: "r tag must have at least 2 elements"

@@ -18,6 +18,10 @@ allOf:
             errorMessage:
               contains: "tags must include an a tag referencing the community"
           - contains:
+              $ref: "@/tag/e.yaml"
+            errorMessage:
+              contains: "tags must include an e tag referencing the approved post"
+          - contains:
               $ref: "@/tag/p.yaml"
             errorMessage:
               contains: "tags must include a p tag with the post author pubkey"

@@ -3,9 +3,7 @@
   "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
   "created_at": 1670000000,
   "kind": 17375,
-  "tags": [
-    ["mint", "https://mint.example.com"]
-  ],
+  "tags": [],
   "content": "encrypted-wallet-data",
   "sig": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
 }

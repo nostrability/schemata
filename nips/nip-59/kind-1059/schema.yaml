@@ -21,11 +21,5 @@ allOf:
         type: array
         items:
           $ref: "@/tag.yaml"
-        minItems: 1
-        allOf:
-          - contains:
-              $ref: "@/tag/p.yaml"
-            errorMessage:
-              contains: "tags must include a p tag"
     required:
       - kind

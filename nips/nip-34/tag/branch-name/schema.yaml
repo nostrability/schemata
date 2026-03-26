@@ -1,0 +1,14 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    minItems: 2
+    maxItems: 2
+    items:
+      - const: "branch-name"
+      - type: string
+        minLength: 1
+        description: "Recommended branch name for the pull request"
+    additionalItems: false
+    errorMessage:
+      minItems: "branch-name tag must have at least 2 elements"

@@ -1,0 +1,33 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind30819
+description: "NIP-54 Wiki Redirect event"
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 30819
+        errorMessage: "kind must equal 30819"
+      content:
+        type: string
+        maxLength: 0
+        description: "Content must be an empty string"
+        errorMessage: "content must be an empty string"
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        minItems: 1
+        allOf:
+          - contains:
+              $ref: "@/tag/d.yaml"
+            errorMessage:
+              contains: "tags must include a d tag with the normalized source topic"
+          - contains:
+              $ref: "@/tag/a.yaml"
+            errorMessage:
+              contains: "tags must include an a tag referencing the target wiki article"
+    required:
+      - kind
+      - content
+      - tags

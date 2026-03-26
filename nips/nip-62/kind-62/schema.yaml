@@ -13,9 +13,19 @@ allOf:
         items:
           $ref: "@/tag.yaml"
         contains:
-          $ref: "@/tag/relay.yaml"
+          allOf:
+            - $ref: "@/tag.yaml"
+            - type: array
+              minItems: 2
+              items:
+                - const: "relay"
+                - type: string
+                  anyOf:
+                    - pattern: '^(ws://|wss://).+$'
+                    - const: "ALL_RELAYS"
+              additionalItems: false
         errorMessage:
-          contains: "tags must include at least one relay tag"
+          contains: "tags must include at least one relay tag (ws(s):// URL or ALL_RELAYS)"
     required:
       - kind
       - tags
