@@ -1,0 +1,66 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind1619
+description: NIP-34 pull request update event
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 1619
+        errorMessage: "kind must equal 1619"
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        minItems: 1
+        allOf:
+          - contains:
+              $ref: "@/tag/a.yaml"
+            errorMessage:
+              contains: "tags must include an a tag referencing the target repository"
+          - contains:
+              $ref: "@/tag/p.yaml"
+            errorMessage:
+              contains: "tags must include a p tag for the repository owner"
+          - contains:
+              $ref: "@/tag/c.yaml"
+            errorMessage:
+              contains: "tags must include a c tag with the updated tip commit hash"
+          - contains:
+              $ref: "@/tag/clone.yaml"
+            errorMessage:
+              contains: "tags must include a clone tag with at least one clone URL"
+          # NIP-22 uppercase tags for threading back to the PR event
+          - contains:
+              allOf:
+                - $ref: "@/tag.yaml"
+                - type: array
+                  minItems: 2
+                  items:
+                    - const: "E"
+                    - type: string
+                      pattern: '^[a-f0-9]{64}$'
+            errorMessage:
+              contains: "tags must include an E tag referencing the pull request event"
+          - contains:
+              allOf:
+                - $ref: "@/tag.yaml"
+                - type: array
+                  minItems: 2
+                  items:
+                    - const: "P"
+                    - type: string
+                      pattern: '^[a-f0-9]{64}$'
+            errorMessage:
+              contains: "tags must include a P tag referencing the pull request author"
+          - if:
+              contains:
+                type: array
+                items:
+                  - const: "merge-base"
+            then:
+              contains:
+                $ref: "@/tag/merge-base.yaml"
+    required:
+      - kind
+      - tags

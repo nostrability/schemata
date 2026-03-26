@@ -1,0 +1,14 @@
+{
+  "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "created_at": 1670000000,
+  "kind": 38173,
+  "tags": [
+    ["d", "federation-id-abc123"],
+    ["u", "fed11qgqzc2nhwden5te0vejkg6tdd9h8gepwvejhyamrvaak8e6q"],
+    ["modules", "lightning,wallet,mint"],
+    ["n", "mainnet"]
+  ],
+  "content": "{\"name\":\"Example Federation\"}",
+  "sig": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+}
