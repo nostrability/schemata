@@ -1,0 +1,22 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind30777
+description: "Spellbook — collection of spells (addressable event)"
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 30777
+        errorMessage: "kind must equal 30777"
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        allOf:
+          - contains:
+              $ref: "@/tag/d.yaml"
+            errorMessage:
+              contains: "tags must include a d tag (required for addressable events)"
+    required:
+      - kind
+      - tags

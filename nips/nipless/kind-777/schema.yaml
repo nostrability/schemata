@@ -1,0 +1,70 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind777
+description: "Spell — portable REQ filter (Grimoire/nak)"
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 777
+        errorMessage: "kind must equal 777"
+      content:
+        type: string
+        description: "Human-readable description of the spell"
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        minItems: 2
+        allOf:
+          - contains:
+              $ref: "@/tag/cmd.yaml"
+            errorMessage:
+              contains: "tags must include a cmd tag with value REQ or COUNT"
+          - anyOf:
+              - contains:
+                  type: array
+                  minItems: 2
+                  items:
+                    - const: "k"
+              - contains:
+                  type: array
+                  minItems: 2
+                  items:
+                    - const: "authors"
+              - contains:
+                  type: array
+                  minItems: 2
+                  items:
+                    - const: "ids"
+              - contains:
+                  type: array
+                  minItems: 2
+                  items:
+                    - const: "tag"
+              - contains:
+                  type: array
+                  minItems: 2
+                  items:
+                    - const: "limit"
+              - contains:
+                  type: array
+                  minItems: 2
+                  items:
+                    - const: "since"
+              - contains:
+                  type: array
+                  minItems: 2
+                  items:
+                    - const: "until"
+              - contains:
+                  type: array
+                  minItems: 2
+                  items:
+                    - const: "search"
+            errorMessage:
+              anyOf: "tags must include at least one filter tag (k, authors, ids, tag, limit, since, until, or search)"
+    required:
+      - kind
+      - content
+      - tags

@@ -1,0 +1,13 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind11320
+description: "CVM Published Prompts List (CEP-06)"
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 11320
+        description: "Kind 11320 identifies a CVM published prompts list"
+        errorMessage: "kind must equal 11320"
+    required:
+      - kind

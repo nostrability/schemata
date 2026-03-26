@@ -1,0 +1,33 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind25910
+description: "CVM/MCP Transport — JSON-RPC over Nostr (CEP-01)"
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 25910
+        description: "Kind 25910 identifies an MCP JSON-RPC transport message"
+        errorMessage: "kind must equal 25910"
+      content:
+        type: string
+        minLength: 1
+        description: "JSON-RPC message (request or response)"
+        errorMessage:
+          minLength: "content must be a non-empty string containing a JSON-RPC message"
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        minItems: 1
+        errorMessage:
+          minItems: "tags must contain at least one tag"
+        allOf:
+          - contains:
+              $ref: "@/tag/p.yaml"
+            errorMessage:
+              contains: "tags must include a p tag identifying the recipient"
+    required:
+      - kind
+      - content
+      - tags

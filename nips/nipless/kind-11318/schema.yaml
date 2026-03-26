@@ -1,0 +1,13 @@
+$schema: http://json-schema.org/draft-07/schema#
+title: kind11318
+description: "CVM Published Resources List (CEP-06)"
+allOf:
+  - $ref: "@/note.yaml"
+  - type: object
+    properties:
+      kind:
+        const: 11318
+        description: "Kind 11318 identifies a CVM published resources list"
+        errorMessage: "kind must equal 11318"
+    required:
+      - kind
