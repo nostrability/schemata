@@ -1,3 +1,18 @@
+# Inline definition: cannot coexist with L/ directory on case-insensitive FS
+$schema: "http://json-schema.org/draft-07/schema#"
 allOf:
-  - $ref: "nips/nip-32/tag/l/schema.yaml"
-
+  - $ref: "nips/nip-01/tag/schema.yaml"
+  - type: array
+    description: "Label tag (NIP-32). Applies a label within a namespace."
+    minItems: 3
+    items:
+      - const: "l"
+      - type: string
+        minLength: 1
+        description: "Label value"
+      - type: string
+        minLength: 1
+        description: "Label namespace"
+    additionalItems: false
+    errorMessage:
+      minItems: "l tag must have at least 3 elements"
