@@ -4,30 +4,30 @@ Cross-language API surface comparison for all `schemata-validator-*` implementat
 
 ## Core Functions
 
-| Function | JS (ref) | Rust | Kotlin | Go | Swift | Dart | Python | Java | PHP | Ruby | C# | C++ |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| `validate` | yes | yes | yes | yes | — | yes | yes | yes | yes | yes | yes | yes |
-| `validateNote` | yes | yes | yes | yes | yes | yes | yes | yes | yes | yes | yes | yes |
-| `validateNip11` | yes | yes | yes | yes | yes | yes | yes | yes | yes | yes | — | yes |
-| `validateMessage` | yes | yes | yes | yes | yes | yes | yes | yes | — | — | — | yes |
-| `getSchema` | — | yes | yes | yes | yes | yes | yes | yes | yes | yes | yes | yes |
+| Function | JS (ref) | Rust | Kotlin | Go | Swift | Dart | Python | Java | PHP | Ruby | C# | C++ | C |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| `validate` | yes | yes | yes | yes | — | yes | yes | yes | yes | yes | yes | yes | yes |
+| `validateNote` | yes | yes | yes | yes | yes | yes | yes | yes | yes | yes | yes | yes | yes |
+| `validateNip11` | yes | yes | yes | yes | yes | yes | yes | yes | yes | yes | — | yes | yes |
+| `validateMessage` | yes | yes | yes | yes | yes | yes | yes | yes | — | — | — | yes | yes |
+| `getSchema` | — | yes | yes | yes | yes | yes | yes | yes | yes | yes | yes | yes | yes |
 
 ## Types
 
-| Type | JS (ref) | Rust | Kotlin | Go | Swift | Dart | Python | Java | PHP | Ruby | C# | C++ |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| `ValidationResult` | yes | yes | yes | yes | yes | yes | yes | yes (record) | yes | yes (Struct) | yes (record) | yes |
-| `ValidationError` | AJV ErrorObject | yes | yes | yes | yes | yes | yes (dataclass) | yes (record) | yes | yes (Struct) | yes (record) | yes |
-| `Subject` enum | string literal | yes | yes | yes (int) | yes | yes | yes (Enum) | yes | — | — | yes | yes |
+| Type | JS (ref) | Rust | Kotlin | Go | Swift | Dart | Python | Java | PHP | Ruby | C# | C++ | C |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| `ValidationResult` | yes | yes | yes | yes | yes | yes | yes | yes (record) | yes | yes (Struct) | yes (record) | yes | yes (struct) |
+| `ValidationError` | AJV ErrorObject | yes | yes | yes | yes | yes | yes (dataclass) | yes (record) | yes | yes (Struct) | yes (record) | yes | yes (struct) |
+| `Subject` enum | string literal | yes | yes | yes (int) | yes | yes | yes (Enum) | yes | — | — | yes | yes | yes (enum) |
 
 ## Internal Features
 
-| Feature | JS (ref) | Rust | Kotlin | Go | Swift | Dart | Python | Java | PHP | Ruby | C# | C++ |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| Strip nested `$id` | — | yes | yes | yes | yes | yes | yes | yes | yes | yes | — | yes |
-| Strip nested `$schema` | — | — | — | — | yes | yes | — | yes | yes | yes | — | yes |
-| Additional props warnings | yes | yes | yes | yes | yes | yes | yes | — | — | — | — | — |
-| `errorMessage` enrichment | — | yes | yes | yes* | — | — | yes | — | — | — | — | — |
+| Feature | JS (ref) | Rust | Kotlin | Go | Swift | Dart | Python | Java | PHP | Ruby | C# | C++ | C |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Strip nested `$id` | — | yes | yes | yes | yes | yes | yes | yes | yes | yes | — | yes | yes |
+| Strip nested `$schema` | — | — | — | — | yes | yes | — | yes | yes | yes | — | yes | yes |
+| Additional props warnings | yes | yes | yes | yes | yes | yes | yes | — | — | — | — | — | yes |
+| `errorMessage` enrichment | — | yes | yes | yes* | — | — | yes | — | — | — | — | — | yes |
 
 \* Go has the code but `enrichMessage` is never called (dead code).
 
@@ -47,6 +47,7 @@ Cross-language API surface comparison for all `schemata-validator-*` implementat
 | Ruby | `Hash` | `Object` |
 | C# | `string` (JSON) | `string` (JSON) |
 | C++ | `const std::string&` (JSON) | `const std::string&` (JSON) |
+| C | `const char*` (JSON) | `const char*` (JSON) |
 
 ## JSON Schema Library & Draft
 
@@ -64,6 +65,7 @@ Cross-language API surface comparison for all `schemata-validator-*` implementat
 | Ruby | json_schemer 2.0 | 7 |
 | C# | JsonSchema.Net 7.* | 7 |
 | C++ | valijson 1.0.3 | 7 |
+| C | jsonc-daccord (nostrability fork) | 7 |
 
 ## Gaps
 
