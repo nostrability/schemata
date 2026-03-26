@@ -19,7 +19,7 @@ allOf:
         type: array
         items:
           $ref: "@/tag.yaml"
-        minItems: 6
+        minItems: 7
         allOf:
           - contains:
               $ref: "@/tag/mls_protocol_version.yaml"
@@ -33,6 +33,10 @@ allOf:
               $ref: "@/tag/mls_extensions.yaml"
             errorMessage:
               contains: "tags must include an mls_extensions tag"
+          - contains:
+              $ref: "@/tag/mls_proposals.yaml"
+            errorMessage:
+              contains: "tags must include an mls_proposals tag"
           - contains:
               $ref: "@/tag/relays.yaml"
             errorMessage:

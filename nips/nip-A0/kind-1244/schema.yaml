@@ -13,6 +13,24 @@ allOf:
         pattern: "^https?://\\S+$"
         description: "URL pointing directly to an audio file"
         errorMessage: "content must be a URL to an audio file"
+      tags:
+        type: array
+        items:
+          $ref: "@/tag.yaml"
+        allOf:
+          # NIP-22 requires uppercase K tag for the root event kind
+          - contains:
+              allOf:
+                - $ref: "@/tag.yaml"
+                - type: array
+                  minItems: 2
+                  items:
+                    - const: "K"
+                    - type: string
+                      pattern: '^[0-9]+$'
+            errorMessage:
+              contains: "tags must include a K tag with the root event kind (NIP-22)"
     required:
       - kind
       - content
+      - tags

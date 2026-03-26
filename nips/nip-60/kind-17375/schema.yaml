@@ -8,14 +8,9 @@ allOf:
       kind:
         const: 17375
         errorMessage: "kind must equal 17375"
-      tags:
-        type: array
-        items:
-          $ref: "@/tag.yaml"
-        allOf:
-          - contains:
-              $ref: "@/tag/mint.yaml"
-            errorMessage:
-              contains: "tags must include a mint tag"
+      content:
+        type: string
+        minLength: 1
+        description: "NIP-44 encrypted content containing wallet data (privkey, mint URLs)"
     required:
-      - tags
+      - kind

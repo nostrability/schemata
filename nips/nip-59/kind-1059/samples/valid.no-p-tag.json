@@ -3,9 +3,7 @@
   "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
   "created_at": 1670000000,
   "kind": 1059,
-  "tags": [
-    ["t", "nostr"]
-  ],
+  "tags": [],
   "content": "nip44-encrypted-seal-payload-here",
   "sig": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
 }
