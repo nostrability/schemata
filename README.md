@@ -235,7 +235,10 @@ echo '$id: "https://schemata.nostr.watch/note/kind/YYYY"' > nips/nip-XX/kind-YYY
 - `kind-1618` - Git issue
 - `kind-1619` - Git repo announcement
 - `kind-1621` - Git reply
-- `kind-1630`–`kind-1633` - Git status (open/applied/closed/draft)
+- `kind-1630` - Git status open
+- `kind-1631` - Git status applied
+- `kind-1632` - Git status closed
+- `kind-1633` - Git status draft
 - `kind-30617` - Git repository
 - `kind-30618` - Git repository state
 
@@ -260,7 +263,9 @@ echo '$id: "https://schemata.nostr.watch/note/kind/YYYY"' > nips/nip-XX/kind-YYY
 - `kind-8000` - Group join
 - `kind-8001` - Group invite
 - `kind-13534` - Group member list
-- `kind-28934`–`kind-28936` - Group events
+- `kind-28934` - Group add event
+- `kind-28935` - Group remove event
+- `kind-28936` - Group event list
 
 **NIP-46** — Nostr Connect
 - `kind-24133` - Nostr Connect request/response
@@ -275,18 +280,31 @@ echo '$id: "https://schemata.nostr.watch/note/kind/YYYY"' > nips/nip-XX/kind-YYY
 **NIP-51** — Lists (27 kinds)
 - `kind-10000` - Mute list
 - `kind-10001` - Pin list
-- `kind-10003`–`kind-10007` - Bookmark, community, public chat, blocked relay, search relay lists
+- `kind-10003` - Bookmarks
+- `kind-10004` - Communities list
+- `kind-10005` - Public chats list
+- `kind-10006` - Blocked relays list
+- `kind-10007` - Search relays list
 - `kind-10009` - User groups list
-- `kind-10012`–`kind-10015` - Blocked users from relay, interest, emoji, good wiki relay lists
+- `kind-10012` - Relay feeds list
+- `kind-10015` - Interests list
 - `kind-10020` - Tagged events list
 - `kind-10030` - Custom emoji list
-- `kind-10101`–`kind-10102` - Good wiki authors/topics lists
+- `kind-10101` - Good wiki authors list
+- `kind-10102` - Good wiki relays list
 - `kind-30000` - People set
-- `kind-30002`–`kind-30007` - Relay, bookmark, curation, emoji, blocked relay sets
+- `kind-30002` - Relay sets
+- `kind-30003` - Bookmark sets
+- `kind-30004` - Curation sets
+- `kind-30005` - Video curation sets
+- `kind-30006` - Picture curation sets
+- `kind-30007` - Kind mute sets
 - `kind-30015` - Interest set
 - `kind-30030` - Custom emoji set
-- `kind-30063`–`kind-30267` - Release artifact, app-specific sets
-- `kind-39089`–`kind-39092` - Starter packs
+- `kind-30063` - Release artifact sets
+- `kind-30267` - App curation sets
+- `kind-39089` - Starter packs
+- `kind-39092` - Media starter packs
 
 **NIP-52** — Calendar events
 - `kind-31922` - Date-based calendar event
@@ -436,7 +454,10 @@ echo '$id: "https://schemata.nostr.watch/note/kind/YYYY"' > nips/nip-XX/kind-YYY
 - `kind-9` - Group chat message
 
 **NKBIP-03** — Nostr Knowledge Base
-- `kind-30`–`kind-33` - Source types (web, text, academic, AI)
+- `kind-30` - Web source
+- `kind-31` - Text source
+- `kind-32` - Academic source
+- `kind-33` - AI source
 
 **BUD-04** — Blossom auth
 - `kind-24242` - Blossom auth token
