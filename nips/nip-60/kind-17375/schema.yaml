@@ -12,5 +12,7 @@ allOf:
         type: string
         minLength: 1
         description: "NIP-44 encrypted content containing wallet data (privkey, mint URLs)"
+        errorMessage:
+          minLength: "content must be a non-empty NIP-44 encrypted payload"
     required:
       - kind

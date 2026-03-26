@@ -26,7 +26,7 @@ allOf:
             errorMessage:
               contains: "tags must include a p tag with the customer's pubkey"
           - contains:
-              $ref: "nips/nip-90/tag/amount/schema.yaml"
+              $ref: "@/tag/amount.yaml"
             errorMessage:
               contains: "tags must include an amount tag with the charge in millisats"
           - if:
@@ -37,6 +37,8 @@ allOf:
             then:
               contains:
                 $ref: "@/tag/request.yaml"
+              errorMessage:
+                contains: "if a request tag is present, it must match the request tag schema"
     required:
       - kind
       - tags

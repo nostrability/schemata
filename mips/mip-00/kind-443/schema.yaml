@@ -20,6 +20,8 @@ allOf:
         items:
           $ref: "@/tag.yaml"
         minItems: 7
+        errorMessage:
+          minItems: "tags must include at least 7 required MIP-00 tags"
         allOf:
           - contains:
               $ref: "@/tag/mls_protocol_version.yaml"
