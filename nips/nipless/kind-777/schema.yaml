@@ -10,7 +10,7 @@ allOf:
         errorMessage: "kind must equal 777"
       content:
         type: string
-        description: "Optional human-readable description of the spell"
+        description: "Human-readable description of the spell"
       tags:
         type: array
         items:
