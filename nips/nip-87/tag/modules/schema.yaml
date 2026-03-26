@@ -5,10 +5,11 @@ allOf:
     minItems: 2
     maxItems: 2
     items:
-      - const: "layer"
+      - const: "modules"
       - type: string
         minLength: 1
-        description: "Payment layer (e.g. onchain, lightning, liquid)"
+        pattern: '^[A-Za-z0-9_]+(,[A-Za-z0-9_]+)*$'
+        description: "Comma-separated module names"
     additionalItems: false
     errorMessage:
-      minItems: "layer tag must have at least 2 elements"
+      minItems: "modules tag must have at least 2 elements"

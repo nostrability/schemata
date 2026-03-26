@@ -5,13 +5,12 @@ allOf:
     minItems: 2
     maxItems: 3
     items:
-      - const: "r"
+      - const: "published_in"
       - type: string
-        pattern: '^(ws://|wss://).+$'
-        description: "Relay URL"
+        minLength: 1
+        description: "Journal name"
       - type: string
-        enum: ["read", "write"]
-        description: "Optional read/write marker"
+        description: "Volume number"
     additionalItems: false
     errorMessage:
-      minItems: "r tag must have at least 2 elements"
+      minItems: "published_in tag must have at least 2 elements"

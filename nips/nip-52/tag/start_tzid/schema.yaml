@@ -7,6 +7,8 @@ allOf:
       - const: "start_tzid"
       - type: string
         description: "IANA Time Zone Database identifier"
-        pattern: '^[A-Za-z0-9_]+(?:\/[A-Za-z0-9_+\-]+)*$'
+        pattern: '^[A-Za-z0-9_\-+]+(?:\/[A-Za-z0-9_\-+]+)*$'
     additionalItems: false
+    errorMessage:
+      minItems: "start_tzid tag must have at least 2 elements"
 

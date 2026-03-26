@@ -5,15 +5,13 @@ allOf:
   - $ref: "@/tag.yaml"
   - type: array
     minItems: 2
-    maxItems: 3
+    maxItems: 2
     items:
       - const: "k"
       - type: string
         minLength: 1
-        pattern: "^[A-Za-z0-9][A-Za-z0-9._+-]*(?::[A-Za-z0-9][A-Za-z0-9._+-]*)*$"
-        description: Type identifier for the external resource
-      - type: string
-        minLength: 1
-        description: Optional subtype or hint for the external resource
+        pattern: "^(#|[A-Za-z0-9][A-Za-z0-9._+-]*(?::[A-Za-z0-9][A-Za-z0-9._+-]*)*)$"
+        description: Type identifier for the external resource (e.g. isbn, geo, podcast:guid, #)
+    additionalItems: false
     errorMessage:
-      minItems: "k tag must be ['k', <type>, ...]"
+      minItems: "k tag must be ['k', <type>]"

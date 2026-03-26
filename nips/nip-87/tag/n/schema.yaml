@@ -5,10 +5,10 @@ allOf:
     minItems: 2
     maxItems: 2
     items:
-      - const: "layer"
+      - const: "n"
       - type: string
-        minLength: 1
-        description: "Payment layer (e.g. onchain, lightning, liquid)"
+        enum: ["mainnet", "testnet", "signet", "regtest"]
+        description: "Bitcoin network identifier"
     additionalItems: false
     errorMessage:
-      minItems: "layer tag must have at least 2 elements"
+      minItems: "n tag must have at least 2 elements"

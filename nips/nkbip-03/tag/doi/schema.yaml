@@ -5,10 +5,11 @@ allOf:
     minItems: 2
     maxItems: 2
     items:
-      - const: "layer"
+      - const: "doi"
       - type: string
         minLength: 1
-        description: "Payment layer (e.g. onchain, lightning, liquid)"
+        pattern: '^10\.\d{4,9}/.+$'
+        description: "DOI number for the publication"
     additionalItems: false
     errorMessage:
-      minItems: "layer tag must have at least 2 elements"
+      minItems: "doi tag must have at least 2 elements"

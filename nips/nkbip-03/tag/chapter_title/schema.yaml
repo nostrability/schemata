@@ -5,10 +5,10 @@ allOf:
     minItems: 2
     maxItems: 2
     items:
-      - const: "layer"
+      - const: "chapter_title"
       - type: string
         minLength: 1
-        description: "Payment layer (e.g. onchain, lightning, liquid)"
+        description: "Chapter or section the citation is found in"
     additionalItems: false
     errorMessage:
-      minItems: "layer tag must have at least 2 elements"
+      minItems: "chapter_title tag must have at least 2 elements"

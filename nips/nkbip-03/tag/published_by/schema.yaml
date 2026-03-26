@@ -5,10 +5,10 @@ allOf:
     minItems: 2
     maxItems: 2
     items:
-      - const: "layer"
+      - const: "published_by"
       - type: string
         minLength: 1
-        description: "Payment layer (e.g. onchain, lightning, liquid)"
+        description: "Publisher of the citation"
     additionalItems: false
     errorMessage:
-      minItems: "layer tag must have at least 2 elements"
+      minItems: "published_by tag must have at least 2 elements"

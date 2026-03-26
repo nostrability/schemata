@@ -1,0 +1,2 @@
+allOf:
+  - $ref: "mips/mip-00/tag/mls_proposals/schema.yaml"

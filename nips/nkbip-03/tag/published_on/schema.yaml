@@ -1,0 +1,14 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    minItems: 2
+    maxItems: 2
+    items:
+      - const: "published_on"
+      - type: string
+        pattern: '^\d{4}-\d{2}-\d{2}(T\d{2}:\d{2}(:\d{2})?(\.\d+)?(Z|[+-]\d{2}:\d{2})?)?$'
+        description: "Date-time in ISO 8601 format"
+    additionalItems: false
+    errorMessage:
+      minItems: "published_on tag must have at least 2 elements"

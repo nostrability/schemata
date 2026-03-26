@@ -8,5 +8,9 @@ allOf:
       - type: string
         description: "Input data (URL, event ID, job ID, or text)"
       - type: string
-        description: "Input type (url, event, job, text)"
-    additionalItems: true
+        enum: ["url", "event", "job", "text"]
+        description: "Input type"
+    additionalItems:
+      type: string
+    errorMessage:
+      minItems: "i tag must have at least 3 elements"

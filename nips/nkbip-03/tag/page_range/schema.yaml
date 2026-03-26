@@ -5,10 +5,10 @@ allOf:
     minItems: 2
     maxItems: 2
     items:
-      - const: "layer"
+      - const: "page_range"
       - type: string
         minLength: 1
-        description: "Payment layer (e.g. onchain, lightning, liquid)"
+        description: "Pages the citation is found on"
     additionalItems: false
     errorMessage:
-      minItems: "layer tag must have at least 2 elements"
+      minItems: "page_range tag must have at least 2 elements"
