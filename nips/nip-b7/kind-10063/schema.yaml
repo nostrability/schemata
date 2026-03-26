@@ -7,16 +7,17 @@ allOf:
       kind:
         const: 10063
         errorMessage: "kind must equal 10063"
-      tags: 
+      tags:
         type: array
-        items: 
+        items:
+          $ref: "@/tag.yaml"
+        contains:
           $ref: "@/tag/server.yaml"
-        additionalItems: false
         # Blossom lists are intended to advertise at least one reachable server.
         minItems: 1
         errorMessage:
-          type: "tags must be an array of server tags"
-          minItems: "tags array must have at least one server tag"
-          additionalItems: "server lists must only include server tags"
+          type: "tags must be an array of valid tag tuples"
+          contains: "tags must include at least one server tag"
+          minItems: "tags array must have at least one tag"
     required:
       - tags
