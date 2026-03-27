@@ -28,7 +28,7 @@ In a nutshell JSON-Schema validates that the structure of the JSON blob is corre
 - Runtime validation of events where performance is critical (JSON-Schema is notoriously slow due to the breadth of the specification). For performance-sensitive use cases, [`schemata-codegen`](https://github.com/nostrability/schemata-codegen) can generate native structural validators in 13 languages that don't use JSON-Schema at runtime.
 
 ## Alternatives?
-`@fiatjaf` produced a bespoke schema specification solution available [here](https://github.com/nostr-protocol/registry-of-kinds). The benefit of this is that it includes only what it needs to and so its specification is drafted for nostr and so the performance is notably better. The performance improvements make it sufficient for use as a runtime validator in performance sensitive applications. The downside is that validators need to be written and maintained for all languages, tooling is non-existent so workflows that benefit maintenance and extensibility are non-existent, all kinds are specified from a single file and any generator pattern would need to be completely rewritten from scratch. A nostr-specific schema validator may prove to be the best long-term solution, with the caveat that it will take extensive development for it to reach maturity. Note that schemata's [`schemata-codegen`](https://github.com/nostrability/schemata-codegen) pipeline can generate native validators from JSON-Schema, combining the correctness of a standards-based specification with the performance of compiled code.
+`@fiatjaf` produced a bespoke schema specification solution, [registry-of-kinds](https://github.com/nostr-protocol/registry-of-kinds). The benefit of this is that it includes only what it needs to and so its specification is drafted for nostr and so the performance is notably better. The performance improvements make it sufficient for use as a runtime validator in performance sensitive applications. The downside is that validators need to be written and maintained for all languages, tooling is non-existent so workflows that benefit maintenance and extensibility are non-existent, all kinds are specified from a single file and any generator pattern would need to be completely rewritten from scratch. A nostr-specific schema validator may prove to be the best long-term solution, with the caveat that it will take extensive development for it to reach maturity. Note that schemata's [`schemata-codegen`](https://github.com/nostrability/schemata-codegen) pipeline can generate native validators from JSON-Schema, combining the correctness of a standards-based specification with the performance of compiled code.
 
 ## Why not any of the other *`n`* specification formats that are more performant and modern?
 Read this closely and please understand: **Tuples of Strongly Typed Strings.** Yes, *Strongly Typed Strings*. Strongly typing strings is kind of unique to nostr. This concept is considered absurd in conventional system design. Thus, support for "Strongly Typed Strings" does not exist basically anywhere by default, except JSON-Schemas where it kind of exists by accident ... Could we change this? Yes! Are you volunteering? 
@@ -189,10 +189,10 @@ echo '$id: "https://schemata.nostr.watch/note/kind/YYYY"' > nips/nip-XX/kind-YYY
 
 ## Available Schemas
 
-173 event kind schemas across 65 NIP/MIP directories, plus protocol messages and tags.
+177 event kind schemas across 67 directories, plus protocol messages and tags. Codegen reads all 177 schemas from `dist/`; the curated list below may lag behind by a few entries.
 
 <details>
-<summary>Event Kinds (173 schemas)</summary>
+<summary>Event Kinds</summary>
 
 **NIP-01** — Core protocol
 - `kind-0` - Profile metadata
