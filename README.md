@@ -111,8 +111,8 @@ Note: For payloads like `NIP-11` where it breaks the general "event" or "message
 
 | Output | Flag | Description |
 |--------|------|-------------|
-| TypeScript types | `--kinds`, `--tags` | Typed event interfaces (177 kinds) and tag tuples (156 tags) |
-| TypeScript validators | `--validators` | Runtime structural validators (137 kinds) |
+| TypeScript types | `--kinds`, `--out` | Typed event interfaces (177 kinds) and tag tuples (156 tags) |
+| TypeScript validators | `--validators` | Runtime structural validators (136 kinds) |
 | C validators | `--c-validators` | Generic or nostrdb-compatible (`--c-api nostrdb`) |
 | C++ validators | `--cpp-validators` | Standard C++ with STL |
 | C# validators | `--csharp-validators` | .NET with LINQ |
@@ -127,7 +127,7 @@ Note: For payloads like `NIP-11` where it breaks the general "event" or "message
 | Ruby validators | `--ruby-validators` | Ruby |
 | Kind registry | `--registry` | Kind number to human name mapping |
 | Error messages | `--errors` | AJV errorMessage enrichment keywords |
-| AJV helpers | `--ajv` | Pre-stripped schemas for AJV consumption |
+| AJV helpers | `--ajv-schemas` | Pre-stripped schemas for AJV consumption |
 
 Generic JSON-Schema stub and Client-SDK generators do not produce useful logic for tuples of typed strings, since tuples are not utilized in conventional programming as extensively as in nostr. `schemata-codegen` addresses this gap with a nostr-specific code generation pipeline that understands tag tuple schemas and produces native validators that don't require JSON-Schema at runtime.
 
@@ -694,9 +694,6 @@ pnpm install
 
 # Build schemas
 pnpm build
-
-# Generate code for all languages
-pnpm build:all
 ```
 
 ## Project Structure
