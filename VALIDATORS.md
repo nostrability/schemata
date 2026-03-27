@@ -27,7 +27,7 @@ Cross-language API surface comparison for all `schemata-validator-*` implementat
 | Strip nested `$id` | — | yes | yes | yes | yes | yes | yes | yes | yes | yes | — | yes | yes |
 | Strip nested `$schema` | — | — | — | — | yes | yes | — | yes | yes | yes | — | yes | yes |
 | Additional props warnings | yes | yes | yes | yes | yes | yes | yes | — | — | — | — | — | yes |
-| `errorMessage` enrichment | — | yes | yes | yes* | — | — | yes | — | — | — | — | — | yes |
+| `errorMessage` enrichment | yes | yes | yes | yes* | — | — | yes | — | — | — | — | — | yes |
 
 \* Go has the code but `enrichMessage` is never called (dead code).
 
@@ -76,7 +76,7 @@ Cross-language API surface comparison for all `schemata-validator-*` implementat
 | Missing `validate` (low-level) | Swift | Low — users can't validate against arbitrary schemas |
 | No `Subject` enum | PHP, Ruby | Low — follows from missing `validateMessage` |
 | No additional-props warnings | Java, PHP, Ruby, C#, C++ | Medium — `warnings` array always empty, reduces signal |
-| No `errorMessage` enrichment | JS, Swift, Dart, Java, PHP, Ruby, C#, C++ | Low — uses default validator error strings instead |
+| No `errorMessage` enrichment | Swift, Dart, Java, PHP, Ruby, C#, C++ | Low — uses default validator error strings instead |
 | Dead `enrichMessage` code | Go | Trivial — defined but never wired into `Validate()` |
 | `getSchema` missing from JS ref | JS | Intentional — JS uses internal AJV compiled schemas |
 | No nested `$id` stripping | JS, C# | Low — may cause resolution issues with certain schemas |
