@@ -21,20 +21,20 @@ In a nutshell JSON-Schema validates that the structure of the JSON blob is corre
 ## What is `@nostrability/schemata` good for?
 - Integration Testing of both Clients and Relays
 - Discovering broken events through fuzz testing
-- As a fixture to generate dummy events that are valid 
-- As an input to a stub and client-sdk generation effort (presently, tuples of strings have extremely limited support in JSON-Schema ecosystem, we could change this)
+- As a fixture to generate dummy events that are valid
+- As an input to code generation -- [`schemata-codegen`](https://github.com/nostrability/schemata-codegen) reads the schemas and produces typed interfaces, runtime validators, and kind registries for TypeScript, C, and Rust
 
 ## What is it not good for?
-- Runtime validation of events where performance is critical (JSON-Schema is notoriously slow due to the breadth of the specification)
+- Runtime validation of events where performance is critical (JSON-Schema is notoriously slow due to the breadth of the specification). For performance-sensitive use cases, [`schemata-codegen`](https://github.com/nostrability/schemata-codegen) can generate native structural validators in C and Rust that don't use JSON-Schema at runtime.
 
 ## Alternatives?
-`@fiatjaf` produced a bespoke schema specification solution available [here](https://github.com/nostr-protocol/registry-of-kinds). The benefit of this is that it includes only what it needs to and so its specification drafted for nostr and so the performance is notably better. The performance improvements make it sufficient for use as a runtime validator in performance sensitive applications. The downside is that validators need to be written and maintained for all languages, tooling is non-existent so workflows that benefit maintenance and extensibility are non-existent, all kinds are specified from a single file and any generator pattern would need to be completely rewritten from scratch. A nostr-specific schema validator may prove to be the best long-term solution, with the caveat that it will take extensive development for it to reach maturity.
+`@fiatjaf` produced a bespoke schema specification solution available [here](https://github.com/nostr-protocol/registry-of-kinds). The benefit of this is that it includes only what it needs to and so its specification is drafted for nostr and so the performance is notably better. The performance improvements make it sufficient for use as a runtime validator in performance sensitive applications. The downside is that validators need to be written and maintained for all languages, tooling is non-existent so workflows that benefit maintenance and extensibility are non-existent, all kinds are specified from a single file and any generator pattern would need to be completely rewritten from scratch. A nostr-specific schema validator may prove to be the best long-term solution, with the caveat that it will take extensive development for it to reach maturity. Note that schemata's [`schemata-codegen`](https://github.com/nostrability/schemata-codegen) pipeline can generate native validators from JSON-Schema, combining the correctness of a standards-based specification with the performance of compiled code.
 
 ## Why not any of the other *`n`* specification formats that are more performant and modern?
 Read this closely and please understand: **Tuples of Strongly Typed Strings.** Yes, *Strongly Typed Strings*. Strongly typing strings is kind of unique to nostr. This concept is considered absurd in conventional system design. Thus, support for "Strongly Typed Strings" does not exist basically anywhere by default, except JSON-Schemas where it kind of exists by accident ... Could we change this? Yes! Are you volunteering? 
 
 ## How is it intended to be used?
-`@nostability/schemata` aims to produce JSON-Schema that can be consumed by validators (for example, `ajv`). Ideally, each language would have one or more validator wrappers. The validator wrappers provide nostr specific methods to make utilization more straightforward for implementers. The original author of this repo has provided an example of this approach below
+`@nostrability/schemata` aims to produce JSON-Schema that can be consumed by validators (for example, `ajv`), code generators (for example, [`schemata-codegen`](https://github.com/nostrability/schemata-codegen)), and conformance tools. Ideally, each language would have one or more validator wrappers. The validator wrappers provide nostr specific methods to make utilization more straightforward for implementers. The original author of this repo has provided an example of this approach below
 
 
 ## Data Packages
@@ -105,12 +105,25 @@ Schemas are conventioned. They are included in directories for support purposes 
 
 Note: For payloads like `NIP-11` where it breaks the general "event" or "message" pattern, just place a `schema.yaml` in the NIP's directory. 
 
-## Generating Stubs/Client-SDKs
-Unfortunately, as of writing, none of the Stub or Client-SDK generators produce useful logic for tuples, and more importantl tuples of "typed strings". The reason for this is that tuples are not utilized in conventional programming as extensively as in nostr, so the maintainers of these generators are doing themselves a favor by not fully support tuples. However, that does not mean it is not possible. Generators could be written by the nostr community by forking existing generators (available in basically every language, even esoteric languages!) and writing nostr specific implementations. The result would negate any requirement for runtime validation via JSON-Schema since the validation would be handled programmatically by the generated Stub and/or Client-SDKs identically. 
+## Code Generation
 
-## Usage 
-1. Download ZIP file (all languages) or include package (js only for now)
-2. Validate `.json` schemas against nostr events. 
+[`schemata-codegen`](https://github.com/nostrability/schemata-codegen) reads the compiled schemas and generates typed interfaces, runtime validators, kind registries, and error message mappings for multiple languages. Zero dependencies.
+
+| Output | Flag | Description |
+|--------|------|-------------|
+| TypeScript types | `--kinds`, `--tags` | Typed event interfaces (177 kinds) and tag tuples (156 tags) |
+| TypeScript validators | `--validators` | Runtime structural validators (132 kinds) |
+| C validators | `--c-validators` | nostrdb-compatible validators |
+| Rust validators | `--rust-validators` | nostr/nostrdb crate validators |
+| Kind registry | `--registry` | Kind number to human name mapping |
+| Error messages | `--errors` | AJV errorMessage enrichment keywords |
+| AJV helpers | `--ajv` | Pre-stripped schemas for AJV consumption |
+
+Generic JSON-Schema stub and Client-SDK generators do not produce useful logic for tuples of typed strings, since tuples are not utilized in conventional programming as extensively as in nostr. `schemata-codegen` addresses this gap with a nostr-specific code generation pipeline that understands tag tuple schemas and produces native validators that don't require JSON-Schema at runtime.
+
+## Usage
+1. Install the npm package, download the release ZIP, or use a language-specific [data package](#data-packages)
+2. Validate `.json` schemas against nostr events using a [validator](#validators) or generated code from [`schemata-codegen`](#code-generation)
 
 ## Quick Start
 
@@ -704,6 +717,8 @@ schemata/
 | [notedeck](https://github.com/damus-io/notedeck) | Rust | enostr::Note serialization validation in CI | PR ([#1405](https://github.com/damus-io/notedeck/pull/1405)) |
 | [nostria](https://github.com/nostria-app/nostria) | Angular/TypeScript | Schema validation tests for 34 event kinds across 16 NIPs | Merged ([#576](https://github.com/nostria-app/nostria/pull/576)) |
 | [damus](https://github.com/damus-io/damus) | Swift | NostrEvent serialization validation in CI | PR ([#3716](https://github.com/damus-io/damus/pull/3716)) |
+| [schemata-codegen](https://github.com/nostrability/schemata-codegen) | TypeScript | Generates typed interfaces, runtime validators (TS/C/Rust), kind registries, and error messages from schemas | Active |
+| [sherlock](https://github.com/nostrability/sherlock) | TypeScript | Schema conformance scanner -- fetches live relay events and validates against schemata with AJV | Active |
 
 ## Contributing
 
