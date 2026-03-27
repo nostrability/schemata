@@ -22,10 +22,10 @@ In a nutshell JSON-Schema validates that the structure of the JSON blob is corre
 - Integration Testing of both Clients and Relays
 - Discovering broken events through fuzz testing
 - As a fixture to generate dummy events that are valid
-- As an input to code generation -- [`schemata-codegen`](https://github.com/nostrability/schemata-codegen) reads the schemas and produces typed interfaces, runtime validators, and kind registries for TypeScript, C, and Rust
+- As an input to code generation -- [`schemata-codegen`](https://github.com/nostrability/schemata-codegen) reads the schemas and produces typed interfaces, runtime validators, and kind registries for 13 languages (TypeScript, C, C++, C#, Rust, Go, Java, Kotlin, Swift, Dart, Python, PHP, Ruby)
 
 ## What is it not good for?
-- Runtime validation of events where performance is critical (JSON-Schema is notoriously slow due to the breadth of the specification). For performance-sensitive use cases, [`schemata-codegen`](https://github.com/nostrability/schemata-codegen) can generate native structural validators in C and Rust that don't use JSON-Schema at runtime.
+- Runtime validation of events where performance is critical (JSON-Schema is notoriously slow due to the breadth of the specification). For performance-sensitive use cases, [`schemata-codegen`](https://github.com/nostrability/schemata-codegen) can generate native structural validators in 13 languages that don't use JSON-Schema at runtime.
 
 ## Alternatives?
 `@fiatjaf` produced a bespoke schema specification solution available [here](https://github.com/nostr-protocol/registry-of-kinds). The benefit of this is that it includes only what it needs to and so its specification is drafted for nostr and so the performance is notably better. The performance improvements make it sufficient for use as a runtime validator in performance sensitive applications. The downside is that validators need to be written and maintained for all languages, tooling is non-existent so workflows that benefit maintenance and extensibility are non-existent, all kinds are specified from a single file and any generator pattern would need to be completely rewritten from scratch. A nostr-specific schema validator may prove to be the best long-term solution, with the caveat that it will take extensive development for it to reach maturity. Note that schemata's [`schemata-codegen`](https://github.com/nostrability/schemata-codegen) pipeline can generate native validators from JSON-Schema, combining the correctness of a standards-based specification with the performance of compiled code.
@@ -112,9 +112,19 @@ Note: For payloads like `NIP-11` where it breaks the general "event" or "message
 | Output | Flag | Description |
 |--------|------|-------------|
 | TypeScript types | `--kinds`, `--tags` | Typed event interfaces (177 kinds) and tag tuples (156 tags) |
-| TypeScript validators | `--validators` | Runtime structural validators (132 kinds) |
-| C validators | `--c-validators` | nostrdb-compatible validators |
-| Rust validators | `--rust-validators` | nostr/nostrdb crate validators |
+| TypeScript validators | `--validators` | Runtime structural validators (137 kinds) |
+| C validators | `--c-validators` | Generic or nostrdb-compatible (`--c-api nostrdb`) |
+| C++ validators | `--cpp-validators` | Standard C++ with STL |
+| C# validators | `--csharp-validators` | .NET with LINQ |
+| Rust validators | `--rust-validators` | Generic, nostr, or nostrdb crate (`--rust-api`) |
+| Go validators | `--go-validators` | Idiomatic Go |
+| Java validators | `--java-validators` | Java with streams |
+| Kotlin validators | `--kotlin-validators` | Idiomatic Kotlin |
+| Swift validators | `--swift-validators` | Swift with Foundation |
+| Dart validators | `--dart-validators` | Dart |
+| Python validators | `--python-validators` | Python 3 with dataclasses |
+| PHP validators | `--php-validators` | PHP 8+ |
+| Ruby validators | `--ruby-validators` | Ruby |
 | Kind registry | `--registry` | Kind number to human name mapping |
 | Error messages | `--errors` | AJV errorMessage enrichment keywords |
 | AJV helpers | `--ajv` | Pre-stripped schemas for AJV consumption |
