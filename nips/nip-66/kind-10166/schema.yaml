@@ -8,5 +8,63 @@ allOf:
       kind:
         const: 10166
         errorMessage: "kind must equal 10166"
+      tags:
+        type: array
+        items:
+          allOf:
+            # frequency ["frequency", "<seconds>"]
+            - if:
+                type: array
+                items:
+                  - const: "frequency"
+              then:
+                type: array
+                minItems: 2
+                maxItems: 2
+                items:
+                  - const: "frequency"
+                  - type: string
+                    pattern: "^[0-9]+$"
+            # timeout ["timeout", "<test-type>", "<ms>"] or ["timeout", "<ms>"]
+            - if:
+                type: array
+                items:
+                  - const: "timeout"
+              then:
+                type: array
+                minItems: 2
+                maxItems: 3
+                items:
+                  - const: "timeout"
+                  - type: string
+                    minLength: 1
+                  - type: string
+                    pattern: "^[0-9]+$"
+            # c (check type) ["c", "<check-type>"]
+            - if:
+                type: array
+                items:
+                  - const: "c"
+              then:
+                type: array
+                minItems: 2
+                maxItems: 2
+                items:
+                  - const: "c"
+                  - type: string
+                    pattern: "^[a-z][a-z0-9]*$"
+            # g (geohash) ["g", "<geohash>"]
+            - if:
+                type: array
+                items:
+                  - const: "g"
+              then:
+                type: array
+                minItems: 2
+                maxItems: 2
+                items:
+                  - const: "g"
+                  - type: string
+                    pattern: "^[0-9bcdefghjkmnpqrstuvwxyz]+$"
     required:
       - kind

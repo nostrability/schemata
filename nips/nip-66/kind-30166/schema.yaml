@@ -10,12 +10,156 @@ allOf:
         errorMessage: "kind must equal 30166"
       tags:
         type: array
-        items:
-          $ref: "@/tag.yaml"
         contains:
           $ref: "@/tag/d.yaml"
         errorMessage:
           contains: "tags must include a d tag with the relay URL"
+        items:
+          allOf:
+            # rtt-open ["rtt-open", "<ms>"]
+            - if:
+                type: array
+                items:
+                  - const: "rtt-open"
+              then:
+                type: array
+                minItems: 2
+                maxItems: 2
+                items:
+                  - const: "rtt-open"
+                  - type: string
+                    pattern: "^[0-9]+$"
+            # rtt-read ["rtt-read", "<ms>"]
+            - if:
+                type: array
+                items:
+                  - const: "rtt-read"
+              then:
+                type: array
+                minItems: 2
+                maxItems: 2
+                items:
+                  - const: "rtt-read"
+                  - type: string
+                    pattern: "^[0-9]+$"
+            # rtt-write ["rtt-write", "<ms>"]
+            - if:
+                type: array
+                items:
+                  - const: "rtt-write"
+              then:
+                type: array
+                minItems: 2
+                maxItems: 2
+                items:
+                  - const: "rtt-write"
+                  - type: string
+                    pattern: "^[0-9]+$"
+            # n (network) ["n", "<network>"]
+            - if:
+                type: array
+                items:
+                  - const: "n"
+              then:
+                type: array
+                minItems: 2
+                maxItems: 2
+                items:
+                  - const: "n"
+                  - type: string
+                    enum: ["clearnet", "tor", "i2p", "loki"]
+            # T (relay type) ["T", "<PascalCase type>"]
+            - if:
+                type: array
+                items:
+                  - const: "T"
+              then:
+                type: array
+                minItems: 2
+                maxItems: 2
+                items:
+                  - const: "T"
+                  - type: string
+                    pattern: "^[A-Z][a-zA-Z0-9]*$"
+            # N (supported NIP) ["N", "<nip-number>"]
+            - if:
+                type: array
+                items:
+                  - const: "N"
+              then:
+                type: array
+                minItems: 2
+                maxItems: 2
+                items:
+                  - const: "N"
+                  - type: string
+                    pattern: "^[0-9]+$"
+            # R (relay requirement) ["R", "<requirement>"] or ["R", "!<requirement>"]
+            - if:
+                type: array
+                items:
+                  - const: "R"
+              then:
+                type: array
+                minItems: 2
+                maxItems: 2
+                items:
+                  - const: "R"
+                  - type: string
+                    pattern: "^!?[a-z][a-z0-9]*$"
+            # t (topic) ["t", "<topic>"]
+            - if:
+                type: array
+                items:
+                  - const: "t"
+              then:
+                type: array
+                minItems: 2
+                maxItems: 2
+                items:
+                  - const: "t"
+                  - type: string
+                    pattern: "^[a-z][a-z0-9-]*$"
+            # k (accepted/unaccepted kind) ["k", "<kind>"] or ["k", "!<kind>"]
+            - if:
+                type: array
+                items:
+                  - const: "k"
+              then:
+                type: array
+                minItems: 2
+                maxItems: 2
+                items:
+                  - const: "k"
+                  - type: string
+                    pattern: "^!?[0-9]+$"
+            # g (geohash) ["g", "<geohash>"]
+            - if:
+                type: array
+                items:
+                  - const: "g"
+              then:
+                type: array
+                minItems: 2
+                maxItems: 2
+                items:
+                  - const: "g"
+                  - type: string
+                    pattern: "^[0-9bcdefghjkmnpqrstuvwxyz]+$"
+            # l (NIP-32 label) ["l", "<value>", "<namespace>"]
+            - if:
+                type: array
+                items:
+                  - const: "l"
+              then:
+                type: array
+                minItems: 3
+                items:
+                  - const: "l"
+                  - type: string
+                    minLength: 1
+                  - type: string
+                    minLength: 1
     required:
       - kind
       - tags
