@@ -14,7 +14,7 @@ JSON Schema definitions for Nostr protocol events, messages, and tags. Validate 
 ## How is JSON-Schema different from Test Vectors?
 In a nutshell JSON-Schema validates that the structure of the JSON blob is correct. JSON-Schema for a particular [kind](https://github.com/nostr-protocol/nips?tab=readme-ov-file#event-kinds) returns either a pass, or a fail. Whereas test vectors are a deterministic check - a certain input is made, and a certain output is expected. JSON blob validation does not preclude test vectors approach. Test vectors are outside the scope of schemata.
 
-## Which JSON Schema specification version does schemata use?
+## Which JSON-Schema specification version does schemata use?
 
 [Draft-07](https://json-schema.org/draft-07/schema) to maximize interoperability, and simplicity.
 
@@ -24,7 +24,7 @@ In a nutshell JSON-Schema validates that the structure of the JSON blob is corre
 - As a fixture to generate dummy events that are valid
 - As an input to code generation -- [`schemata-codegen`](https://github.com/nostrability/schemata-codegen) reads the schemas and produces typed interfaces, runtime validators, and kind registries for 13 languages (TypeScript, C, C++, C#, Rust, Go, Java, Kotlin, Swift, Dart, Python, PHP, Ruby)
 
-## What is JSON Schema not good for?
+## What is `@nostrability/schemata` schema validator approach not good for?
 - Runtime validation of events where performance is critical (JSON-Schema is notoriously slow due to the breadth of the specification).
 
 ## Alternatives?
