@@ -20,7 +20,7 @@ In a nutshell JSON-Schema validates that the structure of the JSON blob is corre
 
 ## What is `@nostrability/schemata` good for?
 - Integration Testing of both Clients and Relays
-- Discovering broken events through fuzz testing
+- Discovering broken events through [fuzz](https://github.com/nostrability/fuzz) testing
 - As a fixture to generate dummy events that are valid
 - As an input to code generation -- [`schemata-codegen`](https://github.com/nostrability/schemata-codegen) reads the schemas and produces typed interfaces, runtime validators, and kind registries for 13 languages (TypeScript, C, C++, C#, Rust, Go, Java, Kotlin, Swift, Dart, Python, PHP, Ruby)
 
