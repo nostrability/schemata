@@ -29,6 +29,7 @@ allOf:
                   - const: "rtt-open"
                   - type: string
                     pattern: "^[0-9]+$"
+                errorMessage: "rtt-open tag must be [\"rtt-open\", \"<numeric-ms>\"]"
             # rtt-read ["rtt-read", "<ms>"]
             - if:
                 type: array
@@ -42,6 +43,7 @@ allOf:
                   - const: "rtt-read"
                   - type: string
                     pattern: "^[0-9]+$"
+                errorMessage: "rtt-read tag must be [\"rtt-read\", \"<numeric-ms>\"]"
             # rtt-write ["rtt-write", "<ms>"]
             - if:
                 type: array
@@ -55,6 +57,7 @@ allOf:
                   - const: "rtt-write"
                   - type: string
                     pattern: "^[0-9]+$"
+                errorMessage: "rtt-write tag must be [\"rtt-write\", \"<numeric-ms>\"]"
             # n (network) ["n", "<network>"]
             - if:
                 type: array
@@ -68,6 +71,7 @@ allOf:
                   - const: "n"
                   - type: string
                     enum: ["clearnet", "tor", "i2p", "loki"]
+                errorMessage: "n tag network must be one of: clearnet, tor, i2p, loki"
             # T (relay type) ["T", "<PascalCase type>"]
             - if:
                 type: array
@@ -81,6 +85,7 @@ allOf:
                   - const: "T"
                   - type: string
                     pattern: "^[A-Z][a-zA-Z0-9]*$"
+                errorMessage: "T tag must be [\"T\", \"<PascalCase-relay-type>\"]"
             # N (supported NIP) ["N", "<nip-number>"]
             - if:
                 type: array
@@ -94,6 +99,7 @@ allOf:
                   - const: "N"
                   - type: string
                     pattern: "^[0-9]+$"
+                errorMessage: "N tag must be [\"N\", \"<nip-number>\"]"
             # R (relay requirement) ["R", "<requirement>"] or ["R", "!<requirement>"]
             - if:
                 type: array
@@ -107,6 +113,7 @@ allOf:
                   - const: "R"
                   - type: string
                     pattern: "^!?[a-z][a-z0-9]*$"
+                errorMessage: "R tag must be [\"R\", \"<requirement>\"] with optional ! negation prefix"
             # t (topic) ["t", "<topic>"]
             - if:
                 type: array
@@ -120,6 +127,7 @@ allOf:
                   - const: "t"
                   - type: string
                     pattern: "^[a-z][a-z0-9-]*$"
+                errorMessage: "t tag must be [\"t\", \"<lowercase-topic>\"]"
             # k (accepted/unaccepted kind) ["k", "<kind>"] or ["k", "!<kind>"]
             - if:
                 type: array
@@ -133,6 +141,7 @@ allOf:
                   - const: "k"
                   - type: string
                     pattern: "^!?[0-9]+$"
+                errorMessage: "k tag must be [\"k\", \"<kind-number>\"] with optional ! negation prefix"
             # g (geohash) ["g", "<geohash>"]
             - if:
                 type: array
@@ -146,6 +155,7 @@ allOf:
                   - const: "g"
                   - type: string
                     pattern: "^[0-9bcdefghjkmnpqrstuvwxyz]+$"
+                errorMessage: "g tag must be [\"g\", \"<geohash>\"]"
             # l (NIP-32 label) ["l", "<value>", "<namespace>"]
             - if:
                 type: array
@@ -160,6 +170,7 @@ allOf:
                     minLength: 1
                   - type: string
                     minLength: 1
+                errorMessage: "l tag must be [\"l\", \"<value>\", \"<namespace>\"]"
     required:
       - kind
       - tags
