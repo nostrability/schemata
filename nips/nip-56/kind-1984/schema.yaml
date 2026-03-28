@@ -11,8 +11,11 @@ allOf:
         type: array
         allOf:
           # MUST include a p tag referencing the reported user's pubkey
+          # NIP-56: when reporting a note, the p tag just references the author (no report type needed)
           - contains:
-              $ref: "@/tag/nip-56_p.yaml"
+              anyOf:
+                - $ref: "@/tag/p.yaml"
+                - $ref: "@/tag/nip-56_p.yaml"
             errorMessage:
               contains: "tags must include a p tag referencing the reported user"
           # MUST include at least one report tag (p/e/x) with a report type as the 3rd item
