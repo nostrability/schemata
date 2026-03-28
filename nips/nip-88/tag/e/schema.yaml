@@ -1,0 +1,16 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+allOf:
+  - $ref: "@/tag.yaml"
+  - type: array
+    minItems: 2
+    items:
+      - const: "e"
+      - type: string
+        pattern: '^[a-f0-9]{64}$'
+      - anyOf:
+          - type: string
+            pattern: '^(ws://|wss://).+$'
+          - type: string
+            const: ""
+      - $ref: "@/secp256k1.yaml"
+    additionalItems: false
