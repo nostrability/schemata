@@ -5,7 +5,7 @@
   "kind": 30166,
   "tags": [
     ["d", "wss://relay.example.com/"],
-    ["n", "invalid-network"]
+    ["n", "CLEARNET"]
   ],
   "content": "",
   "sig": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"

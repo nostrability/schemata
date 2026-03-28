@@ -26,7 +26,7 @@ allOf:
                   - type: string
                     pattern: "^[0-9]+$"
                 errorMessage: "frequency tag must be [\"frequency\", \"<numeric-seconds>\"]"
-            # timeout — two valid forms
+            # timeout — three valid forms (spec prose and example disagree on 3-item order)
             - if:
                 type: array
                 items:
@@ -41,7 +41,7 @@ allOf:
                       - const: "timeout"
                       - type: string
                         pattern: "^[0-9]+$"
-                  # Per-test timeout: ["timeout", "<test-type>", "<ms>"]
+                  # Per-test timeout (example order): ["timeout", "<test-type>", "<ms>"]
                   - type: array
                     minItems: 3
                     maxItems: 3
@@ -51,6 +51,16 @@ allOf:
                         pattern: "^[a-z][a-z0-9]*$"
                       - type: string
                         pattern: "^[0-9]+$"
+                  # Per-test timeout (prose order): ["timeout", "<ms>", "<test-type>"]
+                  - type: array
+                    minItems: 3
+                    maxItems: 3
+                    items:
+                      - const: "timeout"
+                      - type: string
+                        pattern: "^[0-9]+$"
+                      - type: string
+                        pattern: "^[a-z][a-z0-9]*$"
                 errorMessage: "timeout tag must be [\"timeout\", \"<ms>\"] or [\"timeout\", \"<test-type>\", \"<ms>\"]"
             # c (check type) ["c", "<check-type>"]
             - if:
