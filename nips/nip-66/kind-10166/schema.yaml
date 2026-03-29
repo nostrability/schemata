@@ -8,5 +8,87 @@ allOf:
       kind:
         const: 10166
         errorMessage: "kind must equal 10166"
+      tags:
+        type: array
+        items:
+          allOf:
+            # frequency ["frequency", "<seconds>"]
+            - if:
+                type: array
+                items:
+                  - const: "frequency"
+              then:
+                type: array
+                minItems: 2
+                maxItems: 2
+                items:
+                  - const: "frequency"
+                  - type: string
+                    pattern: "^[0-9]+$"
+                errorMessage: "frequency tag must be [\"frequency\", \"<numeric-seconds>\"]"
+            # timeout — three valid forms (spec prose and example disagree on 3-item order)
+            - if:
+                type: array
+                items:
+                  - const: "timeout"
+              then:
+                oneOf:
+                  # Global timeout: ["timeout", "<ms>"]
+                  - type: array
+                    minItems: 2
+                    maxItems: 2
+                    items:
+                      - const: "timeout"
+                      - type: string
+                        pattern: "^[0-9]+$"
+                  # Per-test timeout (example order): ["timeout", "<test-type>", "<ms>"]
+                  - type: array
+                    minItems: 3
+                    maxItems: 3
+                    items:
+                      - const: "timeout"
+                      - type: string
+                        pattern: "^[a-z][a-z0-9]*$"
+                      - type: string
+                        pattern: "^[0-9]+$"
+                  # Per-test timeout (prose order): ["timeout", "<ms>", "<test-type>"]
+                  - type: array
+                    minItems: 3
+                    maxItems: 3
+                    items:
+                      - const: "timeout"
+                      - type: string
+                        pattern: "^[0-9]+$"
+                      - type: string
+                        pattern: "^[a-z][a-z0-9]*$"
+                errorMessage: "timeout tag must be [\"timeout\", \"<ms>\"] or [\"timeout\", \"<test-type>\", \"<ms>\"]"
+            # c (check type) ["c", "<check-type>"]
+            - if:
+                type: array
+                items:
+                  - const: "c"
+              then:
+                type: array
+                minItems: 2
+                maxItems: 2
+                items:
+                  - const: "c"
+                  - type: string
+                    pattern: "^[a-z][a-z0-9]*$"
+                errorMessage: "c tag must be [\"c\", \"<check-type>\"]"
+            # g (geohash) ["g", "<geohash>"]
+            - if:
+                type: array
+                items:
+                  - const: "g"
+              then:
+                type: array
+                minItems: 2
+                maxItems: 2
+                items:
+                  - const: "g"
+                  - type: string
+                    pattern: "^[0-9bcdefghjkmnpqrstuvwxyz]+$"
+                errorMessage: "g tag must be [\"g\", \"<geohash>\"]"
     required:
       - kind

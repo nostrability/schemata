@@ -2,19 +2,10 @@
   "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
   "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
   "created_at": 1670000000,
-  "kind": 10166,
+  "kind": 30166,
   "tags": [
-    ["timeout", "open", "5000"],
-    ["timeout", "read", "3000"],
-    ["timeout", "write", "3000"],
-    ["timeout", "nip11", "3000"],
-    ["frequency", "3600"],
-    ["c", "ws"],
-    ["c", "nip11"],
-    ["c", "ssl"],
-    ["c", "dns"],
-    ["c", "geo"],
-    ["g", "ww8p1r4t8"]
+    ["d", "wss://relay.example.com/"],
+    ["n", "CLEARNET"]
   ],
   "content": "",
   "sig": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"

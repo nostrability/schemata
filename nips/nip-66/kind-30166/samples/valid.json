@@ -4,7 +4,21 @@
   "created_at": 1670000000,
   "kind": 30166,
   "tags": [
-    ["d", "wss://relay.example.com"]
+    ["d", "wss://relay.example.com/"],
+    ["n", "clearnet"],
+    ["N", "40"],
+    ["N", "33"],
+    ["R", "!payment"],
+    ["R", "auth"],
+    ["T", "PrivateInbox"],
+    ["g", "ww8p1r4t8"],
+    ["l", "en", "ISO-639-1"],
+    ["t", "nsfw"],
+    ["k", "1"],
+    ["k", "!1064"],
+    ["rtt-open", "234"],
+    ["rtt-read", "112"],
+    ["rtt-write", "198"]
   ],
   "content": "",
   "sig": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"

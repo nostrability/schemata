@@ -10,12 +10,168 @@ allOf:
         errorMessage: "kind must equal 30166"
       tags:
         type: array
-        items:
-          $ref: "@/tag.yaml"
         contains:
           $ref: "@/tag/d.yaml"
         errorMessage:
           contains: "tags must include a d tag with the relay URL"
+        items:
+          allOf:
+            # rtt-open ["rtt-open", "<ms>"]
+            - if:
+                type: array
+                items:
+                  - const: "rtt-open"
+              then:
+                type: array
+                minItems: 2
+                maxItems: 2
+                items:
+                  - const: "rtt-open"
+                  - type: string
+                    pattern: "^[0-9]+$"
+                errorMessage: "rtt-open tag must be [\"rtt-open\", \"<numeric-ms>\"]"
+            # rtt-read ["rtt-read", "<ms>"]
+            - if:
+                type: array
+                items:
+                  - const: "rtt-read"
+              then:
+                type: array
+                minItems: 2
+                maxItems: 2
+                items:
+                  - const: "rtt-read"
+                  - type: string
+                    pattern: "^[0-9]+$"
+                errorMessage: "rtt-read tag must be [\"rtt-read\", \"<numeric-ms>\"]"
+            # rtt-write ["rtt-write", "<ms>"]
+            - if:
+                type: array
+                items:
+                  - const: "rtt-write"
+              then:
+                type: array
+                minItems: 2
+                maxItems: 2
+                items:
+                  - const: "rtt-write"
+                  - type: string
+                    pattern: "^[0-9]+$"
+                errorMessage: "rtt-write tag must be [\"rtt-write\", \"<numeric-ms>\"]"
+            # n (network) ["n", "<network>"] — SHOULD be clearnet, tor, i2p, or loki
+            - if:
+                type: array
+                items:
+                  - const: "n"
+              then:
+                type: array
+                minItems: 2
+                maxItems: 2
+                items:
+                  - const: "n"
+                  - type: string
+                    pattern: "^[a-z][a-z0-9]*$"
+                errorMessage: "n tag must be [\"n\", \"<lowercase-network>\"]"
+            # T (relay type) ["T", "<PascalCase type>"]
+            - if:
+                type: array
+                items:
+                  - const: "T"
+              then:
+                type: array
+                minItems: 2
+                maxItems: 2
+                items:
+                  - const: "T"
+                  - type: string
+                    pattern: "^[A-Z][a-zA-Z0-9]*$"
+                errorMessage: "T tag must be [\"T\", \"<PascalCase-relay-type>\"]"
+            # N (supported NIP) ["N", "<nip-number>"]
+            - if:
+                type: array
+                items:
+                  - const: "N"
+              then:
+                type: array
+                minItems: 2
+                maxItems: 2
+                items:
+                  - const: "N"
+                  - type: string
+                    pattern: "^[0-9]+$"
+                errorMessage: "N tag must be [\"N\", \"<nip-number>\"]"
+            # R (relay requirement) ["R", "<requirement>"] or ["R", "!<requirement>"]
+            - if:
+                type: array
+                items:
+                  - const: "R"
+              then:
+                type: array
+                minItems: 2
+                maxItems: 2
+                items:
+                  - const: "R"
+                  - type: string
+                    pattern: "^!?[a-z][a-z0-9]*$"
+                errorMessage: "R tag must be [\"R\", \"<requirement>\"] with optional ! negation prefix"
+            # t (topic) ["t", "<topic>"]
+            - if:
+                type: array
+                items:
+                  - const: "t"
+              then:
+                type: array
+                minItems: 2
+                maxItems: 2
+                items:
+                  - const: "t"
+                  - type: string
+                    pattern: "^[a-z][a-z0-9-]*$"
+                errorMessage: "t tag must be [\"t\", \"<lowercase-topic>\"]"
+            # k (accepted/unaccepted kind) ["k", "<kind>"] or ["k", "!<kind>"]
+            - if:
+                type: array
+                items:
+                  - const: "k"
+              then:
+                type: array
+                minItems: 2
+                maxItems: 2
+                items:
+                  - const: "k"
+                  - type: string
+                    pattern: "^!?[0-9]+$"
+                errorMessage: "k tag must be [\"k\", \"<kind-number>\"] with optional ! negation prefix"
+            # g (geohash) ["g", "<geohash>"]
+            - if:
+                type: array
+                items:
+                  - const: "g"
+              then:
+                type: array
+                minItems: 2
+                maxItems: 2
+                items:
+                  - const: "g"
+                  - type: string
+                    pattern: "^[0-9bcdefghjkmnpqrstuvwxyz]+$"
+                errorMessage: "g tag must be [\"g\", \"<geohash>\"]"
+            # l (NIP-32 label) ["l", "<value>", "<namespace>"]
+            - if:
+                type: array
+                items:
+                  - const: "l"
+              then:
+                type: array
+                minItems: 3
+                items:
+                  - const: "l"
+                  - type: string
+                    minLength: 1
+                  - type: string
+                    minLength: 1
+                additionalItems: false
+                errorMessage: "l tag must be [\"l\", \"<value>\", \"<namespace>\"]"
     required:
       - kind
       - tags
