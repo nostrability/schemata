@@ -1,0 +1,12 @@
+{
+  "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "created_at": 1670000000,
+  "kind": 1984,
+  "tags": [
+    ["p", "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc", "spam"],
+    ["e", "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd", "spam"]
+  ],
+  "content": "Posting unsolicited commercial ads across multiple relays",
+  "sig": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+}

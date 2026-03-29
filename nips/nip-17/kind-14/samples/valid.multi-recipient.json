@@ -1,0 +1,13 @@
+{
+  "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "created_at": 1700000000,
+  "kind": 14,
+  "tags": [
+    ["p", "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"],
+    ["p", "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"],
+    ["p", "1111111111111111111111111111111111111111111111111111111111111111"],
+    ["subject", "Group planning"]
+  ],
+  "content": "Hey everyone, let us coordinate on the relay implementation."
+}

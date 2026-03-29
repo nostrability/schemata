@@ -1,0 +1,15 @@
+{
+  "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "created_at": 1670000000,
+  "kind": 3,
+  "tags": [
+    ["p", "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc", "alice"],
+    ["p", "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd", "bob"],
+    ["p", "1111111111111111111111111111111111111111111111111111111111111111", "carol"],
+    ["p", "2222222222222222222222222222222222222222222222222222222222222222"],
+    ["p", "3333333333333333333333333333333333333333333333333333333333333333", "eve"]
+  ],
+  "content": "{\"wss://relay.damus.io\":{\"read\":true,\"write\":true},\"wss://nos.lol\":{\"read\":true,\"write\":false},\"wss://relay.nostr.band\":{\"read\":true,\"write\":true}}",
+  "sig": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+}

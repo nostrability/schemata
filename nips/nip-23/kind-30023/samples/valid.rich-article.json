@@ -1,0 +1,19 @@
+{
+  "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "created_at": 1670000000,
+  "kind": 30023,
+  "tags": [
+    ["d", "introduction-to-nostr"],
+    ["title", "Introduction to Nostr: A Decentralized Social Protocol"],
+    ["summary", "An overview of the Nostr protocol, its architecture, and why it matters for censorship-resistant communication."],
+    ["image", "https://example.com/images/nostr-banner.png"],
+    ["published_at", "1669900000"],
+    ["t", "nostr"],
+    ["t", "protocol"],
+    ["t", "decentralization"],
+    ["a", "30023:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc:getting-started", "wss://relay.example.com"]
+  ],
+  "content": "# Introduction to Nostr\n\nNostr (Notes and Other Stuff Transmitted by Relays) is a simple, open protocol that enables a truly censorship-resistant global social network.\n\n## How It Works\n\nThe protocol is based on **cryptographic keypairs**. Every user has a keypair, and every event is signed. Clients send events to relays, and relays store and forward them.\n\n### Key Concepts\n\n- **Events**: The basic data structure, signed by the author\n- **Relays**: Servers that accept and store events\n- **Clients**: Applications that users interact with\n\n## Why It Matters\n\nUnlike centralized platforms, no single entity controls the network. Your identity is your keypair, and you can take it anywhere.\n\n> \"The network is the protocol, not the platform.\"\n\nFor more details, see the [NIP repository](https://github.com/nostr-protocol/nips).",
+  "sig": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+}
