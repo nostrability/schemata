@@ -1,0 +1,14 @@
+{
+  "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "created_at": 1670000000,
+  "kind": 38000,
+  "tags": [
+    ["d", "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"],
+    ["k", "38172"],
+    ["u", "https://cashu.example.com"],
+    ["a", "38172:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc", "wss://relay.example.com"]
+  ],
+  "content": "Reliable mint, fast redemptions and good uptime.",
+  "sig": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+}
