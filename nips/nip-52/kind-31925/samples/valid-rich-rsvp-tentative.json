@@ -1,0 +1,15 @@
+{
+  "content": "Might be able to attend depending on travel schedule.",
+  "created_at": 1670000000,
+  "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "kind": 31925,
+  "pubkey": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+  "sig": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+  "tags": [
+    ["d", "rsvp-summit-2025"],
+    ["a", "31922:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb:nostr-dev-summit-2025"],
+    ["status", "tentative"],
+    ["fb", "free"],
+    ["p", "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb", "wss://relay.example.com"]
+  ]
+}

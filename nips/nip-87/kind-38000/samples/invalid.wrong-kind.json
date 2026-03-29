@@ -1,0 +1,12 @@
+{
+  "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "created_at": 1670000000,
+  "kind": 1,
+  "tags": [
+    ["d", "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"],
+    ["k", "38172"]
+  ],
+  "content": "",
+  "sig": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+}

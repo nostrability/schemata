@@ -1,0 +1,14 @@
+{
+  "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "created_at": 1670000000,
+  "kind": 38000,
+  "tags": [
+    ["d", "federation-id-abc123"],
+    ["k", "38173"],
+    ["u", "fed11qgqzc2nhwden5te0vejkg6tdd9h8gepwvejhyamrvaak8e6q"],
+    ["a", "38173:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd:federation-id-abc123", "wss://relay.example.com"]
+  ],
+  "content": "I trust this federation with my life.",
+  "sig": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+}

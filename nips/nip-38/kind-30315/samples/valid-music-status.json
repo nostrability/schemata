@@ -1,0 +1,13 @@
+{
+  "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "created_at": 1670000000,
+  "kind": 30315,
+  "tags": [
+    ["d", "music"],
+    ["r", "spotify:search:Intergalactic%20-%20Beastie%20Boys"],
+    ["expiration", "1670000300"]
+  ],
+  "content": "Intergalactic - Beastie Boys",
+  "sig": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+}

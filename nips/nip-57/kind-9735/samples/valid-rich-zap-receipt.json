@@ -1,0 +1,17 @@
+{
+  "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "created_at": 1670000000,
+  "kind": 9735,
+  "tags": [
+    ["p", "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"],
+    ["P", "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"],
+    ["e", "1111111111111111111111111111111111111111111111111111111111111111"],
+    ["a", "30023:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc:my-article", "wss://relay.example.com"],
+    ["bolt11", "lnbc10u1pwyqk3hpp5qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqsdp5jku3q"],
+    ["description", "{\"id\":\"2222222222222222222222222222222222222222222222222222222222222222\",\"pubkey\":\"dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd\",\"created_at\":1670000000,\"kind\":9734,\"tags\":[[\"p\",\"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc\"],[\"relays\",\"wss://relay.example.com\",\"wss://relay2.example.com\"],[\"e\",\"1111111111111111111111111111111111111111111111111111111111111111\"],[\"a\",\"30023:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc:my-article\",\"wss://relay.example.com\"]],\"content\":\"\",\"sig\":\"33333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333\"}"],
+    ["preimage", "4444444444444444444444444444444444444444444444444444444444444444"]
+  ],
+  "content": "",
+  "sig": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+}

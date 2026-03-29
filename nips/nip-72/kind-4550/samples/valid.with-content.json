@@ -1,0 +1,14 @@
+{
+  "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "created_at": 1670000000,
+  "kind": 4550,
+  "tags": [
+    ["a", "34550:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc:photography", "wss://relay.example.com"],
+    ["e", "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd", "wss://relay.example.com"],
+    ["p", "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", "wss://relay.example.com"],
+    ["k", "1"]
+  ],
+  "content": "{\"id\":\"dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd\",\"pubkey\":\"eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee\",\"created_at\":1669999000,\"kind\":1,\"tags\":[[\"a\",\"34550:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc:photography\",\"wss://relay.example.com\"]],\"content\":\"Check out this amazing sunset photo I took yesterday!\",\"sig\":\"ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff\"}",
+  "sig": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+}

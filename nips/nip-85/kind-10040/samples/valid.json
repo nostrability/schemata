@@ -1,0 +1,13 @@
+{
+  "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "created_at": 1670000000,
+  "kind": 10040,
+  "tags": [
+    ["30382:rank", "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc", "wss://nip85.example.com"],
+    ["30382:zap_amt_sent", "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc", "wss://nip85.example.com"],
+    ["30382:followers", "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd", "wss://relay.example.com"]
+  ],
+  "content": "",
+  "sig": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+}

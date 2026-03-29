@@ -1,0 +1,15 @@
+{
+  "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "created_at": 1670000000,
+  "kind": 1111,
+  "tags": [
+    ["I", "podcast:item:guid:d98d189b-dc7b-45b1-8720-d4b98690f31f", "https://fountain.fm/episode/z1y9TMQRuqXl2awyrQxg"],
+    ["K", "podcast:item:guid"],
+    ["e", "80c48d992a38f9c445b943a9c9f1010b396676013443765750431a9004bdac05", "wss://example.relay", "252f10c83610ebca1a059c0bae8255eba2f95be4d1d7bcfa89d7248a82d9f111"],
+    ["k", "1111"],
+    ["p", "252f10c83610ebca1a059c0bae8255eba2f95be4d1d7bcfa89d7248a82d9f111"]
+  ],
+  "content": "I'm replying to the above comment.",
+  "sig": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+}

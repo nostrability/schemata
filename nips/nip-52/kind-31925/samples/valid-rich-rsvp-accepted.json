@@ -1,0 +1,16 @@
+{
+  "content": "Looking forward to the NIP-17 workshop! Will bring my implementation for review.",
+  "created_at": 1670000000,
+  "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "kind": 31925,
+  "pubkey": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+  "sig": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+  "tags": [
+    ["d", "rsvp-nip17-workshop"],
+    ["a", "31923:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb:nip17-workshop-2025"],
+    ["status", "accepted"],
+    ["fb", "busy"],
+    ["e", "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd", "wss://relay.example.com"],
+    ["p", "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb", "wss://relay.example.com"]
+  ]
+}

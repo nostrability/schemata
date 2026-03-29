@@ -1,0 +1,15 @@
+{
+  "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "created_at": 1670000000,
+  "kind": 5301,
+  "tags": [
+    ["i", "cool people", "text"],
+    ["p", "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"],
+    ["output", "text/plain"],
+    ["relays", "wss://relay.example.com"],
+    ["bid", "3000"]
+  ],
+  "content": "",
+  "sig": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+}

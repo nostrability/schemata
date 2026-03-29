@@ -1,0 +1,16 @@
+{
+  "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "created_at": 1670000000,
+  "kind": 1068,
+  "tags": [
+    ["option", "opt1", "Red"],
+    ["option", "opt2", "Blue"],
+    ["option", "opt3", "Green"],
+    ["option", "opt4", "Yellow"],
+    ["relay", "wss://relay.example.com"],
+    ["polltype", "singlechoice"]
+  ],
+  "content": "What is your favorite color?",
+  "sig": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+}

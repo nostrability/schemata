@@ -1,0 +1,21 @@
+{
+  "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "created_at": 1670000000,
+  "kind": 1063,
+  "tags": [
+    ["url", "https://example.com/files/sunset-beach.jpg"],
+    ["m", "image/jpeg"],
+    ["x", "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"],
+    ["ox", "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"],
+    ["size", "1048576"],
+    ["dim", "1920x1080"],
+    ["blurhash", "LEHV6nWB2yk8pyoJadR*.7kCMdnj"],
+    ["thumb", "https://example.com/files/sunset-beach-thumb.jpg"],
+    ["image", "https://example.com/files/sunset-beach-preview.jpg"],
+    ["summary", "A vibrant sunset over a tropical beach with palm trees silhouetted against the sky"],
+    ["alt", "Photograph of a sunset over a beach with palm trees"]
+  ],
+  "content": "Sunset at the beach",
+  "sig": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+}

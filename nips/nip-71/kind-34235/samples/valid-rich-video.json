@@ -1,0 +1,73 @@
+{
+  "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "created_at": 1670000000,
+  "kind": 34235,
+  "tags": [
+    ["d", "bitcoin-explained-ep12"],
+    ["title", "Bitcoin Explained: Episode 12 - Lightning Network Deep Dive"],
+    [
+      "imeta",
+      "url https://cdn.example.com/videos/btc-ep12-1080p.mp4",
+      "m video/mp4",
+      "x cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "dim 1920x1080",
+      "duration 2847",
+      "bitrate 5000000",
+      "image https://cdn.example.com/thumbs/btc-ep12-poster.jpg",
+      "fallback https://backup.example.com/videos/btc-ep12-1080p.mp4",
+      "service nip96"
+    ],
+    [
+      "text-track",
+      "https://cdn.example.com/subs/btc-ep12-en.vtt",
+      "captions",
+      "en"
+    ],
+    [
+      "text-track",
+      "https://cdn.example.com/subs/btc-ep12-es.vtt",
+      "captions",
+      "es"
+    ],
+    [
+      "segment",
+      "0",
+      "120",
+      "Introduction",
+      "https://cdn.example.com/thumbs/btc-ep12-seg1.jpg"
+    ],
+    [
+      "segment",
+      "120",
+      "1200",
+      "How Lightning Channels Work",
+      "https://cdn.example.com/thumbs/btc-ep12-seg2.jpg"
+    ],
+    [
+      "segment",
+      "1200",
+      "2847",
+      "Routing and Pathfinding",
+      "https://cdn.example.com/thumbs/btc-ep12-seg3.jpg"
+    ],
+    ["published_at", "1669990000"],
+    ["alt", "A 47-minute video explaining the Bitcoin Lightning Network"],
+    ["t", "bitcoin"],
+    ["t", "lightning"],
+    ["t", "education"],
+    [
+      "p",
+      "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "wss://relay.example.com"
+    ],
+    ["r", "https://lightning.network/lightning-network-paper.pdf"],
+    [
+      "origin",
+      "youtube",
+      "dQw4w9WgXcQ"
+    ]
+  ],
+  "content": "Deep dive into the Lightning Network: how payment channels work, HTLC mechanics, onion routing for privacy, and the current state of LN adoption. Episode 12 in our Bitcoin Explained series.",
+  "sig": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+}

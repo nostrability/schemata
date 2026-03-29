@@ -1,0 +1,19 @@
+{
+  "content": "The official calendar for the Nostr Developer Summit 2025 in Prague. Includes all talks, workshops, and social events across the three-day program.",
+  "created_at": 1670000000,
+  "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "kind": 31924,
+  "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "sig": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+  "tags": [
+    ["d", "nostr-summit-cal"],
+    ["title", "Nostr Developer Summit 2025 Schedule"],
+    ["summary", "Full three-day program for the annual Nostr Developer Summit in Prague."],
+    ["image", "https://example.com/events/nostr-summit-cal-banner.png"],
+    ["a", "31922:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb:nostr-dev-summit-2025", "wss://relay.example.com"],
+    ["a", "31923:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb:nip17-workshop-2025", "wss://relay.example.com"],
+    ["a", "31923:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb:keynote-day1-2025", "wss://relay.example.com"],
+    ["a", "31923:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb:closing-hackathon-2025", "wss://relay.example.com"],
+    ["a", "31922:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc:social-dinner-2025", "wss://relay.example.com"]
+  ]
+}

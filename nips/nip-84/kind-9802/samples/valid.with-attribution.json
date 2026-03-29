@@ -1,0 +1,15 @@
+{
+  "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "created_at": 1670000000,
+  "kind": 9802,
+  "tags": [
+    ["p", "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc", "wss://relay.example.com", "author"],
+    ["p", "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd", "wss://relay.example.com", "editor"],
+    ["e", "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", "wss://relay.example.com"],
+    ["a", "30023:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc:bitcoin-scaling", "wss://relay.example.com"],
+    ["context", "The Lightning Network represents a significant leap forward in Bitcoin's scalability. By enabling off-chain transactions, it allows for near-instant payments with minimal fees, fundamentally changing how we think about micropayments."]
+  ],
+  "content": "near-instant payments with minimal fees, fundamentally changing how we think about micropayments",
+  "sig": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+}

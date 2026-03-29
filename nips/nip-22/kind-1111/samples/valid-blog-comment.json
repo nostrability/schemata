@@ -1,0 +1,17 @@
+{
+  "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "created_at": 1670000000,
+  "kind": 1111,
+  "tags": [
+    ["A", "30023:3c9849383bdea883b0bd16fece1ed36d37e37cdde3ce43b17ea4e9192ec11289:f9347ca7", "wss://example.relay"],
+    ["K", "30023"],
+    ["P", "3c9849383bdea883b0bd16fece1ed36d37e37cdde3ce43b17ea4e9192ec11289", "wss://example.relay"],
+    ["a", "30023:3c9849383bdea883b0bd16fece1ed36d37e37cdde3ce43b17ea4e9192ec11289:f9347ca7", "wss://example.relay"],
+    ["e", "5b4fc7fed15672fefe65d2426f67197b71ccc82aa0cc8a9e94f683eb78e07651", "wss://example.relay"],
+    ["k", "30023"],
+    ["p", "3c9849383bdea883b0bd16fece1ed36d37e37cdde3ce43b17ea4e9192ec11289", "wss://example.relay"]
+  ],
+  "content": "Great blog post!",
+  "sig": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+}

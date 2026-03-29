@@ -1,0 +1,26 @@
+{
+  "content": "Join us for the annual Nostr Developer Summit! Three days of talks, workshops, and hackathons focused on protocol development, interoperability, and the future of decentralized social media. Meals and refreshments provided.",
+  "created_at": 1670000000,
+  "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "kind": 31922,
+  "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "sig": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+  "tags": [
+    ["d", "nostr-dev-summit-2025"],
+    ["title", "Nostr Developer Summit 2025"],
+    ["start", "2025-06-15"],
+    ["end", "2025-06-18"],
+    ["summary", "Three-day developer conference covering protocol improvements, NIP workshops, and a closing hackathon."],
+    ["image", "https://example.com/events/nostr-summit-2025-banner.png"],
+    ["location", "Paralelni Polis, Prague"],
+    ["location", "Delnicka 43, Prague 7, Czech Republic"],
+    ["g", "u2fkbv"],
+    ["p", "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"],
+    ["p", "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"],
+    ["t", "nostr"],
+    ["t", "development"],
+    ["t", "hackathon"],
+    ["r", "wss://relay.example.com"],
+    ["r", "wss://relay2.example.com"]
+  ]
+}

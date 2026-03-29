@@ -1,0 +1,19 @@
+{
+  "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "created_at": 1670000000,
+  "kind": 31990,
+  "tags": [
+    ["d", "my-nostr-client"],
+    ["k", "0"],
+    ["k", "1"],
+    ["k", "7"],
+    ["web", "https://app.example.com/<bech32>", "nevent"],
+    ["web", "https://app.example.com/p/<bech32>", "nprofile"],
+    ["web", "https://app.example.com/e/<bech32>"],
+    ["ios", "example://open/<bech32>"],
+    ["android", "intent://open/<bech32>"]
+  ],
+  "content": "{\"name\":\"Example Nostr Client\",\"about\":\"A full-featured nostr client for web, iOS, and Android\",\"picture\":\"https://example.com/icon.png\"}",
+  "sig": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+}
