@@ -1,0 +1,15 @@
+{
+  "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "created_at": 1670000000,
+  "kind": 38173,
+  "tags": [
+    ["d", "federation-signet-xyz789"],
+    ["u", "fed11qgqzc2nhwden5te0vejkg6tdd9h8gepwvejhyamrvaak8e6q"],
+    ["u", "fed11qgqrgpsyxzserqwp4jsr5qce2wkfznfsajt4e2xsmu2"],
+    ["modules", "lightning,wallet,mint"],
+    ["n", "signet"]
+  ],
+  "content": "{\"name\":\"Signet Test Federation\",\"about\":\"A test federation running on signet for development purposes\"}",
+  "sig": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+}

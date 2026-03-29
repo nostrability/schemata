@@ -1,0 +1,37 @@
+{
+  "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "created_at": 1670000000,
+  "kind": 20,
+  "tags": [
+    ["title", "Sunset at Copacabana"],
+    [
+      "imeta",
+      "url https://cdn.example.com/photos/sunset-copacabana-4k.jpg",
+      "m image/jpeg",
+      "x cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "dim 3840x2160",
+      "blurhash LEHV6nWB2yk8pyo0adR*.7kCMdnj",
+      "alt A vibrant sunset over Copacabana beach with silhouettes of palm trees",
+      "fallback https://backup.example.com/photos/sunset-copacabana-4k.jpg"
+    ],
+    [
+      "imeta",
+      "url https://cdn.example.com/photos/sunset-copacabana-wide.jpg",
+      "m image/webp",
+      "x dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+      "dim 1920x1080",
+      "blurhash LKO2:N%2Tw=w]~RBVZRi};RPxuwH",
+      "alt Wide-angle shot of the sunset with the Sugarloaf Mountain in the distance"
+    ],
+    ["p", "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"],
+    ["t", "sunset"],
+    ["t", "beach"],
+    ["t", "photography"],
+    ["location", "Copacabana Beach, Rio de Janeiro, Brazil"],
+    ["g", "75cm2g"],
+    ["content-warning", ""]
+  ],
+  "content": "Golden hour at Copacabana. The sun dipped below the horizon painting the sky in shades of amber and crimson. Shot on a Fujifilm X-T5 with a 16mm f/1.4 lens.",
+  "sig": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+}

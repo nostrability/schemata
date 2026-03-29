@@ -1,0 +1,38 @@
+{
+  "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "created_at": 1670000000,
+  "kind": 9041,
+  "tags": [
+    ["amount", "21000000"],
+    [
+      "relays",
+      "wss://relay.damus.io",
+      "wss://relay.nostr.band",
+      "wss://nos.lol"
+    ],
+    ["closed_at", "1672531200"],
+    ["image", "https://cdn.example.com/goals/open-source-fund.jpg"],
+    ["summary", "Funding milestone for the open-source Nostr client development sprint"],
+    [
+      "a",
+      "30023:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb:dev-roadmap-2025",
+      "wss://relay.example.com"
+    ],
+    ["r", "https://github.com/example/nostr-client"],
+    [
+      "zap",
+      "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "wss://relay.example.com",
+      "3"
+    ],
+    [
+      "zap",
+      "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+      "wss://relay.example.com",
+      "1"
+    ]
+  ],
+  "content": "Help us fund the next phase of our open-source Nostr client. We are building a cross-platform client with NIP-17 DMs, NIP-65 relay management, and NIP-57 zap support. Every sat counts!",
+  "sig": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+}

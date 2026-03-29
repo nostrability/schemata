@@ -1,0 +1,24 @@
+{
+  "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "created_at": 1670000000,
+  "kind": 30402,
+  "tags": [
+    ["d", "vintage-synth-2024"],
+    ["title", "Roland Juno-106 Analog Synthesizer"],
+    ["summary", "Fully serviced vintage analog polysynth with new voice chips. Excellent condition."],
+    ["published_at", "1669900000"],
+    ["location", "Portland, OR"],
+    ["price", "1500", "USD"],
+    ["status", "active"],
+    ["t", "synthesizer"],
+    ["t", "music"],
+    ["t", "vintage"],
+    ["t", "analog"],
+    ["image", "https://example.com/images/juno106-front.jpg"],
+    ["image", "https://example.com/images/juno106-back.jpg"],
+    ["g", "u21"]
+  ],
+  "content": "# Roland Juno-106 Analog Synthesizer\n\nSelling my beloved Juno-106. This synth has been fully serviced with all six voice chips replaced with Analogue Renaissance clones. No more failing voices!\n\n## Condition\n- Cosmetically 8/10 (minor wear on sliders)\n- Functionally 10/10 (all voices, chorus, everything works)\n- Original power cable included\n\n## Why I'm selling\nDownsizing my studio. Prefer local pickup but can ship at buyer's expense.\n\nDM me for more photos or questions.",
+  "sig": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+}
