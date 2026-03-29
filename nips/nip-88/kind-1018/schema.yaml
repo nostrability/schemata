@@ -13,7 +13,7 @@ allOf:
           $ref: "@/tag/response.yaml"
         allOf:
           - contains:
-              $ref: "@/tag/e.yaml"
+              $ref: "@/tag/nip-88_e.yaml"
             errorMessage:
               contains: "response events must reference a poll event via an e tag"
         items:
@@ -27,7 +27,7 @@ allOf:
                 items:
                   - const: "e"
               then:
-                $ref: "@/tag/e.yaml"
+                $ref: "@/tag/nip-88_e.yaml"
         errorMessage:
           contains: "response events must include at least one response tag"
     required:
