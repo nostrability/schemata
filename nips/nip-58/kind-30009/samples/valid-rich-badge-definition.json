@@ -1,0 +1,16 @@
+{
+  "content": "",
+  "created_at": 1670000000,
+  "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "kind": 30009,
+  "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "sig": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+  "tags": [
+    ["d", "nip-contributor"],
+    ["name", "NIP Contributor"],
+    ["description", "Awarded to developers who have authored or significantly contributed to a merged Nostr Implementation Possibility."],
+    ["image", "https://example.com/badges/nip-contributor.png", "1024x1024"],
+    ["thumb", "https://example.com/badges/nip-contributor-256.png", "256x256"],
+    ["thumb", "https://example.com/badges/nip-contributor-64.png", "64x64"]
+  ]
+}

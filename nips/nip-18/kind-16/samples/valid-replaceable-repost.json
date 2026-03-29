@@ -1,0 +1,14 @@
+{
+  "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "created_at": 1670000000,
+  "kind": 16,
+  "tags": [
+    ["e", "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc", "wss://relay.example.com"],
+    ["a", "30023:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc:my-article"],
+    ["k", "30023"],
+    ["p", "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"]
+  ],
+  "content": "",
+  "sig": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+}

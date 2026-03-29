@@ -1,0 +1,9 @@
+{
+  "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "created_at": 1670000000,
+  "kind": 0,
+  "tags": [],
+  "content": "{\"name\":\"alice\",\"about\":\"Building on nostr since 2022\",\"picture\":\"https://example.com/avatar.png\",\"display_name\":\"Alice von Nostr\",\"website\":\"https://alice.example.com\",\"banner\":\"https://example.com/banner.png\",\"bot\":false,\"lud06\":\"lnurl1dp68gurn8ghj7um9wfmxjcm99e3k7mf0v9cxj0m385ekvcenxc6r2c35xvukxefcv5mkvv34x5ekzd3ev56nyd3hxqurzepexejxxepnxscrvwfnv9nxzcn9xq6xyefhvgcxxcmyxymnserxfq5fns\",\"lud16\":\"alice@getalby.com\",\"nip05\":\"alice@example.com\"}",
+  "sig": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+}

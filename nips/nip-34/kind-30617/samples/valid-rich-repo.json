@@ -1,0 +1,19 @@
+{
+  "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "created_at": 1670000000,
+  "kind": 30617,
+  "tags": [
+    ["d", "nostr-client"],
+    ["name", "Nostr Client"],
+    ["description", "A reference Nostr client implementation"],
+    ["web", "https://github.com/example/nostr-client", "https://nostr-client.example.com"],
+    ["clone", "https://github.com/example/nostr-client.git", "git@github.com:example/nostr-client.git"],
+    ["relays", "wss://relay.example.com", "wss://relay2.example.com"],
+    ["maintainers", "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc", "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"],
+    ["t", "nostr"],
+    ["t", "client"]
+  ],
+  "content": "",
+  "sig": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+}

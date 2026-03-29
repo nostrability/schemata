@@ -1,0 +1,17 @@
+{
+  "content": "",
+  "created_at": 1670000000,
+  "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "kind": 30008,
+  "pubkey": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+  "sig": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+  "tags": [
+    ["d", "profile_badges"],
+    ["a", "30009:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb:nip-contributor"],
+    ["e", "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd", "wss://relay.example.com"],
+    ["a", "30009:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb:nostr-og"],
+    ["e", "1111111111111111111111111111111111111111111111111111111111111111", "wss://relay.example.com"],
+    ["a", "30009:2222222222222222222222222222222222222222222222222222222222222222:relay-operator"],
+    ["e", "3333333333333333333333333333333333333333333333333333333333333333", "wss://relay.example.com"]
+  ]
+}

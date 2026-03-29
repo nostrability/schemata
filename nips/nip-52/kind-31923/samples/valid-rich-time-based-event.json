@@ -1,0 +1,29 @@
+{
+  "content": "A deep-dive workshop on NIP-17 direct messages. We will cover encryption, relay selection, gift wrapping (NIP-59), and practical implementation patterns. Bring your laptop!",
+  "created_at": 1670000000,
+  "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "kind": 31923,
+  "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "sig": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+  "tags": [
+    ["d", "nip17-workshop-2025"],
+    ["title", "NIP-17 Direct Messages Workshop"],
+    ["D", "20254"],
+    ["start", "1750089600"],
+    ["end", "1750100400"],
+    ["start_tzid", "Europe/Prague"],
+    ["end_tzid", "Europe/Prague"],
+    ["summary", "Hands-on workshop covering encrypted direct message implementation with NIP-17 and NIP-59 gift wrapping."],
+    ["image", "https://example.com/events/nip17-workshop.png"],
+    ["location", "Paralelni Polis, Room B"],
+    ["location", "Delnicka 43, Prague 7, Czech Republic"],
+    ["g", "u2fkbv"],
+    ["p", "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"],
+    ["p", "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"],
+    ["t", "nostr"],
+    ["t", "encryption"],
+    ["t", "nip17"],
+    ["r", "wss://relay.example.com"],
+    ["a", "31924:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb:nostr-summit-cal"]
+  ]
+}

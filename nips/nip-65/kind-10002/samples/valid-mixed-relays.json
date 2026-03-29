@@ -1,0 +1,16 @@
+{
+  "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "created_at": 1670000000,
+  "kind": 10002,
+  "tags": [
+    ["r", "wss://relay.damus.io"],
+    ["r", "wss://nos.lol"],
+    ["r", "wss://relay.nostr.band", "read"],
+    ["r", "wss://search.nos.today", "read"],
+    ["r", "wss://relay.primal.net", "write"],
+    ["r", "wss://nostr.wine", "write"]
+  ],
+  "content": "",
+  "sig": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+}
