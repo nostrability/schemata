@@ -1,0 +1,16 @@
+{
+  "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "created_at": 1670000000,
+  "kind": 1068,
+  "tags": [
+    ["option", "opt1", "Yes"],
+    ["option", "opt2", "No"],
+    ["option", "opt3", "Maybe"],
+    ["relay", "wss://relay.example.com"],
+    ["polltype", "multiplechoice"],
+    ["endsAt", "1670100000"]
+  ],
+  "content": "Should we implement this feature?",
+  "sig": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+}
