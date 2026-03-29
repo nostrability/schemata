@@ -44,8 +44,5 @@
     "test:watch": "vitest",
     "docs": "typedoc",
     "validate": "bash scripts/validate-kind.sh"
-  },
-  "peerDependencies": {
-    "typescript": "^4.5.2"
   }
 }
