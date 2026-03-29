@@ -1,0 +1,21 @@
+{
+  "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "created_at": 1670000000,
+  "kind": 34550,
+  "tags": [
+    ["d", "nostr-dev"],
+    ["name", "Nostr Development"],
+    ["description", "A community for nostr protocol developers. Discuss NIPs, share implementations, and collaborate on the future of decentralized social media."],
+    ["image", "https://example.com/nostr-dev-banner.png", "1024x512"],
+    ["p", "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc", "wss://relay.example.com", "moderator"],
+    ["p", "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd", "wss://relay2.example.com", "moderator"],
+    ["p", "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee", "", "moderator"],
+    ["relay", "wss://relay.example.com", "author"],
+    ["relay", "wss://relay2.example.com", "requests"],
+    ["relay", "wss://relay3.example.com", "approvals"],
+    ["relay", "wss://relay4.example.com"]
+  ],
+  "content": "",
+  "sig": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "pubkey": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "created_at": 1670000000,
+  "kind": 7,
+  "tags": [
+    ["e", "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"],
+    ["p", "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"],
+    ["emoji", "smiley", "https://cdn.example.com/emoji/smiley.png"]
+  ],
+  "content": ":smiley:",
+  "sig": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+}
